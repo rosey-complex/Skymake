@@ -44,7 +44,6 @@ private:
   mbedtls_hmac_drbg_context m_context;
 };
 
-// Define the CRC_CCITT_TABLE and SkylanderCRC16 function as in your example
 static uint16_t SkylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint32_t size)
 {
   static constexpr std::array<uint16_t, 256> CRC_CCITT_TABLE{
