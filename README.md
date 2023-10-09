@@ -8,6 +8,12 @@ To put it simply, this is a tool that I made by ✨*shamelessly*✨ copy-pasting
 ## Q&A
 #### Why make this?
 - I made this ✨*abomination*✨ with the intention of having a stand-alone, easy to use, command line tool that creates empty Skylanders figurine data files. 
+#### Why would anyone need this?
+- There are a few possible use cases I could think of:
+	+ Using it to create files directly on a Raspberry Pi portal emulator through SSH
+	+ Quick Skylander file creation (because, of course, there is *no file select screen*)
+	+ Wasting 319.7 KiB of storage space
+
 
 ## Usage:
 ```
@@ -36,6 +42,7 @@ skymake "Whirlwind" ~/Documents/
 ## ❌ What it can't do:
 - Create Imaginator crystals
 - ~Take over Activision~
+- ~Make you immortal~
 
 ## Building and installing (Linux):
 ### Prerequisites:
