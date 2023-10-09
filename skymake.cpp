@@ -85,6 +85,7 @@ static uint16_t SkylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
 }
 
 bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory) {
+    
     // Create the full file path for the .sky file
     std::string filePath = targetDirectory + "/" + skylanderName + ".sky";
 
@@ -573,7 +574,9 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         // Secret figurines
         {{3011, 0x2404}, "VVind Up"},
     };
+
     std::cerr << "*!note: Senseis don't work." << std::endl;
+
     // Lookup the Skylander data based on the given skylanderName
     u16 m_sky_id = 0;
     u16 m_sky_var = 0;
@@ -593,10 +596,6 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     // Create and write the Skylander data to the .sky file
     std::ofstream skyFile(filePath, std::ios::binary);
     skyFile.clear();
-    //if (!skyFile.is_open()) {
-    //    std::cerr << "Failed to create the .sky file." << std::endl;
-    //    return false;
-    //}
 
     //Create data buffer
     std::array<u8, 0x40 * 0x10> buf{};
