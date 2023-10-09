@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <array>
 #include <map>
 #include <cstdint>
@@ -8,14 +7,6 @@
 #include <cstring>
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
-#include <cstddef>
-#include <memory>
-#include <type_traits>
-
-#define u32 uint64_t
-#define u16 uint16_t
-#define u8 uint8_t
-
 
 class EntropySeededPRNG final
 {
@@ -24,8 +15,9 @@ public:
   {
     mbedtls_entropy_init(&m_entropy);
     mbedtls_hmac_drbg_init(&m_context);
-    const int ret = mbedtls_hmac_drbg_seed(&m_context, mbedtls_md_info_from_type(MBEDTLS_MD_SHA256),
-                                           mbedtls_entropy_func, &m_entropy, nullptr, 0);
+    const int ret = mbedtls_hmac_drbg_seed(
+                        &m_context, mbedtls_md_info_from_type(MBEDTLS_MD_SHA256),
+                        mbedtls_entropy_func, &m_entropy, nullptr, 0);
   }
 
   ~EntropySeededPRNG()
@@ -36,7 +28,7 @@ public:
 
   void Generate(void* buffer, std::size_t size)
   {
-    const int ret = mbedtls_hmac_drbg_random(&m_context, static_cast<u8*>(buffer), size);
+    const int ret = mbedtls_hmac_drbg_random(&m_context, static_cast<uint8_t*>(buffer), size);
   }
 
 private:
@@ -89,7 +81,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     std::string filePath = targetDirectory + "/" + skylanderName + ".sky";
 
     // Define the Skylander data (m_sky_id and m_sky_var) based on the provided list
-    std::map<std::pair<u16, u16>, std::string> list_skylanders = {
+    std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
         {{0, 0x0000}, "Whirlwind"},
         {{0, 0x1801}, "Series 2 Whirlwind"},
         {{0, 0x1C02}, "Polar Whirlwind"},
@@ -574,13 +566,13 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         {{3011, 0x2404}, "VVind Up"},
     };
 
-    std::cerr << "*!note: Senseis don't work." << std::endl;
+    std::cerr << "* Warning: Sensei Skylanders won't work." << std::endl;
 
     // Lookup the Skylander data based on the given skylanderName
-    u16 m_sky_id = 0;
-    u16 m_sky_var = 0;
+    uint16_t m_sky_id = 0;
+    uint16_t m_sky_var = 0;
     auto it = std::find_if(list_skylanders.begin(), list_skylanders.end(),
-        [skylanderName](const std::pair<std::pair<u16, u16>, std::string>& entry) {
+        [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
             return entry.second == skylanderName;
         });
 
@@ -588,23 +580,25 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         m_sky_id = it->first.first;
         m_sky_var = it->first.second;
     } else {
-        std::cerr << "Skylander not found." << std::endl;
+        std::cerr << "Skylander not known." << std::endl;
         return false;
     }
 
-    // Create and write the Skylander data to the .sky file
+    ///// Skylander figurine data file creation
+
+    // Create empty file
     std::ofstream skyFile(filePath, std::ios::binary);
     skyFile.clear();
 
-    //Create data buffer
-    std::array<u8, 0x40 * 0x10> buf{};
+    // Create data buffer
+    std::array<uint8_t, 0x40 * 0x10> buf{};
     const auto file_data = buf.data();
     
     // Set the block permissions
-    u32 first_block = 0x690F0F0F;
-    u32 other_blocks = 0x69080F7F;
+    uint32_t first_block = 0x690F0F0F;
+    uint32_t other_blocks = 0x69080F7F;
     memcpy(&file_data[0x36], &first_block, sizeof(first_block));
-    for (u32 index = 1; index < 0x10; index++)
+    for (uint32_t index = 1; index < 0x10; index++)
     {
       memcpy(&file_data[(index * 0x40) + 0x36], &other_blocks, sizeof(other_blocks));
     }
@@ -628,20 +622,20 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     memcpy(&file_data[0x1C], &m_sky_var, sizeof(m_sky_var));
     
     // Set checksum
-    u16 checksum = SkylanderCRC16(0xFFFF, file_data, 0x1E);
+    uint16_t checksum = SkylanderCRC16(0xFFFF, file_data, 0x1E);
     memcpy(&file_data[0x1E], &checksum, sizeof(checksum));
     
     // Write the data to the .sky file
     skyFile.write(reinterpret_cast<const char*>(buf.data()), buf.size());
     skyFile.close();
 
-    std::cout << "Skylander file created successfully: " << filePath << std::endl;
+    std::cout << "Successfully created " << filePath << std::endl;
     return true;
 }
 
 int main(int argc, char* argv[]) {
     if (argc != 3) {
-        std::cerr << "Usage: skymake <SkylanderName> <TargetDirectory>" << std::endl;
+        std::cerr << "Usage: skymake <Skylander Name> <Directory>" << std::endl;
         return 1;
     }
 
