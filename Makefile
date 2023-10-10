@@ -1,6 +1,6 @@
 build:
 	mkdir bin/
-	/usr/bin/g++ -fdiagnostics-color=always -g -lmbedtls -lmbedx509 -lmbedcrypto skymake.cpp -o bin/skymake
+	/usr/bin/g++ -fdiagnostics-color=always -g -std=c++17 -lmbedtls -lmbedx509 -lmbedcrypto skymake.cpp -o bin/skymake
 
 clean:
 	rm -r bin/

@@ -7,6 +7,7 @@
 #include <cstring>
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
+#include <filesystem>
 #include "Figurines.h"
 
 class EntropySeededPRNG final
@@ -81,6 +82,13 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     // Create the full file path for the .sky file
     std::string filePath = targetDirectory + "/" + skylanderName + ".sky";
     
+    // Check if file already exists and warn the user about overwriting
+    if (std::filesystem::exists(filePath)) {
+      std::cerr << "* Warning: file " << filePath << " already exists!" << std::endl;
+      std::cout << "* Overwriting..." << std::endl;
+    }
+    else std::cout << "* Creating file " << filePath << std::endl;
+
     // Lookup the Skylander data based on the given skylanderName
     uint16_t m_sky_id = 0;
     uint16_t m_sky_var = 0;
@@ -161,7 +169,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     skyFile.write(reinterpret_cast<const char*>(buf.data()), buf.size());
     skyFile.close();
 
-    std::cout << "Successfully created " << filePath << std::endl;
+    std::cout << "* Successfully wrote data to " << filePath << std::endl;
     return true;
 }
 
