@@ -29,7 +29,7 @@ skymake "Whirlwind" ~/Documents/
 - Creating Swappers
 - Creating Trap Masters
 - Creating Traps
-- Creating Supperchargers
+- Creating Superchargers
 - Creating Trophies
 - Creating Vehicles
 
