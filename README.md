@@ -3,9 +3,9 @@
 # **Skymake - A barely-functional Skylander figurine generator**
 
 ## About:
-To put it simply, this is a tool that I made by ✨*shamelessly*✨ copy-pasting code from the Skylander portal emulators of both RPCS3 and Dolphin (CRC_CCITT_TABLE and list_skylanders are from RPCS3; EntropySeededPRNG and the skylander generator code are from Dolphin).
+To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the Skylander portal emulators of both RPCS3 and Dolphin (CRC_CCITT_TABLE and list_skylanders are from RPCS3; EntropySeededPRNG and the skylander generator code are from Dolphin).
 
-## Q&A
+## Q&A:
 #### Why make this?
 - I made this ✨*abomination*✨ with the intention of having a stand-alone, easy to use, command line tool that creates empty Skylanders figurine data files. 
 #### Why would anyone need this?
@@ -13,7 +13,6 @@ To put it simply, this is a tool that I made by ✨*shamelessly*✨ copy-pasting
 	+ Using it to create files directly on a Raspberry Pi portal emulator through SSH
 	+ Quick Skylander file creation (because, of course, there is *no file select screen*)
 	+ Wasting 319.7 KiB of storage space
-
 
 ## Usage:
 ```
