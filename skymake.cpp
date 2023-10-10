@@ -79,8 +79,8 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     
     // Create the full file path for the .sky file
     std::string filePath = targetDirectory + "/" + skylanderName + ".sky";
-
-    // Define the Skylander data (m_sky_id and m_sky_var) based on the provided list
+    
+    // Figurines up to Superchargers
     std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
         {{0, 0x0000}, "Whirlwind"},
         {{0, 0x1801}, "Series 2 Whirlwind"},
@@ -374,37 +374,6 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         {{503, 0x0000}, "Spry"},
         {{504, 0x0000}, "Hijinx"},
         {{543, 0x0000}, "Eye Small"},
-        {{601, 0x0000}, "King Pen"},
-        {{602, 0x0000}, "Tri-Tip"},
-        {{603, 0x0000}, "Chopscotch"},
-        {{604, 0x0000}, "Boom Bloom"},
-        {{605, 0x0000}, "Pit Boss"},
-        {{606, 0x0000}, "Barbella"},
-        {{607, 0x0000}, "Air Strike"},
-        {{608, 0x0000}, "Ember"},
-        {{609, 0x0000}, "Ambush"},
-        {{610, 0x0000}, "Dr. Krankcase"},
-        {{611, 0x0000}, "Hood Sickle"},
-        {{612, 0x0000}, "Tae Kwon Crow"},
-        {{613, 0x0000}, "Golden Queen"},
-        {{614, 0x0000}, "Wolfgang"},
-        {{615, 0x0000}, "Pain-Yatta"},
-        {{616, 0x0000}, "Mysticat"},
-        {{617, 0x0000}, "Starcast"},
-        {{618, 0x0000}, "Buckshot"},
-        {{619, 0x0000}, "Aurora"},
-        {{620, 0x0000}, "Flare Wolf"},
-        {{621, 0x0000}, "Chompy Mage"},
-        {{622, 0x0000}, "Bad Juju"},
-        {{623, 0x0000}, "Grave Clobber"},
-        {{624, 0x0000}, "Blaster-Tron"},
-        {{625, 0x0000}, "Ro-Bow"},
-        {{626, 0x0000}, "Chain Reaction"},
-        {{627, 0x0000}, "Kaos"},
-        {{628, 0x0000}, "Wild Storm"},
-        {{629, 0x0000}, "Tidepool"},
-        {{630, 0x0000}, "Crash Bandicoot"},
-        {{631, 0x0000}, "Dr. Neo Cortex"},
         {{1000, 0x0000}, "Boom Jet (Bottom)"},
         {{1001, 0x0000}, "Free Ranger (Bottom)"},
         {{1001, 0x2403}, "Legendary Free Ranger (Bottom)"},
@@ -566,11 +535,48 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         {{3011, 0x2404}, "VVind Up"},
     };
 
-    std::cerr << "* Warning: Sensei Skylanders won't work." << std::endl;
+    // Senseis
+    std::map<std::pair<uint16_t, uint16_t>, std::string> list_sensei = {
+        {{605, 0x0000}, "Pit Boss"},
+        {{623, 0x0000}, "Grave Clobber"},
+        {{610, 0x0000}, "Dr. Krankcase"},
+        {{611, 0x0000}, "Hood Sickle"},
+        {{612, 0x0000}, "Tae Kwon Crow"},
+        {{613, 0x0000}, "Golden Queen"},
+        {{614, 0x0000}, "Wolfgang"},
+        {{615, 0x0000}, "Pain-Yatta"},
+        {{616, 0x0000}, "Mysticat"},
+        {{617, 0x0000}, "Starcast"},
+        {{618, 0x0000}, "Buckshot"},
+        {{619, 0x0000}, "Aurora"},
+        {{620, 0x0000}, "Flare Wolf"},
+        {{621, 0x0000}, "Chompy Mage"},
+        {{622, 0x0000}, "Bad Juju"},
+        {{624, 0x0000}, "Blaster-Tron"},
+        {{625, 0x0000}, "Ro-Bow"},
+        {{626, 0x0000}, "Chain Reaction"},
+        {{627, 0x0000}, "Kaos"},
+        {{628, 0x0000}, "Wild Storm"},
+        {{601, 0x0000}, "King Pen"},
+        {{602, 0x0000}, "Tri-Tip"},
+        {{603, 0x0000}, "Chopscotch"},
+        {{604, 0x0000}, "Boom Bloom"},
+        {{606, 0x0000}, "Barbella"},
+        {{607, 0x0000}, "Air Strike"},
+        {{608, 0x0000}, "Ember"},
+        {{609, 0x0000}, "Ambush"},
+        {{629, 0x0000}, "Tidepool"},
+        {{630, 0x0000}, "Crash Bandicoot"},
+        {{631, 0x0000}, "Dr. Neo Cortex"},
+        // Special variants needed
+    };
+
 
     // Lookup the Skylander data based on the given skylanderName
     uint16_t m_sky_id = 0;
     uint16_t m_sky_var = 0;
+    
+    bool isSensei = false;
     auto it = std::find_if(list_skylanders.begin(), list_skylanders.end(),
         [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
             return entry.second == skylanderName;
@@ -580,11 +586,28 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
         m_sky_id = it->first.first;
         m_sky_var = it->first.second;
     } else {
-        std::cerr << "Skylander not known." << std::endl;
+
+      // Check if provided skylander is from Imaginators
+      auto it = std::find_if(list_sensei.begin(), list_sensei.end(),
+        [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
+            return entry.second == skylanderName;
+        });
+      if (it != list_sensei.end()) {
+        std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
+        m_sky_id = it->first.first;
+        m_sky_var = it->first.second;
+
+        // may be useful for when Senseis get reverse-engineered
+        isSensei = true;  
+      }
+      else {
+        std::cerr << "! Error: Unknown Skylander." << std::endl;
         return false;
+      }
+      
     }
 
-    ///// Skylander figurine data file creation
+    //// Skylander figurine data file creation
 
     // Create empty file
     std::ofstream skyFile(filePath, std::ios::binary);
