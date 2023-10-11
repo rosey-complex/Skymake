@@ -9,7 +9,7 @@
 //      {{ID, Variant(Hex)}, Name},
 
 // Figurines up to Superchargers
-std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
+std::map<std::pair<uint16_t, uint16_t>, std::string> skylanderList = {
         {{0, 0x0000}, "Whirlwind"},
         {{0, 0x1801}, "Series 2 Whirlwind"},
         {{0, 0x1C02}, "Polar Whirlwind"},
@@ -489,7 +489,7 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
 };
 
 // Senseis
-std::map<std::pair<uint16_t, uint16_t>, std::string> list_sensei = {
+std::map<std::pair<uint16_t, uint16_t>, std::string> senseiList = {
         {{605, 0x0000}, "Pit Boss"},
         {{623, 0x0000}, "Grave Clobber"},
         {{610, 0x0000}, "Dr. Krankcase"},

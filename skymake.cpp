@@ -8,13 +8,12 @@
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
 #include <filesystem>
-#include <format>
 #include "Figurines.h"
 
-class EntropySeededPRNG final
+class entropySeededPRNG final
 {
 public:
-  EntropySeededPRNG()
+  entropySeededPRNG()
   {
     mbedtls_entropy_init(&m_entropy);
     mbedtls_hmac_drbg_init(&m_context);
@@ -23,7 +22,7 @@ public:
                         mbedtls_entropy_func, &m_entropy, nullptr, 0);
   }
 
-  ~EntropySeededPRNG()
+  ~entropySeededPRNG()
   {
     mbedtls_hmac_drbg_free(&m_context);
     mbedtls_entropy_free(&m_entropy);
@@ -39,7 +38,7 @@ private:
   mbedtls_hmac_drbg_context m_context;
 };
 
-static uint16_t SkylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint32_t size)
+static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint32_t size)
 {
   static constexpr std::array<uint16_t, 256> CRC_CCITT_TABLE{
       0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7, 0x8108, 0x9129, 0xA14A,
@@ -81,8 +80,8 @@ static uint16_t SkylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
 bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory, std::string genMode = "manual", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
     
     std::string filePath;
-    uint16_t m_sky_id = 0;
-    uint16_t m_sky_var = 0;
+    uint16_t SkyID = 0;
+    uint16_t SkyVarID = 0;
 
     std::cout << "* Mode: " << genMode << std::endl;
     
@@ -91,8 +90,8 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
       // Use a file name based on the provided IDs
       filePath = targetDirectory + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
       // Set the IDs
-      m_sky_id = customID;
-      m_sky_var = customVar;
+      SkyID = customID;
+      SkyVarID = customVar;
     }
     else {
       // Create the full file path for the .sky file
@@ -100,25 +99,25 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
 
       // Lookup the Skylander data based on the given skylanderName
       bool isSensei = false;
-      auto it = std::find_if(list_skylanders.begin(), list_skylanders.end(),
+      auto it = std::find_if(skylanderList.begin(), skylanderList.end(),
           [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
               return entry.second == skylanderName;
           });
 
-      if (it != list_skylanders.end()) {
-          m_sky_id = it->first.first;
-          m_sky_var = it->first.second;
+      if (it != skylanderList.end()) {
+          SkyID = it->first.first;
+          SkyVarID = it->first.second;
       } else {
 
         // Check if provided skylander is from Imaginators
-        auto it = std::find_if(list_sensei.begin(), list_sensei.end(),
+        auto it = std::find_if(senseiList.begin(), senseiList.end(),
           [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
               return entry.second == skylanderName;
           });
-        if (it != list_sensei.end()) {
+        if (it != senseiList.end()) {
           std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
-          m_sky_id = it->first.first;
-          m_sky_var = it->first.second;
+          SkyID = it->first.first;
+          SkyVarID = it->first.second;
 
           // may be useful for when Senseis get reverse-engineered
           isSensei = true;  
@@ -150,38 +149,38 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
 
     // Create data buffer
     std::array<uint8_t, 0x40 * 0x10> buf{};
-    const auto file_data = buf.data();
+    const auto fileData = buf.data();
     
     // Set the block permissions
-    uint32_t first_block = 0x690F0F0F;
-    uint32_t other_blocks = 0x69080F7F;
-    memcpy(&file_data[0x36], &first_block, sizeof(first_block));
+    uint32_t firstBlock = 0x690F0F0F;
+    uint32_t otherBlocks = 0x69080F7F;
+    memcpy(&fileData[0x36], &firstBlock, sizeof(firstBlock));
     for (uint32_t index = 1; index < 0x10; index++)
     {
-      memcpy(&file_data[(index * 0x40) + 0x36], &other_blocks, sizeof(other_blocks));
+      memcpy(&fileData[(index * 0x40) + 0x36], &otherBlocks, sizeof(otherBlocks));
     }
     
     // Set the NUID of the figure
-    static thread_local EntropySeededPRNG s_esprng;
-    s_esprng.Generate(&file_data[0], 4);
+    static thread_local entropySeededPRNG eSPRNG;
+    eSPRNG.Generate(&fileData[0], 4);
 
     // The BCC (Block Check Character)
-    file_data[4] = file_data[0] ^ file_data[1] ^ file_data[2] ^ file_data[3];
+    fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
     
     // ATQA
-    file_data[5] = 0x81;
-    file_data[6] = 0x01;
+    fileData[5] = 0x81;
+    fileData[6] = 0x01;
     
     // SAK
-    file_data[7] = 0x0F;
+    fileData[7] = 0x0F;
 
     // Set the skylander info
-    memcpy(&file_data[0x10], &m_sky_id, sizeof(m_sky_id));
-    memcpy(&file_data[0x1C], &m_sky_var, sizeof(m_sky_var));
+    memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
+    memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
     
     // Set checksum
-    uint16_t checksum = SkylanderCRC16(0xFFFF, file_data, 0x1E);
-    memcpy(&file_data[0x1E], &checksum, sizeof(checksum));
+    uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
+    memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
     
     // Write the data to the .sky file
     skyFile.write(reinterpret_cast<const char*>(buf.data()), buf.size());
@@ -202,7 +201,6 @@ int main(int argc, char* argv[]) {
     // if there is no -m, then just do the default behaviour
     if (strcmp(argv[1], "-m") == 0) {
       uint16_t ID = std::stoi(argv[2]);
-      //uint16_t varID = std::stoi(argv[3]);
       std::string varHexID = argv[3];
       std::string targetDirectory = argv[4];
       if (CreateSkylander("", targetDirectory, "manual", ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
@@ -211,7 +209,6 @@ int main(int argc, char* argv[]) {
     else {
       std::string skylanderName = argv[1];
       std::string targetDirectory = argv[2];
-
       if (CreateSkylander(skylanderName, targetDirectory, "auto")) return 0;
       else return 1;
     }
