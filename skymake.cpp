@@ -212,7 +212,4 @@ int main(int argc, char* argv[]) {
       if (CreateSkylander(skylanderName, targetDirectory, "auto")) return 0;
       else return 1;
     }
-    
-
-    
 }
