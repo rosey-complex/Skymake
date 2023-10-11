@@ -1,6 +1,6 @@
 ![](Logo/logo-128x128.svg)
 
-# **Skymake - A barely-functional Skylander figurine generator**
+# **Skymake - A just-works command line Skylander figurine generator**
 
 ## About:
 To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the Skylander portal emulators of both RPCS3 and Dolphin (CRC_CCITT_TABLE and list_skylanders are from RPCS3; EntropySeededPRNG and the skylander generator code are from Dolphin).
