@@ -13,7 +13,7 @@ To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the 
 	+ Avoiding pre-made dumps which may sometimes be unreliable
 	+ Using it to create files directly on a Raspberry Pi portal emulator through SSH
 	+ Quick Skylander file creation (because, of course, there is *no file select screen*)
-	+ Wasting 319.7 KiB of storage space
+	+ Wasting 1.7 MiB of storage space
 
 ## Usage:
 #### Default:
