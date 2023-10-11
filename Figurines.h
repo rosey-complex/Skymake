@@ -117,7 +117,7 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
         {{102, 0x0000}, "Crusher"},
         {{102, 0x1602}, "Granite Crusher"},
         {{103, 0x0000}, "Flashwing"},
-        {{103, 0x1402}, "Jade Flash Wing"},
+        {{103, 0x1402}, "Jade Flashwing"},
         {{103, 0x2206}, "LightCore Flashwing"},
         {{104, 0x0000}, "Hot Head"},
         {{105, 0x0000}, "Hot Dog"},
@@ -462,6 +462,10 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
 
         // Secret figurines
         {{3011, 0x2404}, "VVind Up"},
+
+        // Scrapped Trap Team figurines
+        {{32, 0x3805}, "Series 4 Cynder"}, // Yes, we almost had Series 4 Cynder
+        {{103, 0x3805}, "Series 2 Flashwing"},
 };
 
 // Senseis
