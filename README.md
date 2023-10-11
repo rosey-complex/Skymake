@@ -10,6 +10,7 @@ To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the 
 - I made this ✨*abomination*✨ with the intention of having a stand-alone, easy to use, command line tool that creates empty Skylanders figurine data files. 
 #### Why would anyone need this?
 - There are a few possible use cases I could think of:
+	+ Avoiding pre-made dumps which may sometimes be unreliable
 	+ Using it to create files directly on a Raspberry Pi portal emulator through SSH
 	+ Quick Skylander file creation (because, of course, there is *no file select screen*)
 	+ Wasting 319.7 KiB of storage space
