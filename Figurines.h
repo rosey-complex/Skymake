@@ -462,6 +462,13 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
 
         // Secret figurines
         {{3011, 0x2404}, "VVind Up"},
+        {{999, 0x0000}, "Debug Minion"},
+        {{1999, 0x0000}, "Template Template (Bottom)"},
+        {{2999, 0x0000}, "Template Template (Top)"},
+        {{3999, 0x0000}, "Template Legacy"},
+        {{5999, 0x0000}, "Template Land Vehicle"},
+        {{6999, 0x0000}, "Template Sky Vehicle"},
+        {{7999, 0x0000}, "Template Sea Vehicle"},
 
         // Scrapped Trap Team figurines
         {{32, 0x3805}, "Series 4 Cynder"}, // Yes, we almost had Series 4 Cynder
