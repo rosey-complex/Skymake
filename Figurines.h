@@ -470,6 +470,19 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> list_skylanders = {
         {{6999, 0x0000}, "Template Sky Vehicle"},
         {{7999, 0x0000}, "Template Sea Vehicle"},
 
+        // Instant figurines
+        {{3412, 0x450F}, "Instant Spitfire"},
+        {{3415, 0x450F}, "Instant Super Shot Stealth Elf"},
+        {{3425, 0x450F}, "Instant Dive-Clops"},
+        {{3224, 0x450F}, "Instant Hot Streak"},
+        {{3231, 0x450F}, "Instant Dive Bomber"},
+        {{3228, 0x450F}, "Instant Stealth Stinger"},
+        {{3232, 0x450F}, "Instant Sky Slicer"},
+        {{3237, 0x450F}, "Instant Sea Shadow"},
+        {{462, 0x450F}, "Instant Snap Shot"},
+        {{476, 0x450F}, "Instant Food Fight"},
+
+
         // Scrapped Trap Team figurines
         {{32, 0x3805}, "Series 4 Cynder"}, // Yes, we almost had Series 4 Cynder
         {{103, 0x3805}, "Series 2 Flashwing"},
