@@ -15,23 +15,32 @@ To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the 
 	+ Wasting 319.7 KiB of storage space
 
 ## Usage:
+#### Default:
 ```
 skymake <Skylander Name> <Directory>
 ```
-example:
+Example:
 ```
 skymake "Whirlwind" ~/Documents/
 ```
 
+#### Alternatively, you can use manual mode:
+```
+skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>
+```
+Example (for Ultimate Kaos Trap):
+```
+skymake -m 220 0x351F ~/Documents/
+```
+
 ## ✅ What works:
-- Creating core Skylanders
-- Creating Giants
-- Creating Swappers
-- Creating Trap Masters
-- Creating Traps
-- Creating Superchargers
-- Creating Trophies
+- Creating Skylanders up to Imaginators
+- Creating Magic Items
 - Creating Vehicles
+- Creating Traps
+- Creating Debug Skylanders
+- Creating Instant/Virtual Skylander variants
+- Creating ***some*** scrapped Skylanders
 
 ## ⚠️ What doesn't work:
 - Creating functional* Senseis 

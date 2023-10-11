@@ -8,6 +8,7 @@
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
 #include <filesystem>
+#include <format>
 #include "Figurines.h"
 
 class EntropySeededPRNG final
@@ -77,52 +78,69 @@ static uint16_t SkylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
   return crc;
 }
 
-bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory) {
+bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory, std::string genMode = "manual", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
     
-    // Create the full file path for the .sky file
-    std::string filePath = targetDirectory + "/" + skylanderName + ".sky";
+    std::string filePath;
+    uint16_t m_sky_id = 0;
+    uint16_t m_sky_var = 0;
+
+    std::cout << "* Mode: " << genMode << std::endl;
     
+    if (genMode == "manual") {
+      //// Allows a user to create a skylander if they know the variant ID and skylander ID
+      // Use a file name based on the provided IDs
+      filePath = targetDirectory + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
+      // Set the IDs
+      m_sky_id = customID;
+      m_sky_var = customVar;
+    }
+    else {
+      // Create the full file path for the .sky file
+      filePath = targetDirectory + "/" + skylanderName + ".sky";
+
+      // Lookup the Skylander data based on the given skylanderName
+      bool isSensei = false;
+      auto it = std::find_if(list_skylanders.begin(), list_skylanders.end(),
+          [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
+              return entry.second == skylanderName;
+          });
+
+      if (it != list_skylanders.end()) {
+          m_sky_id = it->first.first;
+          m_sky_var = it->first.second;
+      } else {
+
+        // Check if provided skylander is from Imaginators
+        auto it = std::find_if(list_sensei.begin(), list_sensei.end(),
+          [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
+              return entry.second == skylanderName;
+          });
+        if (it != list_sensei.end()) {
+          std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
+          m_sky_id = it->first.first;
+          m_sky_var = it->first.second;
+
+          // may be useful for when Senseis get reverse-engineered
+          isSensei = true;  
+        }
+        else {
+          std::cerr << "! Error: Unknown Skylander." << std::endl
+                    << "* Tip: if you know the ID and variant ID of the skylander" << std::endl
+                    << "you are trying to create, use manual mode:" << std::endl
+                    << "      skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>" << std::endl;
+          return false;
+        }
+
+      }
+    }
+    
+
     // Check if file already exists and warn the user about overwriting
     if (std::filesystem::exists(filePath)) {
       std::cerr << "* Warning: file " << filePath << " already exists!" << std::endl;
       std::cout << "* Overwriting..." << std::endl;
     }
     else std::cout << "* Creating file " << filePath << std::endl;
-
-    // Lookup the Skylander data based on the given skylanderName
-    uint16_t m_sky_id = 0;
-    uint16_t m_sky_var = 0;
-    
-    bool isSensei = false;
-    auto it = std::find_if(list_skylanders.begin(), list_skylanders.end(),
-        [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
-            return entry.second == skylanderName;
-        });
-
-    if (it != list_skylanders.end()) {
-        m_sky_id = it->first.first;
-        m_sky_var = it->first.second;
-    } else {
-
-      // Check if provided skylander is from Imaginators
-      auto it = std::find_if(list_sensei.begin(), list_sensei.end(),
-        [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string>& entry) {
-            return entry.second == skylanderName;
-        });
-      if (it != list_sensei.end()) {
-        std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
-        m_sky_id = it->first.first;
-        m_sky_var = it->first.second;
-
-        // may be useful for when Senseis get reverse-engineered
-        isSensei = true;  
-      }
-      else {
-        std::cerr << "! Error: Unknown Skylander." << std::endl;
-        return false;
-      }
-      
-    }
 
     //// Skylander figurine data file creation
 
@@ -174,17 +192,30 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
 }
 
 int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        std::cerr << "Usage: skymake <Skylander Name> <Directory>" << std::endl;
+    if (argc < 3) {
+        std::cerr << "Usage:  skymake <Skylander Name> <Directory>" << std::endl
+                  << "        ---or---" << std::endl
+                  << "        skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>" << std::endl;
         return 1;
     }
-
-    std::string skylanderName = argv[1];
-    std::string targetDirectory = argv[2];
-
-    if (CreateSkylander(skylanderName, targetDirectory)) {
-        return 0;
-    } else {
-        return 1;
+    
+    // if there is no -m, then just do the default behaviour
+    if (strcmp(argv[1], "-m") == 0) {
+      uint16_t ID = std::stoi(argv[2]);
+      //uint16_t varID = std::stoi(argv[3]);
+      std::string varHexID = argv[3];
+      std::string targetDirectory = argv[4];
+      if (CreateSkylander("", targetDirectory, "manual", ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
+      else return 1;
     }
+    else {
+      std::string skylanderName = argv[1];
+      std::string targetDirectory = argv[2];
+
+      if (CreateSkylander(skylanderName, targetDirectory, "auto")) return 0;
+      else return 1;
+    }
+    
+
+    
 }
