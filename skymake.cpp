@@ -77,26 +77,31 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
   return crc;
 }
 
-bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory, std::string genMode = "manual", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
+bool CreateSkylander(const std::string& skylanderName, const std::string& targetFile, std::string genMode = "auto", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
     
+    std::string filePathNoExtension;
     std::string filePath;
     uint16_t SkyID = 0;
     uint16_t SkyVarID = 0;
 
+    // Check if user has specified a file as the last argument
+    bool autoPath = !(targetFile.find(".sky") != std::string::npos);
+
     std::cout << "* Mode: " << genMode << std::endl;
     
-    if (genMode == "manual") {
+    // Manual Mode
+    if (genMode.find("manual") != std::string::npos) {
       //// Allows a user to create a skylander if they know the variant ID and skylander ID
       // Use a file name based on the provided IDs
-      filePath = targetDirectory + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
+      filePath = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
+
       // Set the IDs
       SkyID = customID;
       SkyVarID = customVar;
     }
+    // Auto Mode
     else {
-      // Create the full file path for the .sky file
-      filePath = targetDirectory + "/" + skylanderName + ".sky";
-
+      filePath = targetFile + "/" + skylanderName + ".sky";
       // Lookup the Skylander data based on the given skylanderName
       bool isSensei = false;
       auto it = std::find_if(skylanderList.begin(), skylanderList.end(),
@@ -123,21 +128,32 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
           isSensei = true;  
         }
         else {
-          std::cerr << "! Error: Unknown Skylander." << std::endl
-                    << "* Tip: if you know the ID and variant ID of the skylander" << std::endl
-                    << "you are trying to create, use manual mode:" << std::endl
-                    << "      skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>" << std::endl;
+          std::cerr << "! Error: Unknown Skylander." << std::endl;
           return false;
         }
-
       }
     }
+    //override the file path if the user has specified a file name
+    if (!autoPath) filePath = targetFile;
     
+    // File Path without extension
+    filePathNoExtension = filePath; 
+    for (u_int8_t i = 0; i <= 3; i++) filePathNoExtension.pop_back();
 
     // Check if file already exists and warn the user about overwriting
     if (std::filesystem::exists(filePath)) {
       std::cerr << "* Warning: file " << filePath << " already exists!" << std::endl;
-      std::cout << "* Overwriting..." << std::endl;
+      // Avoid overwriting by adding a number before the file extension
+      if (genMode.find("safe") != std::string::npos) {
+        for (uint8_t n = 0; n <= 255; n++) {
+          if (!(std::filesystem::exists(filePathNoExtension + "." + std::to_string(n) + ".sky"))) {
+            filePath = filePathNoExtension + "." + std::to_string(n) + ".sky";
+            break;
+          }
+        }
+        std::cout << "* Avoiding overwrite by writing to " << filePath << std::endl;
+      }
+      else std::cout << "* Overwriting..." << std::endl;
     }
     else std::cout << "* Creating file " << filePath << std::endl;
 
@@ -190,26 +206,75 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     return true;
 }
 
+class Printer {
+  public:
+  void printHelp() {
+    std::cout << "skymake <Options>\n"
+              << "\nOptions:\n"
+              << "        -h                        Print usage instructions.\n"
+              << "        -a <Skylander Name>       Auto mode.\n"
+              << "        -m <ID> <VarID(Hex)>      Manual Mode.\n"
+              << "                                 Use only if you know the IDs\n"
+              << "        -f <File or Directory>    Where to write the data\n"
+              << "        -s                        Avoid overwriting files\n"
+              << "                                 by adding a number in the\n"
+              << "                                 file name\n";
+  }
+
+  void printArgErr() {
+    std::cerr << "! Error: missing options.\n"
+              << "* Try 'skymake -h' for usage instructions.\n";
+  }
+};
+
 int main(int argc, char* argv[]) {
-    if (argc < 3) {
-        std::cerr << "Usage:  skymake <Skylander Name> <Directory>" << std::endl
-                  << "        ---or---" << std::endl
-                  << "        skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>" << std::endl;
+    Printer printer;
+    if (argc < 2) {
+        printer.printArgErr();
         return 1;
     }
+
+    std::string genModeArgs = "";
+    std::string targetFile = ".";
+    std::string skylanderName;
+    std::string varHexID = "0x0000";
+    uint16_t ID = 0;
     
-    // if there is no -m, then just do the default behaviour
-    if (strcmp(argv[1], "-m") == 0) {
-      uint16_t ID = std::stoi(argv[2]);
-      std::string varHexID = argv[3];
-      std::string targetDirectory = argv[4];
-      if (CreateSkylander("", targetDirectory, "manual", ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
-      else return 1;
+    // Parse the argument array for options
+    for (int i = 1; i < argc; i++) {
+      if ((strcmp(argv[i], "-s") == 0) && !(genModeArgs.find("safe") != std::string::npos))
+        genModeArgs.append(" safe"); 
+      
+      if ((strcmp(argv[i], "-m") == 0) && !(genModeArgs.find("manual") != std::string::npos) && !(genModeArgs.find("auto") != std::string::npos)) {
+        genModeArgs.append(" manual");
+        if (i+2 < argc) {
+          ID = std::stoi(argv[i + 1]);
+          varHexID = argv[i + 2];
+        }
+        else {
+          printer.printArgErr();
+          return 1;
+        }
+      } 
+      if ((strcmp(argv[i], "-a") == 0) && !(genModeArgs.find("auto") != std::string::npos) && !(genModeArgs.find("manual") != std::string::npos)) {
+        genModeArgs.append(" auto");
+        if (i+1 < argc) skylanderName = argv[i + 1];
+        else {
+          printer.printArgErr();
+          return 1;
+        }
+      }
+      
+      if (strcmp(argv[i], "-h") == 0) {printer.printHelp(); return 0;}
+
+      if (strcmp(argv[i], "-f") == 0) {
+        targetFile = argv[i + 1];
+      }
     }
-    else {
-      std::string skylanderName = argv[1];
-      std::string targetDirectory = argv[2];
-      if (CreateSkylander(skylanderName, targetDirectory, "auto")) return 0;
-      else return 1;
+    if (genModeArgs == "") {
+      printer.printArgErr();
+      return 1;
     }
+    if (CreateSkylander(skylanderName, targetFile, genModeArgs, ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
+    else return 1;
 }
