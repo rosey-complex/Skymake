@@ -209,7 +209,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
 class Printer {
   public:
   void printHelp() {
-    std::cout << "skymake <Options> <File>\n"
+    std::cout << "skymake <Options>\n"
               << "\nOptions:\n"
               << "        -h                        Print usage instructions.\n"
               << "        -a <Skylander Name>       Auto mode.\n"
