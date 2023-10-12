@@ -128,10 +128,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
           isSensei = true;  
         }
         else {
-          std::cerr << "! Error: Unknown Skylander." << std::endl
-                    << "* Tip: if you know the ID and variant ID of the skylander" << std::endl
-                    << "you are trying to create, use manual mode:" << std::endl
-                    << "      skymake -m <ID> <Variant ID (Hexadecimal)> <Directory>" << std::endl;
+          std::cerr << "! Error: Unknown Skylander." << std::endl;
           return false;
         }
       }
@@ -209,22 +206,31 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     return true;
 }
 
-void printHelp() {
-  std::cout << "skymake <Options> <File>\n"
-            << "\nOptions:\n"
-            << "        -h                        Print usage instructions.\n"
-            << "        -a <Skylander Name>       Auto mode.\n"
-            << "        -m <ID> <VarID(Hex)>      Manual Mode.\n"
-            << "        -f <File or Directory>    Where to write the data\n"
-            << "        -s                        Avoid overwriting files\n"
-            << "                                 by adding a number in the\n"
-            << "                                 file name\n";
-}
+class Printer {
+  public:
+  void printHelp() {
+    std::cout << "skymake <Options> <File>\n"
+              << "\nOptions:\n"
+              << "        -h                        Print usage instructions.\n"
+              << "        -a <Skylander Name>       Auto mode.\n"
+              << "        -m <ID> <VarID(Hex)>      Manual Mode.\n"
+              << "                                 Use only if you know the IDs\n"
+              << "        -f <File or Directory>    Where to write the data\n"
+              << "        -s                        Avoid overwriting files\n"
+              << "                                 by adding a number in the\n"
+              << "                                 file name\n";
+  }
+
+  void printArgErr() {
+    std::cerr << "! Error: missing options.\n"
+              << "* Try 'skymake -h' for usage instructions.\n";
+  }
+};
 
 int main(int argc, char* argv[]) {
+    Printer XeroxWorkCentre3215;
     if (argc < 2) {
-        std::cerr << "! Error: missing option.\n"
-                  << "* Try 'skymake -h' for usage instructions.\n";
+        XeroxWorkCentre3215.printArgErr();
         return 1;
     }
 
@@ -241,19 +247,33 @@ int main(int argc, char* argv[]) {
       
       if ((strcmp(argv[i], "-m") == 0) && !(genModeArgs.find("manual") != std::string::npos) && !(genModeArgs.find("auto") != std::string::npos)) {
         genModeArgs.append(" manual");
-        ID = std::stoi(argv[i + 1]);
-        varHexID = argv[i + 2];
+        if (i+2 < argc) {
+          ID = std::stoi(argv[i + 1]);
+          varHexID = argv[i + 2];
+        }
+        else {
+          XeroxWorkCentre3215.printArgErr();
+          return 1;
+        }
       } 
       if ((strcmp(argv[i], "-a") == 0) && !(genModeArgs.find("auto") != std::string::npos) && !(genModeArgs.find("manual") != std::string::npos)) {
         genModeArgs.append(" auto");
-        skylanderName = argv[i + 1];
+        if (i+1 < argc) skylanderName = argv[i + 1];
+        else {
+          XeroxWorkCentre3215.printArgErr();
+          return 1;
+        }
       }
       
-      if (strcmp(argv[i], "-h") == 0) {printHelp(); return 0;}
+      if (strcmp(argv[i], "-h") == 0) {XeroxWorkCentre3215.printHelp(); return 0;}
 
       if (strcmp(argv[i], "-f") == 0) {
         targetFile = argv[i + 1];
       }
+    }
+    if (genModeArgs == "") {
+      XeroxWorkCentre3215.printArgErr();
+      return 1;
     }
     if (CreateSkylander(skylanderName, targetFile, genModeArgs, ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
     else return 1;
