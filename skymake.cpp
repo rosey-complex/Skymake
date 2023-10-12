@@ -77,7 +77,7 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
   return crc;
 }
 
-bool CreateSkylander(const std::string& skylanderName, const std::string& targetDirectory, std::string genMode = "manual", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
+bool CreateSkylander(const std::string& skylanderName, const std::string& targetFile, std::string genMode = "manual", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
     
     std::string filePath;
     uint16_t SkyID = 0;
@@ -88,14 +88,14 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     if (genMode == "manual") {
       //// Allows a user to create a skylander if they know the variant ID and skylander ID
       // Use a file name based on the provided IDs
-      filePath = targetDirectory + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
+      filePath = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
       // Set the IDs
       SkyID = customID;
       SkyVarID = customVar;
     }
     else {
       // Create the full file path for the .sky file
-      filePath = targetDirectory + "/" + skylanderName + ".sky";
+      filePath = targetFile + "/" + skylanderName + ".sky";
 
       // Lookup the Skylander data based on the given skylanderName
       bool isSensei = false;
