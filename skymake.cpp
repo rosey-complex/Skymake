@@ -228,9 +228,9 @@ class Printer {
 };
 
 int main(int argc, char* argv[]) {
-    Printer XeroxWorkCentre3215;
+    Printer printer;
     if (argc < 2) {
-        XeroxWorkCentre3215.printArgErr();
+        printer.printArgErr();
         return 1;
     }
 
@@ -252,7 +252,7 @@ int main(int argc, char* argv[]) {
           varHexID = argv[i + 2];
         }
         else {
-          XeroxWorkCentre3215.printArgErr();
+          printer.printArgErr();
           return 1;
         }
       } 
@@ -260,19 +260,19 @@ int main(int argc, char* argv[]) {
         genModeArgs.append(" auto");
         if (i+1 < argc) skylanderName = argv[i + 1];
         else {
-          XeroxWorkCentre3215.printArgErr();
+          printer.printArgErr();
           return 1;
         }
       }
       
-      if (strcmp(argv[i], "-h") == 0) {XeroxWorkCentre3215.printHelp(); return 0;}
+      if (strcmp(argv[i], "-h") == 0) {printer.printHelp(); return 0;}
 
       if (strcmp(argv[i], "-f") == 0) {
         targetFile = argv[i + 1];
       }
     }
     if (genModeArgs == "") {
-      XeroxWorkCentre3215.printArgErr();
+      printer.printArgErr();
       return 1;
     }
     if (CreateSkylander(skylanderName, targetFile, genModeArgs, ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
