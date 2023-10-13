@@ -9,9 +9,11 @@
 #include <mbedtls/hmac_drbg.h>
 #include <filesystem>
 #include "Figurines.h"
+#include "Printer.h"
 
-class entropySeededPRNG final
-{
+Printer printer;
+
+class entropySeededPRNG final {
 public:
   entropySeededPRNG()
   {
@@ -77,8 +79,12 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t* buffer, uint3
   return crc;
 }
 
-bool CreateSkylander(const std::string& skylanderName, const std::string& targetFile, std::string genMode = "auto", const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
-    
+bool CreateSkylander(const std::string& skylanderName, const std::string& targetFile, bool Sw[], const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
+    /*
+    Sw[0]   - Unsafe/Safe Mode
+    Sw[1]   - Auto/Manual Mode
+    */
+
     std::string filePathNoExtension;
     std::string filePath;
     uint16_t SkyID = 0;
@@ -86,11 +92,10 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
 
     // Check if user has specified a file as the last argument
     bool autoPath = !(targetFile.find(".sky") != std::string::npos);
-
-    std::cout << "* Mode: " << genMode << std::endl;
     
-    // Manual Mode
-    if (genMode.find("manual") != std::string::npos) {
+
+    // Auto Mode
+    if (Sw[1]) {
       //// Allows a user to create a skylander if they know the variant ID and skylander ID
       // Use a file name based on the provided IDs
       filePath = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
@@ -99,7 +104,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
       SkyID = customID;
       SkyVarID = customVar;
     }
-    // Auto Mode
+    // Manual Mode
     else {
       filePath = targetFile + "/" + skylanderName + ".sky";
       // Lookup the Skylander data based on the given skylanderName
@@ -128,12 +133,12 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
           isSensei = true;  
         }
         else {
-          std::cerr << "! Error: Unknown Skylander." << std::endl;
+          printer.printErr(2);
           return false;
         }
       }
     }
-    //override the file path if the user has specified a file name
+    // Override the file path if the user has specified a file name
     if (!autoPath) filePath = targetFile;
     
     // File Path without extension
@@ -144,7 +149,7 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     if (std::filesystem::exists(filePath)) {
       std::cerr << "* Warning: file " << filePath << " already exists!" << std::endl;
       // Avoid overwriting by adding a number before the file extension
-      if (genMode.find("safe") != std::string::npos) {
+      if (Sw[0]) {
         for (uint8_t n = 0; n <= 255; n++) {
           if (!(std::filesystem::exists(filePathNoExtension + "." + std::to_string(n) + ".sky"))) {
             filePath = filePathNoExtension + "." + std::to_string(n) + ".sky";
@@ -206,35 +211,14 @@ bool CreateSkylander(const std::string& skylanderName, const std::string& target
     return true;
 }
 
-class Printer {
-  public:
-  void printHelp() {
-    std::cout << "skymake <Options>\n"
-              << "\nOptions:\n"
-              << "        -h                        Print usage instructions.\n"
-              << "        -a <Skylander Name>       Auto mode.\n"
-              << "        -m <ID> <VarID(Hex)>      Manual Mode.\n"
-              << "                                 Use only if you know the IDs\n"
-              << "        -f <File or Directory>    Where to write the data\n"
-              << "        -s                        Avoid overwriting files\n"
-              << "                                 by adding a number in the\n"
-              << "                                 file name\n";
-  }
-
-  void printArgErr() {
-    std::cerr << "! Error: missing options.\n"
-              << "* Try 'skymake -h' for usage instructions.\n";
-  }
-};
-
 int main(int argc, char* argv[]) {
-    Printer printer;
     if (argc < 2) {
-        printer.printArgErr();
+        printer.printErr(-1);
         return 1;
     }
 
-    std::string genModeArgs = "";
+    bool argCheck = false;          // used for determining wether the user has used -a or -m
+    bool generatorSw[2] = {0, 0};
     std::string targetFile = ".";
     std::string skylanderName;
     std::string varHexID = "0x0000";
@@ -242,27 +226,26 @@ int main(int argc, char* argv[]) {
     
     // Parse the argument array for options
     for (int i = 1; i < argc; i++) {
-      if ((strcmp(argv[i], "-s") == 0) && !(genModeArgs.find("safe") != std::string::npos))
-        genModeArgs.append(" safe"); 
+      if ((strcmp(argv[i], "-s") == 0))
+        generatorSw[0] = 1; 
       
-      if ((strcmp(argv[i], "-m") == 0) && !(genModeArgs.find("manual") != std::string::npos) && !(genModeArgs.find("auto") != std::string::npos)) {
-        genModeArgs.append(" manual");
+      // -a and -m override eachother
+      if ((strcmp(argv[i], "-m") == 0) && !generatorSw[1]) {
+        generatorSw[1] = 1;
         if (i+2 < argc) {
+          argCheck = 1;
           ID = std::stoi(argv[i + 1]);
           varHexID = argv[i + 2];
         }
-        else {
-          printer.printArgErr();
-          return 1;
-        }
+        else return printer.printErr(-2);
       } 
-      if ((strcmp(argv[i], "-a") == 0) && !(genModeArgs.find("auto") != std::string::npos) && !(genModeArgs.find("manual") != std::string::npos)) {
-        genModeArgs.append(" auto");
-        if (i+1 < argc) skylanderName = argv[i + 1];
-        else {
-          printer.printArgErr();
-          return 1;
+      if ((strcmp(argv[i], "-a") == 0)) {
+        generatorSw[1] = 0;
+        if (i+1 < argc) {
+          argCheck = 1;
+          skylanderName = argv[i + 1];
         }
+        else return printer.printErr(-2);
       }
       
       if (strcmp(argv[i], "-h") == 0) {printer.printHelp(); return 0;}
@@ -271,10 +254,12 @@ int main(int argc, char* argv[]) {
         targetFile = argv[i + 1];
       }
     }
-    if (genModeArgs == "") {
-      printer.printArgErr();
+    if (!argCheck) {
+      printer.printErr(-1);
       return 1;
     }
-    if (CreateSkylander(skylanderName, targetFile, genModeArgs, ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
-    else return 1;
+    else {
+      if (CreateSkylander(skylanderName, targetFile, generatorSw, ID, (uint16_t)std::stoul(varHexID, nullptr, 0))) return 0;
+      else return 1;
+    }
 }
