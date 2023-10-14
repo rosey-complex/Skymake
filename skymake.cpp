@@ -89,7 +89,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     // Check if user has specified a file as the last argument
     bool autoPath = !(targetFile.find(".sky") != std::string::npos);
 
-    // Auto Mode
+    // Manual (ID Explicit) Mode 
     if (Sw[1]) {
         //// Allows a user to create a skylander if they know the variant ID and skylander ID
         // Use a file name based on the provided IDs
@@ -99,7 +99,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         SkyID = customID;
         SkyVarID = customVar;
     }
-    // Manual Mode
+    // Auto (ID Imlicit) Mode
     else {
         filePath = targetFile + "/" + skylanderName + ".sky";
         // Lookup the Skylander data based on the given skylanderName
