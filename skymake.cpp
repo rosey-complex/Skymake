@@ -114,25 +114,36 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             SkyVarID = it->first.second;
         }
         else {
-
-            // Check if provided skylander is from Imaginators
-            auto it = std::find_if(senseiList.begin(), senseiList.end(),
+            // Check if provided skylander name is in the alternative name list
+            auto it = std::find_if(altSkylanderList.begin(), altSkylanderList.end(),
                                    [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
                                        return entry.second == skylanderName;
                                    });
             if (it != senseiList.end()) {
-                std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
                 SkyID = it->first.first;
                 SkyVarID = it->first.second;
-
-                // may be useful for when Senseis get reverse-engineered
-                isSensei = true;
             }
             else {
-                printer.printErr(2);
-                return false;
+                // Check if provided skylander is from Imaginators
+                auto it = std::find_if(senseiList.begin(), senseiList.end(),
+                                       [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
+                                           return entry.second == skylanderName;
+                                       });
+                if (it != senseiList.end()) {
+                    std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
+                    SkyID = it->first.first;
+                    SkyVarID = it->first.second;
+
+                    // may be useful for when Senseis get reverse-engineered
+                    isSensei = true;
+                }
+                else {
+                    printer.printErr(2);
+                    return false;
+                }
             }
         }
+        
     }
     // Override the file path if the user has specified a file name
     if (!autoPath) filePath = targetFile;

@@ -159,6 +159,7 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> skylanderList = {
         {{208, 0x0000}, "Dragonfire Cannon"},
         {{208, 0x1602}, "Golden Dragonfire Cannon"},
         {{209, 0x0000}, "Scorpion Striker"},
+        // Traps start here
         {{210, 0x3002}, "Biter's Bane"},
         {{210, 0x3008}, "Sorcerous Skull"},
         {{210, 0x300B}, "Axe of Illusion"},
@@ -218,6 +219,7 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> skylanderList = {
         {{219, 0x301B}, "Beam Scream"},
         {{220, 0x301E}, "Kaos Trap"},
         {{220, 0x351F}, "Ultimate Kaos Trap"},
+        // Traps end here
         {{230, 0x0000}, "Hand of Fate"},
         {{230, 0x3403}, "Legendary Hand of Fate"},
         {{231, 0x0000}, "Piggy Bank"},
@@ -462,6 +464,8 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> skylanderList = {
 
         // Secret figurines
         {{3011, 0x2404}, "VVind Up"},
+
+        // Debug/prototyping ""figurines""
         {{999, 0x0000}, "Debug Minion"},
         {{1999, 0x0000}, "Template Template (Bottom)"},
         {{2999, 0x0000}, "Template Template (Top)"},
@@ -480,14 +484,81 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> skylanderList = {
         {{3232, 0x450F}, "Instant Sky Slicer"},
         {{3237, 0x450F}, "Instant Sea Shadow"},
         {{462, 0x450F}, "Instant Snap Shot"},
-        {{476, 0x450F}, "Instant Food Fight"},
-
+        {{476, 0x450F}, "Instant Food Fight"},  
 
         // Scrapped Trap Team figurines
-        {{32, 0x3805}, "Series 4 Cynder"}, // Yes, we almost had Series 4 Cynder
+        {{32, 0x3805}, "Series 4 Cynder"}, 
         {{103, 0x3805}, "Series 2 Flashwing"},
 };
+// Alternate Names
+std::map<std::pair<uint16_t, uint16_t>, std::string> altSkylanderList = {
+    // Traps start here
+    {{210, 0x3002}, "Magic Log Holder Trap"},
+    {{210, 0x3008}, "Magic Skull Trap"},
+    {{210, 0x300B}, "Magic Axe Trap"},
+    {{210, 0x300E}, "Magic Hourglass Trap"},
+    {{210, 0x3012}, "Magic Totem Trap"},
+    {{210, 0x3014}, "Magic Rocket Trap"},
+    {{211, 0x3001}, "Water Tiki Trap"},
+    {{211, 0x3002}, "Water Log Holder Trap"},
+    {{211, 0x3006}, "Water Jughead Trap"},
+    {{211, 0x3406}, "Legendary Water Jughead Trap"},
+    {{211, 0x3007}, "Water Angel Trap"},
+    {{211, 0x300B}, "Water Axe Trap"},
+    {{211, 0x3016}, "Water Flying Helmet Trap"},
+    {{212, 0x3003}, "Air Toucan Trap"},
+    {{212, 0x3006}, "Air Jughead Trap"},
+    {{212, 0x300D}, "Air Hourglass Trap"},
+    {{212, 0x3010}, "Air Snake Trap"},
+    {{212, 0x3011}, "Air Screamer Trap"},
+    {{212, 0x3018}, "Air Sword Trap"},
+    {{213, 0x3004}, "Undead Orb Trap"},
+    {{213, 0x3404}, "Legendary Undead Orb Trap"},
+    {{213, 0x3008}, "Undead Skull Trap"},
+    {{213, 0x3408}, "Legendary Undead Skull Trap"},
+    {{213, 0x300B}, "Undead Axe Trap"},
+    {{213, 0x300C}, "Undead Hand Trap"},
+    {{213, 0x3010}, "Undead Snake Trap"},
+    {{213, 0x3017}, "Undead Captain's Hat Trap"},
+    {{214, 0x3000}, "Tech Tiki Trap"},
+    {{214, 0x3007}, "Tech Angel Trap"},
+    {{214, 0x3009}, "Tech Scepter Trap"},
+    {{214, 0x300C}, "Tech Hand Trap"},
+    {{214, 0x3016}, "Tech Flying Helmet Trap"},
+    {{214, 0x301A}, "Tech Handstand Trap"},
+    {{215, 0x3005}, "Fire Torch Trap"},
+    {{215, 0x3009}, "Fire Scepter Trap"},
+    {{215, 0x3011}, "Fire Screamer Trap"},
+    {{215, 0x3012}, "Fire Totem Trap"},
+    {{215, 0x3017}, "Fire Captain's Hat Trap"},
+    {{215, 0x301B}, "Fire Yawn Trap"},
+    {{216, 0x3000}, "Earth Orb Trap"},
+    {{216, 0x3003}, "Earth Toucan Trap"},
+    {{216, 0x300A}, "Earth Hammer Trap"},
+    {{216, 0x300E}, "Earth Hourglass Trap"},
+    {{216, 0x3013}, "Earth Totem Trap"},
+    {{216, 0x3000}, "Earth Handstand Trap"},
+    {{217, 0x3003}, "Life Toucan Trap"},
+    {{217, 0x3005}, "Life Torch Trap"},
+    {{217, 0x300A}, "Life Hammer Trap"},
+    {{217, 0x3010}, "Life Snake Trap"},
+    {{217, 0x3018}, "Life Sword Trap"},
+    {{217, 0x3003}, "Life Yawn Trap"},
+    {{218, 0x3000}, "Dark Sword Trap"},
+    {{218, 0x3014}, "Dark Spider Trap"},
+    {{218, 0x3000}, "Dark Handstand Trap"},
+    {{219, 0x3000}, "Light Rocket Trap"},
+    {{219, 0x300F}, "Light Hawk Trap"},
+    {{219, 0x301B}, "Light Yawn Trap"},
+    // Traps end here
 
+    // Instant figurines
+    {{462, 0x450F}, "Virtual Snap Shot"},
+    {{476, 0x450F}, "Virtual Food Fight"},
+
+    // Secret Figurines
+    {{3011, 0x2404}, "Gear Head Wind Up"},
+};
 // Senseis
 std::map<std::pair<uint16_t, uint16_t>, std::string> senseiList = {
         {{605, 0x0000}, "Pit Boss"},
