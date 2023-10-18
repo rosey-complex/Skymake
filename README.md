@@ -46,7 +46,7 @@ skymake <Options>
 <span style="color:#888888;">*(It can create the files correctly, but they are non-functional in-game)</span>
 
 ## ❌ What it can't do:
-- Create most Imaginator crystals
+- Create most Creation crystals
 - ~Take over Activision~
 - ~Make you immortal~
 
