@@ -41,12 +41,12 @@ skymake <Options>
 - Creating ***some*** scrapped Skylanders
 
 ## ⚠️ What doesn't work:
-- Creating functional* Senseis 
+- Creating functional* Senseis and Creation Crystals
 
 <span style="color:#888888;">*(It can create the files correctly, but they are non-functional in-game)</span>
 
 ## ❌ What it can't do:
-- Create Imaginator crystals
+- Create most Imaginator crystals
 - ~Take over Activision~
 - ~Make you immortal~
 

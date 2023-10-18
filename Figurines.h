@@ -559,40 +559,65 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> altSkylanderList = {
     // Secret Figurines
     {{3011, 0x2404}, "Gear Head Wind Up"},
 };
-// Senseis
-std::map<std::pair<uint16_t, uint16_t>, std::string> senseiList = {
-        {{605, 0x0000}, "Pit Boss"},
-        {{623, 0x0000}, "Grave Clobber"},
-        {{610, 0x0000}, "Dr. Krankcase"},
-        {{611, 0x0000}, "Hood Sickle"},
-        {{612, 0x0000}, "Tae Kwon Crow"},
-        {{613, 0x0000}, "Golden Queen"},
-        {{614, 0x0000}, "Wolfgang"},
-        {{615, 0x0000}, "Pain-Yatta"},
-        {{616, 0x0000}, "Mysticat"},
-        {{617, 0x0000}, "Starcast"},
-        {{618, 0x0000}, "Buckshot"},
-        {{619, 0x0000}, "Aurora"},
-        {{620, 0x0000}, "Flare Wolf"},
-        {{621, 0x0000}, "Chompy Mage"},
-        {{622, 0x0000}, "Bad Juju"},
-        {{624, 0x0000}, "Blaster-Tron"},
-        {{625, 0x0000}, "Ro-Bow"},
-        {{626, 0x0000}, "Chain Reaction"},
-        {{627, 0x0000}, "Kaos"},
-        {{628, 0x0000}, "Wild Storm"},
-        {{601, 0x0000}, "King Pen"},
-        {{602, 0x0000}, "Tri-Tip"},
-        {{603, 0x0000}, "Chopscotch"},
-        {{604, 0x0000}, "Boom Bloom"},
-        {{606, 0x0000}, "Barbella"},
-        {{607, 0x0000}, "Air Strike"},
-        {{608, 0x0000}, "Ember"},
-        {{609, 0x0000}, "Ambush"},
-        {{629, 0x0000}, "Tidepool"},
-        {{630, 0x0000}, "Crash Bandicoot"},
-        {{631, 0x0000}, "Dr. Neo Cortex"},
-        // Special variants needed
+
+std::map<std::pair<uint16_t, uint16_t>, std::string> skImgList = { 
+    // List of Imaginators figurines
+    {{605, 0x0000}, "Pit Boss"},
+    {{623, 0x0000}, "Grave Clobber"},
+    {{610, 0x0000}, "Dr. Krankcase"},
+    {{611, 0x0000}, "Hood Sickle"},
+    {{612, 0x0000}, "Tae Kwon Crow"},
+    {{613, 0x0000}, "Golden Queen"},
+    {{614, 0x0000}, "Wolfgang"},
+    {{615, 0x0000}, "Pain-Yatta"},
+    {{616, 0x0000}, "Mysticat"},
+    {{617, 0x0000}, "Starcast"},
+    {{618, 0x0000}, "Buckshot"},
+    {{619, 0x0000}, "Aurora"},
+    {{620, 0x0000}, "Flare Wolf"},
+    {{621, 0x0000}, "Chompy Mage"},
+    {{622, 0x0000}, "Bad Juju"},
+    {{624, 0x0000}, "Blaster-Tron"},
+    {{625, 0x0000}, "Ro-Bow"},
+    {{626, 0x0000}, "Chain Reaction"},
+    {{627, 0x0000}, "Kaos"},
+    {{628, 0x0000}, "Wild Storm"},
+    {{601, 0x0000}, "King Pen"},
+    {{602, 0x0000}, "Tri-Tip"},
+    {{603, 0x0000}, "Chopscotch"},
+    {{604, 0x0000}, "Boom Bloom"},
+    {{606, 0x0000}, "Barbella"},
+    {{607, 0x0000}, "Air Strike"},
+    {{608, 0x0000}, "Ember"},
+    {{609, 0x0000}, "Ambush"},
+    {{629, 0x0000}, "Tidepool"},
+    {{630, 0x0000}, "Crash Bandicoot"},
+    {{631, 0x0000}, "Dr. Neo Cortex"},
+    // Special variants needed
+
+    /*
+    IDs from 680 to 689 are reserved for Creation Crystals.
+    This may be useful later on
+    */
+    {{680, 0x521B}, "Magic Claw"},
+
+    {{681, 0x5214}, "Water Armor"},
+
+    {{682, 0x5207}, "Air Lantern"},
+    
+    {{683, 0x5217}, "Undead Fanged"},
+
+    {{684, 0x5215}, "Tech Armor"},
+
+    {{685, 0x520F}, "Fire Reactor"},
+
+    {{686, 0x521D}, "Earth Rocket"},
+    
+    {{687, 0x5210}, "Life Acorn"},
+
+    {{688, 0x5206}, "Dark Pyramid"},
+
+    {{689, 0x520B}, "Light Rune"},
 };
 
 #endif

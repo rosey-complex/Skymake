@@ -37,5 +37,16 @@ class Printer {
     }
     return errCode;
   }
+
+  void printWarn(int warnCode) {
+    switch (warnCode) {
+        case -1: // Imaginators/Sensei warning
+            std::cerr   << "* Warning: Senseis and Creation Crystals don't work in-game, yet..." << std::endl
+                        << "* Creating Skylander anyway..." << std::endl;
+            break;
+        default:
+            break;
+    }
+  }
 };
 #endif

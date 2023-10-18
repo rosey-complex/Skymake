@@ -119,18 +119,19 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
                                    [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
                                        return entry.second == skylanderName;
                                    });
-            if (it != senseiList.end()) {
+            if (it != altSkylanderList.end()) {
                 SkyID = it->first.first;
                 SkyVarID = it->first.second;
             }
             else {
                 // Check if provided skylander is from Imaginators
-                auto it = std::find_if(senseiList.begin(), senseiList.end(),
+                auto it = std::find_if(skImgList.begin(), skImgList.end(),
                                        [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
                                            return entry.second == skylanderName;
                                        });
-                if (it != senseiList.end()) {
-                    std::cerr << "* Warning: Sensei Skylanders don't work in-game, yet.\n* Creating Skylander anyway..." << std::endl;
+                if (it != skImgList.end()) {
+                    printer.printWarn(-1);
+
                     SkyID = it->first.first;
                     SkyVarID = it->first.second;
 
