@@ -608,11 +608,14 @@ std::map<std::pair<uint16_t, uint16_t>, std::string> skImgList = {
     {{683, 0x5217}, "Undead Fanged"},
 
     {{684, 0x5215}, "Tech Armor"},
+    {{684, 0x5205}, "Tech Pyramid"},
+    {{684, 0x520E}, "Tech Reactor"},
 
     {{685, 0x520F}, "Fire Reactor"},
 
     {{686, 0x521D}, "Earth Rocket"},
-    
+    {{686, 0x5216}, "Earth Armor"},
+
     {{687, 0x5210}, "Life Acorn"},
 
     {{688, 0x5206}, "Dark Pyramid"},
