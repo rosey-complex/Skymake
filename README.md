@@ -1,4 +1,4 @@
-![Logo](Logo/logo.svg)
+![Skymake Logo](Logo/logo.svg)
 
 # **Skymake - A just-works command line Skylander figurine generator**
 
