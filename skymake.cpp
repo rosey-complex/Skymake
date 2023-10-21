@@ -8,7 +8,6 @@
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
 #include <filesystem>
-#include "Figurines.h"
 #include "Skylanders.h"
 #include "Printer.h"
 
