@@ -9,6 +9,7 @@
 #include <mbedtls/hmac_drbg.h>
 #include <filesystem>
 #include "Figurines.h"
+#include "Skylanders.h"
 #include "Printer.h"
 
 Printer printer;
