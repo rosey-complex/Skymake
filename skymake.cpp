@@ -111,9 +111,17 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             SkyVarID = IDs.second;
         }
         else {
-            // TODO: redo Imaginators
-            printer.printErr(2);
-            return false;
+            it = imaginatorsMap.find(skylanderName);
+            if (it != imaginatorsMap.end()) {
+                printer.printWarn(-1);
+                std::pair<uint16_t, uint16_t> IDs = imaginatorsMap[skylanderName];
+                SkyID = IDs.first;
+                SkyVarID = IDs.second;
+            }
+            else {
+                printer.printErr(2);
+                return false;
+            }
         }
     }
     // Override the file path if the user has specified a file name
@@ -125,7 +133,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
 
     // Check if file already exists and warn the user about overwriting
     if (std::filesystem::exists(filePath)) {
-        std::cerr << "* Warning: file " << filePath << " already exists!" << std::endl;
+        printer.printWarn(1);
         // Avoid overwriting by adding a number before the file extension
         if (Sw[0]) {
             for (uint8_t n = 0; n <= 255; n++) {

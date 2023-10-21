@@ -44,7 +44,8 @@ class Printer {
             std::cerr   << "* Warning: Senseis and Creation Crystals don't work in-game, yet..." << std::endl
                         << "* Creating Skylander anyway..." << std::endl;
             break;
-        default:
+        case 1: // File already exists
+            std::cerr << "* Warning: file already exists!" << std::endl;
             break;
     }
   }
