@@ -544,6 +544,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
 
     /* Generic Names */
 
+    // Core Skylanders
     {"Magic Skylander",                                 {16, 0x2805}},
     {"Water Skylander",                                 {14, 0x3805}},
     {"Air Skylander",                                   {0, 0x2805}},
@@ -554,6 +555,8 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Life Skylander",                                  {26, 0x2805}},
     {"Dark Skylander",                                  {485, 0x0000}},
     {"Light Skylander",                                 {483, 0x0000}},
+
+    // Giants
     {"Magic Giant",                                     {109, 0x0000}},
     {"Water Giant",                                     {107, 0x0000}},
     {"Air Giant",                                       {101, 0x0000}},
@@ -562,6 +565,8 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Fire Giant",                                      {104, 0x0000}},
     {"Earth Giant",                                     {102, 0x0000}},
     {"Life Giant",                                      {112, 0x0000}},
+
+    // Swap Force
     {"Magic Top",                                       {2008, 0x0000}},
     {"Water Top",                                       {2015, 0x0000}},
     {"Air Top",                                         {2001, 0x0000}},
@@ -570,6 +575,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Fire Top",                                        {2004, 0x0000}},
     {"Earth Top",                                       {2002, 0x0000}},
     {"Life Top",                                        {2006, 0x0000}},
+
     {"Magic Bottom",                                    {1008, 0x0000}},
     {"Water Bottom",                                    {1015, 0x0000}},
     {"Air Bottom",                                      {1001, 0x0000}},
@@ -578,6 +584,8 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Fire Bottom",                                     {1004, 0x0000}},
     {"Earth Bottom",                                    {1002, 0x0000}},
     {"Life Bottom",                                     {1006, 0x0000}},
+
+    // Trap Team
     {"Magic Trap",                                      {210, 0x300E}},
     {"Water Trap",                                      {211, 0x3001}},
     {"Air Trap",                                        {212, 0x3003}},
@@ -589,6 +597,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Dark Trap",                                       {218, 0x3014}},
     {"Light Trap",                                      {219, 0x300F}},
     {"Kaos Trap",                                       {220, 0x301E}},
+    
     {"Magic Trap Master",                               {210, 0x300E}},
     {"Water Trap Master",                               {211, 0x3001}},
     {"Air Trap Master",                                 {212, 0x3003}},
@@ -599,6 +608,8 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Life Trap Master",                                {217, 0x300A}},
     {"Dark Trap Master",                                {218, 0x3014}},
     {"Light Trap Master",                               {219, 0x300F}},
+
+    // Superchargers
     {"Magic Supercharger",                              {3402, 0x0000}},
     {"Water Supercharger",                              {3422, 0x0000}},
     {"Air Supercharger",                                {3406, 0x0000}},
@@ -609,6 +620,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Life Supercharger",                               {3415, 0x0000}},
     {"Dark Supercharger",                               {3427, 0x0000}},
     {"Light Supercharger",                              {3426, 0x0000}},
+
     {"Land Vehicle",                                    {3224, 0x0000}},
     {"Sea Vehicle",                                     {3238, 0x0000}},
     {"Sky Vehicle",                                     {3232, 0x0000}},
