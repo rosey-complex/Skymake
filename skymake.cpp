@@ -229,11 +229,8 @@ int main(int argc, char *argv[]) {
             else return printer.printErr(-2);
         }
 
-        if (strcmp(argv[i], "-h") == 0) {
-            printer.printHelp();
-            return 0;
-        }
-
+        if (strcmp(argv[i], "-h") == 0) return printer.printHelp();
+        if (strcmp(argv[i], "-l") == 0) return printer.listAll();
         if (strcmp(argv[i], "-f") == 0) targetFile = argv[i + 1];   
     }
     if (!argCheck) return printer.printErr(-1);

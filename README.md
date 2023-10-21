@@ -19,6 +19,10 @@ skymake <Options>
 	+ If the argument after `-f` doesn't have a *.sky file extension, it will create a file with a pre-determined name in the directory with the specified path.
 		+ Example for Auto Mode: `-a "Whirlwind" -f ~/Documents/Whirly` will try to create a file named `Whirlwind.sky` in `~/Documents/Whirly/`.
 		+ Example for Manual Mode: `-m 32 0x3805 -f ~/Documents/S4Cynder` will try to create a file named `32-14341.sky` (`ID-VarID(Dec).sky`) in `~/Documents/S4Cynder/`.
+- `-l` - List all supported skylander names
+    + ***please*** use this with `less` or `more`:
+        + `skymake -l | less`
+        + `skymake -l | more`
 
 ## ✅ What works:
 - Creating Skylanders up to Imaginators
