@@ -105,47 +105,17 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         filePath = targetFile + "/" + skylanderName + ".sky";
         // Lookup the Skylander data based on the given skylanderName
         bool isSensei = false;
-        auto it = std::find_if(skylanderList.begin(), skylanderList.end(),
-                               [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
-                                   return entry.second == skylanderName;
-                               });
-
-        if (it != skylanderList.end()) {
-            SkyID = it->first.first;
-            SkyVarID = it->first.second;
+        auto it = skylanderMap.find(skylanderName);
+        if (it != skylanderMap.end()) {
+            std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
+            SkyID = IDs.first;
+            SkyVarID = IDs.second;
         }
         else {
-            // Check if provided skylander name is in the alternative name list
-            auto it = std::find_if(altSkylanderList.begin(), altSkylanderList.end(),
-                                   [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
-                                       return entry.second == skylanderName;
-                                   });
-            if (it != altSkylanderList.end()) {
-                SkyID = it->first.first;
-                SkyVarID = it->first.second;
-            }
-            else {
-                // Check if provided skylander is from Imaginators
-                auto it = std::find_if(skImgList.begin(), skImgList.end(),
-                                       [skylanderName](const std::pair<std::pair<uint16_t, uint16_t>, std::string> &entry) {
-                                           return entry.second == skylanderName;
-                                       });
-                if (it != skImgList.end()) {
-                    printer.printWarn(-1);
-
-                    SkyID = it->first.first;
-                    SkyVarID = it->first.second;
-
-                    // may be useful for when Senseis get reverse-engineered
-                    isSensei = true;
-                }
-                else {
-                    printer.printErr(2);
-                    return false;
-                }
-            }
+            // TODO: redo Imaginators
+            printer.printErr(2);
+            return false;
         }
-        
     }
     // Override the file path if the user has specified a file name
     if (!autoPath) filePath = targetFile;

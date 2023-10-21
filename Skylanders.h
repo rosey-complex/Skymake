@@ -8,7 +8,6 @@
 // Format (please keep alignment consistent for readibilty):
 //  {"Name",                                            {ID, Variant(Hex)}},
 
-// Figurines up to Superchargers
 std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Whirlwind",                                       {0, 0x0000}},
     {"Series 2 Whirlwind",                              {0, 0x1801}},
@@ -614,7 +613,6 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Sea Vehicle",                                     {3238, 0x0000}},
     {"Sky Vehicle",                                     {3232, 0x0000}},
 };
-
 
 
 
