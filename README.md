@@ -2,18 +2,7 @@
 
 # **Skymake - A just-works command line Skylander figurine generator**
 
-## About:
-To put it simply, this is a tool that I made by ✨*borrowing*✨ code from the Skylander portal emulators of both RPCS3 and Dolphin (CRC_CCITT_TABLE and list_skylanders are from RPCS3; EntropySeededPRNG and the skylander generator code are from Dolphin).
 
-## Q&A:
-#### Why make this?
-- I made this ✨*abomination*✨ with the intention of having a stand-alone, easy to use, command line tool that creates empty Skylanders figurine data files. 
-#### Why would anyone need this?
-- There are a few possible use cases I could think of:
-	+ Avoiding pre-made dumps which may sometimes be unreliable
-	+ Using it to create files directly on a Raspberry Pi portal emulator through SSH
-	+ Quick Skylander file creation (because, of course, there is *no file select screen*)
-	+ Wasting 1.7 MiB of storage space
 
 ## Usage:
 ```
@@ -45,12 +34,8 @@ skymake <Options>
 
 <span style="color:#888888;">*(It can create the files correctly, but they are non-functional in-game)</span>
 
-## ❌ What it can't do:
-- Create most Creation crystals
-- ~Take over Activision~
-- ~Make you immortal~
+## Compiling (Linux):
 
-## Building and installing (Linux):
 ### Prerequisites:
 - make
 - mbedtls
