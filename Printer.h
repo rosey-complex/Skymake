@@ -57,7 +57,7 @@ public:
         for (const auto &[Name, IDs] : skylanderMap)
             std::cout << Name << " - (" << std::dec << IDs.first << ", 0x" << std::hex << IDs.second << ")" << std::endl;
         std::cout << "-- Imaginators (unsupported) --\n";
-        for (const auto &[Name, IDs] : skylanderMap)
+        for (const auto &[Name, IDs] : imaginatorsMap)
             std::cout << Name << " - (" << std::dec << IDs.first << ", 0x" << std::hex << IDs.second << ")" << std::endl;
         return 0;
     }
