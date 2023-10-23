@@ -680,4 +680,20 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Light Rune",                                      {689, 0x520B}},
 };
 
+std::map<std::string, std::tuple<   uint64_t, uint64_t, // 0x0
+                                    uint64_t, uint64_t, // 0x20
+                                    uint64_t, uint64_t, // 0x40
+                                    uint64_t, uint64_t, // 0x220
+                                    uint64_t, uint64_t  // 0x3E0
+                                >> BFIM = {
+    // This is, obviously, a REALLY bad idea
+    {"Bad Juju",                                        {   0xDF1923CC2981010F, 0xC431000000000016,
+                                                            0x4566CF639B2783F5, 0x90544A7140A3FB81,
+                                                            0x68F4D96E197C2638, 0x3FDCFAC11CB91D78,
+                                                            0x472F2DC061B7B328, 0xEE027C7E495BC0DA,
+                                                            0x5BAFB045CEA0A387, 0x91FC6938280CDF0F
+                                                        }
+    },
+};
+
 #endif

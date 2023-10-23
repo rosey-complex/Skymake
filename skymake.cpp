@@ -88,7 +88,8 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
 
     // Check if user has specified a file as the last argument
     bool autoPath = !(targetFile.find(".sky") != std::string::npos);
-
+    
+    bool isFromSI = false;
     // Manual (ID Explicit) Mode 
     if (Sw[1]) {
         //// Allows a user to create a skylander if they know the variant ID and skylander ID
@@ -103,7 +104,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     else {
         filePath = targetFile + "/" + skylanderName + ".sky";
         // Lookup the Skylander data based on the given skylanderName
-        bool isSensei = false;
         auto it = skylanderMap.find(skylanderName);
         if (it != skylanderMap.end()) {
             std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
@@ -166,28 +166,43 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[(index * 0x40) + 0x36], &otherBlocks, sizeof(otherBlocks));
     }
 
-    // Set the NUID of the figure
-    static thread_local entropySeededPRNG eSPRNG;
-    eSPRNG.Generate(&fileData[0], 4);
+    if (isFromSI) {
+        /*
+            As the name of the branch implies,
+        this is basically a brute force method
+        of getting imaginators figures to work
+        for the time being until they get figured out
+        */
+        
+        // Set the skylander info
+        memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
+        memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
 
-    // The BCC (Block Check Character)
-    fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
+        // TODO: Forcefully write the bytes in BFIM to the file...
+    }
+    else {
+        // Set the NUID of the figure
+        static thread_local entropySeededPRNG eSPRNG;
+        eSPRNG.Generate(&fileData[0], 4);
 
-    // ATQA
-    fileData[5] = 0x81;
-    fileData[6] = 0x01;
+        // The BCC (Block Check Character)
+        fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
 
-    // SAK
-    fileData[7] = 0x0F;
+        // ATQA
+        fileData[5] = 0x81;
+        fileData[6] = 0x01;
 
-    // Set the skylander info
-    memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
-    memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
+        // SAK
+        fileData[7] = 0x0F;
 
-    // Set checksum
-    uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
-    memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+        // Set the skylander info
+        memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
+        memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
 
+        // Set checksum
+        uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
+        memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+    }
     // Write the data to the .sky file
     skyFile.write(reinterpret_cast<const char *>(buf.data()), buf.size());
     skyFile.close();
