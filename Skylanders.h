@@ -649,7 +649,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Blaster-Tron",                                    {624, 0x0000}},
     {"Ro-Bow",                                          {625, 0x0000}},
     {"Chain Reaction",                                  {626, 0x0000}},
-    {"Kaos",                                            {627, 0x0000}},
+    {"Kaos",                                            {627, 0x5000}},
     {"Wild Storm",                                      {628, 0x0000}},
     {"King Pen",                                        {601, 0x0000}},
     {"Tri-Tip",                                         {602, 0x0000}},
@@ -709,6 +709,16 @@ std::map<std::string, std::tuple<
             {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
             {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            0x51
+        }
+    },
+    {"Kaos",                                        
+        {   
+            {0xDFEB9C9F3781010F, 0xC437000000000015},
+            {0x183304206D70A43D, 0x3A3E629B631AD5C2},
+            {0xEC2B9521C57F344F, 0x8F78BCBA048B6436},
+            {0x87B66CA5C318BDAC, 0x4EAC40358B88D0D6},
+            {0xB762B84961B8E5EC, 0x0A3AB0791722CF0E},
             0x51
         }
     },
