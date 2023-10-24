@@ -680,6 +680,19 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Light Rune",                                      {689, 0x520B}},
 };
 
+
+/* 
+
+    This is just a temporary fix until someone figures out what 
+is so different about Imaginators toys.
+    All I could figure out is that there are some misterious bytes
+in between 0x8 and 0xF, 0x20 and 0x2F, 0x40 and 0x4F, 0x220 and 0x22F,
+0x3E0 and 0x3EF along with a byte at address 0x3F (which I wound up calling
+"the sinister byte") that seem to be what Imaginators check for. They might
+be another checksum because copy-pasting the bytes over to an "empty" 
+figure created by skymake does not work.
+
+*/
 std::map<std::string, std::tuple<   
                                 std::pair<uint64_t, uint64_t>,  // 0x0
                                 std::pair<uint64_t, uint64_t>,  // 0x20
@@ -690,7 +703,8 @@ std::map<std::string, std::tuple<
                                 >> BFIM = {
     // This is, obviously, a REALLY bad idea
     {"Bad Juju",                                        
-        {   {0xDF1923CC2981010F, 0xC431000000000016},
+        {   
+            {0xDF1923CC2981010F, 0xC431000000000016},
             {0x4566CF639B2783F5, 0x90544A7140A3FB81},
             {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
             {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
