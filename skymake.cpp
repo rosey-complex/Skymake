@@ -181,7 +181,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
 
         std::tuple< 
-                    std::pair<uint64_t, uint64_t>,  // 0x0
+                    std::pair<uint64_t, uint16_t>,  // 0x0
                     std::pair<uint64_t, uint64_t>,  // 0x20
                     std::pair<uint64_t, uint64_t>,  // 0x40
                     std::pair<uint64_t, uint64_t>,  // 0x220
@@ -189,7 +189,8 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
                     uint8_t                         // sinister byte
                     > BFIMBytes = BFIM[skylanderName];
         // Declare the bytes as varables and unpack th tuple
-        std::pair<uint64_t, uint64_t> BxX, Bx2X, Bx4X, Bx22X, Bx3EX;
+        std::pair<uint64_t, uint16_t> BxX;
+        std::pair<uint64_t, uint64_t> Bx2X, Bx4X, Bx22X, Bx3EX;
         uint8_t SB;
         std::tie(BxX, Bx2X, Bx4X, Bx22X, Bx3EX, SB) = BFIMBytes;
 
@@ -199,13 +200,12 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         Bx4X.first =    htobe64(Bx4X.first);
         Bx22X.first =   htobe64(Bx22X.first);
         Bx3EX.first =   htobe64(Bx3EX.first);
-        BxX.second =    htobe64(BxX.second);
+        BxX.second =    htobe16(BxX.second);
         Bx2X.second =   htobe64(Bx2X.second);
         Bx4X.second =   htobe64(Bx4X.second);
         Bx22X.second =  htobe64(Bx22X.second);
         Bx3EX.second =  htobe64(Bx3EX.second);
         //// Write the bytes
-        std::cout << std::hex << Bx22X.first;
         // 0x0
         memcpy(&fileData[0x0], &BxX.first, sizeof(BxX.first));
         memcpy(&fileData[0x8], &BxX.second, sizeof(BxX.second));
@@ -221,9 +221,14 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         // 0x3E0
         memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
         memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
+
         // Sinister Byte™
-        memcpy(&fileData[0x3F], &SB, 1);
-        
+        memcpy(&fileData[0xF], &SB, 1);
+
+        // Weird 0x3F byte
+        const uint8_t weirdByte = 0x51;
+        memcpy(&fileData[0x3F], &weirdByte, 1);
+
         // Set checksum
         uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
         memcpy(&fileData[0x1E], &checksum, sizeof(checksum));

@@ -631,37 +631,37 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
 };
 
 std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = { 
-    {"Pit Boss",                                        {605, 0x0000}},
-    {"Grave Clobber",                                   {623, 0x0000}},
-    {"Dr. Krankcase",                                   {610, 0x0000}},
-    {"Hood Sickle",                                     {611, 0x0000}},
-    {"Tae Kwon Crow",                                   {612, 0x0000}},
-    {"Golden Queen",                                    {613, 0x0000}},
-    {"Wolfgang",                                        {614, 0x0000}},
-    {"Pain-Yatta",                                      {615, 0x0000}},
-    {"Mysticat",                                        {616, 0x0000}},
-    {"Starcast",                                        {617, 0x0000}},
-    {"Buckshot",                                        {618, 0x0000}},
-    {"Aurora",                                          {619, 0x0000}},
-    {"Flare Wolf",                                      {620, 0x0000}},
-    {"Chompy Mage",                                     {621, 0x0000}},
+    {"Pit Boss",                                        {605, 0x5000}},
+    {"Grave Clobber",                                   {623, 0x5000}},
+    {"Dr. Krankcase",                                   {610, 0x5000}},
+    {"Hood Sickle",                                     {611, 0x5000}},
+    {"Tae Kwon Crow",                                   {612, 0x5000}},
+    {"Golden Queen",                                    {613, 0x5000}},
+    {"Wolfgang",                                        {614, 0x5000}},
+    {"Pain-Yatta",                                      {615, 0x5000}},
+    {"Mysticat",                                        {616, 0x5000}},
+    {"Starcast",                                        {617, 0x5000}},
+    {"Buckshot",                                        {618, 0x5000}},
+    {"Aurora",                                          {619, 0x5000}},
+    {"Flare Wolf",                                      {620, 0x5000}},
+    {"Chompy Mage",                                     {621, 0x5000}},
     {"Bad Juju",                                        {622, 0x5000}},
-    {"Blaster-Tron",                                    {624, 0x0000}},
-    {"Ro-Bow",                                          {625, 0x0000}},
-    {"Chain Reaction",                                  {626, 0x0000}},
+    {"Blaster-Tron",                                    {624, 0x5000}},
+    {"Ro-Bow",                                          {625, 0x5000}},
+    {"Chain Reaction",                                  {626, 0x5000}},
     {"Kaos",                                            {627, 0x5000}},
-    {"Wild Storm",                                      {628, 0x0000}},
-    {"King Pen",                                        {601, 0x0000}},
-    {"Tri-Tip",                                         {602, 0x0000}},
-    {"Chopscotch",                                      {603, 0x0000}},
-    {"Boom Bloom",                                      {604, 0x0000}},
-    {"Barbella",                                        {606, 0x0000}},
-    {"Air Strike",                                      {607, 0x0000}},
-    {"Ember",                                           {608, 0x0000}},
-    {"Ambush",                                          {609, 0x0000}},
-    {"Tidepool",                                        {629, 0x0000}},
-    {"Crash Bandicoot",                                 {630, 0x0000}},
-    {"Dr. Neo Cortex",                                  {631, 0x0000}},
+    {"Wild Storm",                                      {628, 0x5000}},
+    {"King Pen",                                        {601, 0x5000}},
+    {"Tri-Tip",                                         {602, 0x5000}},
+    {"Chopscotch",                                      {603, 0x5000}},
+    {"Boom Bloom",                                      {604, 0x5000}},
+    {"Barbella",                                        {606, 0x5000}},
+    {"Air Strike",                                      {607, 0x5000}},
+    {"Ember",                                           {608, 0x5000}},
+    {"Ambush",                                          {609, 0x5000}},
+    {"Tidepool",                                        {629, 0x5000}},
+    {"Crash Bandicoot",                                 {630, 0x5000}},
+    {"Dr. Neo Cortex",                                  {631, 0x5000}},
     // Special variants needed
 
     /*
@@ -692,9 +692,18 @@ in between 0x8 and 0xF, 0x20 and 0x2F, 0x40 and 0x4F, 0x220 and 0x22F,
 be another checksum because copy-pasting the bytes over to an "empty" 
 figure created by skymake does not work.
 
+UPDATE: The sinister byte seems to be constatnly 0x51 no matter the surrounding data.
+    So, I am no longer considering 0x3F the sinister byte. However I did find a byte that
+    does change without a significant meaning... 
+        Now, the synister byte is 0xF which I have noticed to have either
+    0x16 or 0x15 as the value.
+        Another observation is the appearance 0xC4 at byte 0x8 and a value of either 
+    31, 37, 40 or something else on the next byte.
+    Can't confirm this theory before I finish adding every skylander
+
 */
 std::map<std::string, std::tuple<   
-                                std::pair<uint64_t, uint64_t>,  // 0x0
+                                std::pair<uint64_t, uint16_t>,  // 0x0
                                 std::pair<uint64_t, uint64_t>,  // 0x20
                                 std::pair<uint64_t, uint64_t>,  // 0x40
                                 std::pair<uint64_t, uint64_t>,  // 0x220
@@ -702,24 +711,58 @@ std::map<std::string, std::tuple<
                                 uint8_t                         // sinister byte
                                 >> BFIM = {
     // This is, obviously, a REALLY bad idea
-    {"Bad Juju",                                        
+    {"Bad Juju",
         {   
-            {0xDF1923CC2981010F, 0xC431000000000016},
+            {0xDF1923CC2981010F, 0xC431},
             {0x4566CF639B2783F5, 0x90544A7140A3FB81},
             {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
             {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            0x51
+            0x16
         }
     },
-    {"Kaos",                                        
+    {"Kaos",
         {   
-            {0xDFEB9C9F3781010F, 0xC437000000000015},
+            {0xDFEB9C9F3781010F, 0xC437},
             {0x183304206D70A43D, 0x3A3E629B631AD5C2},
             {0xEC2B9521C57F344F, 0x8F78BCBA048B6436},
             {0x87B66CA5C318BDAC, 0x4EAC40358B88D0D6},
             {0xB762B84961B8E5EC, 0x0A3AB0791722CF0E},
-            0x51
+            0x15
+        }
+    },
+    {"Tidepool",
+        {   
+            {0xDFE111CCE381010F, 0xC431},
+            {0x9E7C6678E58F1E5B, 0x73C58F5B7F6CAACA},
+            {0x7D0FF986C4BDA36F, 0x67AEF7056839E9C6},
+            {0x3C286F3B9179E012, 0x08985148515F8520},
+            {0x79B562ED595259A9, 0xA6B6AB77D6BEA805},
+            0x16
+        }
+    },
+    {"King Pen",
+        {   
+            {0x5FAA62970081010F, 0xC423},
+            {0x1AE4182B1952B951, 0xA04866D2A4BFC598},
+            {0x0F139F9D9747457B, 0x35CA4C9171DA608E},
+            {0x11CD2059C3149938, 0x4BE0E9B1892E8F20},
+            {0xD3BEDD172C7E1FBD, 0xFAB5287DC9AB840F},
+            0x15
+        }
+    },
+
+
+
+    // Creation Crystals
+    {"Magic Claw",
+        {   
+            {0x7FD2DBABDD81010F, 0xC440},
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            0x15
         }
     },
 };
