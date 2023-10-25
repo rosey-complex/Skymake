@@ -207,7 +207,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         //// Write the bytes
         // 0x0
         memcpy(&fileData[0x0], &NUID, sizeof(NUID));
-        std::cout << NUID;
+
         // The BCC (Block Check Character)
         fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
 
@@ -222,6 +222,10 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         fileData[0x8] = 0xC4;
         fileData[0x3F] = 0x51;
 
+        // Magic Bytes
+        fileData[0x9] = magicNums.first;
+        fileData[0xF] = magicNums.second;
+
         // 0x20
         memcpy(&fileData[0x20], &Bx2X.first, sizeof(Bx2X.first));
         memcpy(&fileData[0x28], &Bx2X.second, sizeof(Bx2X.second));
@@ -234,12 +238,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         // 0x3E0
         memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
         memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
-
-        // Magic Bytes
-        fileData[0x9] = magicNums.first;
-        fileData[0xF] = magicNums.second;
-
-        
 
         // Set checksum
         uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);

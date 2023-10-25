@@ -44,7 +44,7 @@ public:
     void printWarn(int warnCode) {
         switch (warnCode) {
             case -1: // Imaginators/Sensei warning
-                std::cerr << "* Warning: Senseis and Creation Crystals don't work in-game, yet..." << std::endl
+                std::cerr << "* Warning: Stuff may get funny" << std::endl
                           << "* Creating Skylander anyway..." << std::endl;
                 break;
             case 1: // File already exists
