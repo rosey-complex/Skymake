@@ -181,34 +181,47 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
 
         std::tuple< 
-                    std::pair<uint64_t, uint16_t>,  // 0x0
+                    uint32_t,                        // NUID
                     std::pair<uint64_t, uint64_t>,  // 0x20
                     std::pair<uint64_t, uint64_t>,  // 0x40
                     std::pair<uint64_t, uint64_t>,  // 0x220
                     std::pair<uint64_t, uint64_t>,  // 0x3E0
-                    uint8_t                         // sinister byte
+                    std::pair<uint8_t, uint8_t>  // Magic Numbers
                     > BFIMBytes = BFIM[skylanderName];
         // Declare the bytes as varables and unpack th tuple
-        std::pair<uint64_t, uint16_t> BxX;
+        uint32_t NUID;
         std::pair<uint64_t, uint64_t> Bx2X, Bx4X, Bx22X, Bx3EX;
-        uint8_t SB;
-        std::tie(BxX, Bx2X, Bx4X, Bx22X, Bx3EX, SB) = BFIMBytes;
+        std::pair<uint8_t, uint8_t> magicNums;
+        std::tie(NUID, Bx2X, Bx4X, Bx22X, Bx3EX, magicNums) = BFIMBytes;
 
         // Convert values to big endian format
-        BxX.first =     htobe64(BxX.first);
+        NUID =     htobe32(NUID);
         Bx2X.first =    htobe64(Bx2X.first);
         Bx4X.first =    htobe64(Bx4X.first);
         Bx22X.first =   htobe64(Bx22X.first);
         Bx3EX.first =   htobe64(Bx3EX.first);
-        BxX.second =    htobe16(BxX.second);
         Bx2X.second =   htobe64(Bx2X.second);
         Bx4X.second =   htobe64(Bx4X.second);
         Bx22X.second =  htobe64(Bx22X.second);
         Bx3EX.second =  htobe64(Bx3EX.second);
         //// Write the bytes
         // 0x0
-        memcpy(&fileData[0x0], &BxX.first, sizeof(BxX.first));
-        memcpy(&fileData[0x8], &BxX.second, sizeof(BxX.second));
+        memcpy(&fileData[0x0], &NUID, sizeof(NUID));
+        std::cout << NUID;
+        // The BCC (Block Check Character)
+        fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
+
+        // ATQA
+        fileData[5] = 0x81;
+        fileData[6] = 0x01;
+
+        // SAK
+        fileData[7] = 0x0F;
+
+        // Specific bytes
+        fileData[0x8] = 0xC4;
+        fileData[0x3F] = 0x51;
+
         // 0x20
         memcpy(&fileData[0x20], &Bx2X.first, sizeof(Bx2X.first));
         memcpy(&fileData[0x28], &Bx2X.second, sizeof(Bx2X.second));
@@ -222,12 +235,11 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
         memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
 
-        // Sinister Byte™
-        memcpy(&fileData[0xF], &SB, 1);
+        // Magic Bytes
+        fileData[0x9] = magicNums.first;
+        fileData[0xF] = magicNums.second;
 
-        // Weird 0x3F byte
-        const uint8_t weirdByte = 0x51;
-        memcpy(&fileData[0x3F], &weirdByte, 1);
+        
 
         // Set checksum
         uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);

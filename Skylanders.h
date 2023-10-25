@@ -680,91 +680,69 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Light Rune",                                      {689, 0x520B}},
 };
 
-
-/* 
-
-    This is just a temporary fix until someone figures out what 
-is so different about Imaginators toys.
-    All I could figure out is that there are some misterious bytes
-in between 0x8 and 0xF, 0x20 and 0x2F, 0x40 and 0x4F, 0x220 and 0x22F,
-0x3E0 and 0x3EF along with a byte at address 0x3F (which I wound up calling
-"the sinister byte") that seem to be what Imaginators check for. They might
-be another checksum because copy-pasting the bytes over to an "empty" 
-figure created by skymake does not work.
-
-UPDATE: The sinister byte seems to be constatnly 0x51 no matter the surrounding data.
-    So, I am no longer considering 0x3F the sinister byte. However I did find a byte that
-    does change without a significant meaning... 
-        Now, the synister byte is 0xF which I have noticed to have either
-    0x16 or 0x15 as the value.
-        Another observation is the appearance 0xC4 at byte 0x8 and a value of either 
-    31, 37, 40 or something else on the next byte.
-    Can't confirm this theory before I finish adding every skylander
-
-*/
 std::map<std::string, std::tuple<   
-                                std::pair<uint64_t, uint16_t>,  // 0x0
+                                uint32_t,                        // NUID
                                 std::pair<uint64_t, uint64_t>,  // 0x20
                                 std::pair<uint64_t, uint64_t>,  // 0x40
                                 std::pair<uint64_t, uint64_t>,  // 0x220
                                 std::pair<uint64_t, uint64_t>,  // 0x3E0
-                                uint8_t                         // sinister byte
+                                std::pair<uint8_t, uint8_t>  // Magic Numbers (Addr 0x9, 0xF)
                                 >> BFIM = {
     // This is, obviously, a REALLY bad idea
     {"Bad Juju",
         {   
-            {0xDF1923CC2981010F, 0xC431},
+            0xDF1923CC,
             {0x4566CF639B2783F5, 0x90544A7140A3FB81},
             {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
             {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            0x16
+            {0x31, 0x16}
         }
     },
+    
     {"Kaos",
         {   
-            {0xDFEB9C9F3781010F, 0xC437},
+            0xDFEB9C9F,
             {0x183304206D70A43D, 0x3A3E629B631AD5C2},
             {0xEC2B9521C57F344F, 0x8F78BCBA048B6436},
             {0x87B66CA5C318BDAC, 0x4EAC40358B88D0D6},
             {0xB762B84961B8E5EC, 0x0A3AB0791722CF0E},
-            0x15
+            {0x37, 0x15}
         }
     },
     {"Tidepool",
         {   
-            {0xDFE111CCE381010F, 0xC431},
+            0xDFE111CC,
             {0x9E7C6678E58F1E5B, 0x73C58F5B7F6CAACA},
             {0x7D0FF986C4BDA36F, 0x67AEF7056839E9C6},
             {0x3C286F3B9179E012, 0x08985148515F8520},
             {0x79B562ED595259A9, 0xA6B6AB77D6BEA805},
-            0x16
+            {0x31, 0x16}
         }
     },
     {"King Pen",
         {   
-            {0x5FAA62970081010F, 0xC423},
+            0x5FAA6297,
             {0x1AE4182B1952B951, 0xA04866D2A4BFC598},
             {0x0F139F9D9747457B, 0x35CA4C9171DA608E},
             {0x11CD2059C3149938, 0x4BE0E9B1892E8F20},
             {0xD3BEDD172C7E1FBD, 0xFAB5287DC9AB840F},
-            0x15
+            {0x23, 0x15}
         }
     },
-
-
 
     // Creation Crystals
     {"Magic Claw",
         {   
-            {0x7FD2DBABDD81010F, 0xC440},
+            0x7FD2DBAB,
             {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
             {0x58D2FDB63A320F19, 0xD56C42F835545178},
             {0x88762994201007FC, 0xA63425A962554C24},
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            0x15
+            {0x40, 0x15}
         }
     },
+    
 };
 
 #endif
