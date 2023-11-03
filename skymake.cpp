@@ -6,9 +6,11 @@
 #include <algorithm>
 #include <cstring>
 #include <endian.h>
+#include <filesystem>
+
 #include <mbedtls/entropy.h>
 #include <mbedtls/hmac_drbg.h>
-#include <filesystem>
+
 #include "Skylanders.h"
 #include "Printer.h"
 
@@ -169,13 +171,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     }
 
     if (isFromSI) {
-        /*
-            As the name of the branch implies,
-        this is basically a brute force method
-        of getting imaginators figures to work
-        for the time being until they get figured out
-        */
-        
         // Set the skylander info
         memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
@@ -205,9 +200,9 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         Bx22X.second =  htobe64(Bx22X.second);
         Bx3EX.second =  htobe64(Bx3EX.second);
         //// Write the bytes
-        // 0x0
+        // NUID
         memcpy(&fileData[0x0], &NUID, sizeof(NUID));
-
+        
         // The BCC (Block Check Character)
         fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
 
@@ -226,9 +221,14 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         fileData[0x9] = magicNums.first;
         fileData[0xF] = magicNums.second;
 
+        // Set checksum
+        uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
+        memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+
         // 0x20
         memcpy(&fileData[0x20], &Bx2X.first, sizeof(Bx2X.first));
         memcpy(&fileData[0x28], &Bx2X.second, sizeof(Bx2X.second));
+        
         // 0x40
         memcpy(&fileData[0x40], &Bx4X.first, sizeof(Bx4X.first));
         memcpy(&fileData[0x48], &Bx4X.second, sizeof(Bx4X.second));
@@ -239,9 +239,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
         memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
 
-        // Set checksum
-        uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
-        memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+        
     }
     else {
         // Set the NUID of the figure

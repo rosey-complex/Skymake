@@ -664,31 +664,187 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Dr. Neo Cortex",                                  {631, 0x5000}},
     // Special variants needed
 
+    // Level Packs needed
+
     /*
     IDs from 680 to 689 are reserved for Creation Crystals.
     This may be useful later on
     */
-    {"Magic Claw",                                      {680, 0x521B}},
-    {"Water Armor",                                     {681, 0x5214}},
-    {"Air Lantern",                                     {682, 0x5207}},
-    {"Undead Fanged",                                   {683, 0x5217}},
-    {"Tech Armor",                                      {684, 0x5215}},
-    {"Fire Reactor",                                    {685, 0x520F}},
-    {"Earth Rocket",                                    {686, 0x521D}},
-    {"Life Acorn",                                      {687, 0x5210}},
-    {"Dark Pyramid",                                    {688, 0x5206}},
-    {"Light Rune",                                      {689, 0x520B}},
+    {"Magic Creation Crystal",                          {680, 0x521B}},
+    {"Water Creation Crystal",                          {681, 0x5214}},
+    {"Air Creation Crystal",                            {682, 0x5207}},
+    {"Undead Creation Crystal",                         {683, 0x5217}},
+    {"Tech Creation Crystal",                           {684, 0x5215}},
+    {"Fire Creation Crystal",                           {685, 0x520F}},
+    {"Earth Creation Crystal",                          {686, 0x521D}},
+    {"Life Creation Crystal",                           {687, 0x5210}},
+    {"Dark Creation Crystal",                           {688, 0x5206}},
+    {"Light Creation Crystal",                          {689, 0x520B}},
 };
 
 std::map<std::string, std::tuple<   
-                                uint32_t,                        // NUID
-                                std::pair<uint64_t, uint64_t>,  // 0x20
-                                std::pair<uint64_t, uint64_t>,  // 0x40
-                                std::pair<uint64_t, uint64_t>,  // 0x220
-                                std::pair<uint64_t, uint64_t>,  // 0x3E0
-                                std::pair<uint8_t, uint8_t>  // Magic Numbers (Addr 0x9, 0xF)
+                                uint32_t,                           // NUID
+                                std::pair<uint64_t, uint64_t>,      // 0x20
+                                std::pair<uint64_t, uint64_t>,      // 0x40
+                                std::pair<uint64_t, uint64_t>,      // 0x220
+                                std::pair<uint64_t, uint64_t>,      // 0x3E0
+                                std::pair<uint8_t, uint8_t>         // Magic Numbers (Addr 0x9, 0xF)
                                 >> BFIM = {
-    // This is, obviously, a REALLY bad idea
+
+    {"Pit Boss",
+        {   
+            0xDFA3FEA1,
+            {0x26F725519497F74B, 0x12900EF0EF027775},
+            {0x0617A2FFA4A3DC99, 0x83B1F45E6274CBF3},
+            {0xD9176B2277879286, 0xD26E301AF061273D},
+            {0x0E31BF6DB810DA2D, 0xB506346D100A3506},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Grave Clobber",
+        {   
+            0x3F4277BA,
+            {0x01C9017A392341B4, 0xD28279542F25452E},
+            {0xF817C14ECA4941ED, 0x5AC57BD7BB3AA8AA},
+            {0xFF1740581D11CAFE, 0xE346E42C76EE719A},
+            {0x64669F3F97C2DC35, 0xA108379CAE6F1508},
+            {0x30, 0x16}
+        }
+    },
+
+    {"Dr. Krankase",
+        {   
+            0xBF7727A1,
+            {0xA2512B484827CEE5, 0xC4FF10E75CE01C6A},
+            {0x2295949A365FB94C, 0x72EEFDB8CC01595C},
+            {0x487A663A272D1D0A, 0x818BDB4C52138B76},
+            {0x3E65C1FB30465C8A, 0x4951772DA8BED307},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Hood Sickle",
+        {   
+            0x3F4A92A2,
+            {0x17493B10CE438AAA, 0x6C553ADC5C7DE4F3},
+            {0x2D64F27196BAC61D, 0x0D869F0F9641181B},
+            {0x00F238B59932BA04, 0x03EF7B5DAE64FF8A},
+            {0x3F5FD7556A4355EB, 0xB6B323348A7B4100},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Tae Kwon Crow",
+        {   
+            0xBFE601A0,
+            {0x7104756E0CA861BD, 0x1AE60C372A1639F2},
+            {0xC82E38C96387CC8B, 0x7351D5E6621BE4FD},
+            {0x25B572217C65B27D, 0x515FC364D12C8E2A},
+            {0x1A88673A03197606, 0xEA37DCA1694B8C0A},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Golden Queen",
+        {   
+            0xDFFBF399,
+            {0x9EB698AE36F62462, 0xA5340A03A251921F},
+            {0xC7DADC73A63BA65C, 0x90AF92C0CAD955E0},
+            {0x469D9E06503824D8, 0x76195C218C037A17},
+            {0xFB5144F3C9D80878, 0x73DD619D02D90504},
+            {0x25, 0x15}
+        }
+    },
+    
+    {"Wolfgang",
+        {   
+            0x7FC83BAC,
+            {0xAB29AE42949B86C6, 0x80C43E9B95858943},
+            {0xBD52A794C2133612, 0xD46AC9FBEA2B0ED9},
+            {0x2E978B3EEC647F61, 0xD88A031F9BC20A00},
+            {0x622301D9EFFE51BE, 0x04B412BF7CB3DE08},
+            {0x40, 0x15}
+        }
+    },
+    
+    {"Pain-Yatta",
+        {   
+            0xBF60529F,
+            {0x39DAA6FEC2DEADC9, 0x24862A3B74D8DBE4},
+            {0x7F62A0E5078A24DA, 0x882A9D16BE2D13A8},
+            {0x582BEACE2B8AE323, 0x0FC35F799314A2D8},
+            {0x66736E602966CE8C, 0x77FABA0C9C6B9E01},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Mysticat",
+        {   
+            0x9F2EF898,
+            {0x50C83B1E9EC1942C, 0x4635C78D1FA51AD6},
+            {0x705100D744511B98, 0xB96699BC4D16CCD0},
+            {0x5EEC0CF1F44191E9, 0x67723262C91AA40C},
+            {0x9C80581E395FEE07, 0x70854C0E1FC9EA0C},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Starcast",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+
+    {"Buckshot",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Aurora",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Flare Wolf",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Chompy Mage",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
     {"Bad Juju",
         {   
             0xDF1923CC,
@@ -700,6 +856,39 @@ std::map<std::string, std::tuple<
         }
     },
     
+    {"Blaster-Tron",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Ro-Bow",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Chain Reaction",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
     {"Kaos",
         {   
             0xDFEB9C9F,
@@ -710,16 +899,18 @@ std::map<std::string, std::tuple<
             {0x37, 0x15}
         }
     },
-    {"Tidepool",
+
+    {"Wild Storm",
         {   
-            0xDFE111CC,
-            {0x9E7C6678E58F1E5B, 0x73C58F5B7F6CAACA},
-            {0x7D0FF986C4BDA36F, 0x67AEF7056839E9C6},
-            {0x3C286F3B9179E012, 0x08985148515F8520},
-            {0x79B562ED595259A9, 0xA6B6AB77D6BEA805},
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    },
+    }, //
+    
     {"King Pen",
         {   
             0x5FAA6297,
@@ -731,8 +922,118 @@ std::map<std::string, std::tuple<
         }
     },
 
+    {"Tri-Tip",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Chopscotch",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Boom Bloom",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Barbella",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Air Strike",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Ember",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Ambush",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Tidepool",
+        {   
+            0xDFE111CC,
+            {0x9E7C6678E58F1E5B, 0x73C58F5B7F6CAACA},
+            {0x7D0FF986C4BDA36F, 0x67AEF7056839E9C6},
+            {0x3C286F3B9179E012, 0x08985148515F8520},
+            {0x79B562ED595259A9, 0xA6B6AB77D6BEA805},
+            {0x31, 0x16}
+        }
+    },
+
+    {"Crash Bandicoot",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
+    {"Dr. Neo Cortex",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    }, //
+    
     // Creation Crystals
-    {"Magic Claw",
+    {"Magic Creation Crystal",
         {   
             0x7FD2DBAB,
             {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
@@ -742,6 +1043,105 @@ std::map<std::string, std::tuple<
             {0x40, 0x15}
         }
     },
+
+    {"Water Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Air Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Undead Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Tech Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Fire Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Earth Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Life Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Dark Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
+    
+    {"Light Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    }, //
     
 };
 
