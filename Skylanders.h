@@ -792,58 +792,58 @@ std::map<std::string, std::tuple<
     
     {"Starcast",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x1F353899,
+            {0xF23FF0B25774A6E6, 0xD9D08C7851069526},
+            {0x40E81F177C6F4CDC, 0xDDA4C71DEDD8DC0F},
+            {0x51B164F816D0D2AF, 0xD146060CC86C7578},
+            {0x38B2760BD45B10FF, 0xAC8D343D8B54250A},
+            {0x23, 0x15}
         }
-    }, //
+    },
 
     {"Buckshot",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xFF79C194,
+            {0xFBE4E520E8CA9599, 0x31B95A2F58D11414},
+            {0x4C878782792EA46E, 0x0A61581E2E830CE2},
+            {0xB2EE86033EE57E71, 0x8460B062051D811F},
+            {0x5C5B64D60E197A0C, 0xF5650DAA959DA500},
+            {0x23, 0x15}
         }
-    }, //
+    },
     
     {"Aurora",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x3FD28CA2,
+            {0x0F642AB3CC9FAB1D, 0x9A88FC4E49EC04D8},
+            {0x43F8963A33BD238B, 0x9A1355F79164D846},
+            {0xC5808858EBBAD4AB, 0x618E85F05CBBAB40},
+            {0xE669EA1D182A742E, 0xE1B9CBA248EEB601},
+            {0x37, 0x15}
         }
-    }, //
+    },
     
     {"Flare Wolf",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xFFFF05A2,
+            {0x7B594DDC4F6013BD, 0xE994850570964222},
+            {0x20123B7F054E3FCD, 0x44877FAFEDCC0E21},
+            {0xF780780BAFD000FA, 0xA6C9151F31FFDC36},
+            {0x1E4D59CA52C3AC4A, 0xA4D8E935A01B0E06},
+            {0x37, 0x15}
         }
-    }, //
+    },
     
     {"Chompy Mage",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x5F469A9F,
+            {0x7B43FFDD3CE5DFE5, 0x8315D138CC3895F4},
+            {0x24A09D1979233C6B, 0xC8367F1BE24405C5},
+            {0x942C996AF9FB35FB, 0x08580F34D9DBED46},
+            {0x55E8CE17699265AF, 0x083E564585ACA508},
+            {0x37, 0x15}
         }
-    }, //
+    },
     
     {"Bad Juju",
         {   
@@ -858,25 +858,25 @@ std::map<std::string, std::tuple<
     
     {"Blaster-Tron",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            0x3FD74DCC,
+            {0x358667FCB4BC60E9, 0x5E17F0579CCE8739},
+            {0x6A07D0C9DD3C9824, 0x8F79E6E331FFC50F},
+            {0x2093C5835BDE91A4, 0x7D2E52CCCC2CFD5C},
+            {0xD6A50654B0446B9E, 0x6606DA81A00FDE01},
             {0x31, 0x16}
         }
-    }, //
+    },
     
     {"Ro-Bow",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x5F21DBAD,
+            {0xBD2D1CA5AE805663, 0x6D0831EED87AEE00},
+            {0xC244DC02D82CF376, 0xA52D77824AB40942},
+            {0xD3FB160CFF8568B2, 0x2CA8A52EDADD19BE},
+            {0xB657253FACDD27E0, 0xF9B74FD42023BF03},
+            {0x22, 0x16}
         }
-    }, //
+    },
     
     {"Chain Reaction",
         {   
@@ -887,7 +887,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Kaos",
         {   
@@ -909,7 +909,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"King Pen",
         {   
@@ -931,7 +931,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Chopscotch",
         {   
@@ -942,7 +942,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Boom Bloom",
         {   
@@ -953,7 +953,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Barbella",
         {   
@@ -964,7 +964,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Air Strike",
         {   
@@ -975,7 +975,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Ember",
         {   
@@ -986,7 +986,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Ambush",
         {   
@@ -997,7 +997,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Tidepool",
         {   
@@ -1019,7 +1019,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Dr. Neo Cortex",
         {   
@@ -1030,7 +1030,7 @@ std::map<std::string, std::tuple<
             {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
             {0x31, 0x16}
         }
-    }, //
+    }, // PLACEHOLDER
     
     // Creation Crystals
     {"Magic Creation Crystal",
@@ -1053,7 +1053,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Air Creation Crystal",
         {   
@@ -1064,7 +1064,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Undead Creation Crystal",
         {   
@@ -1075,7 +1075,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Tech Creation Crystal",
         {   
@@ -1086,7 +1086,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Fire Creation Crystal",
         {   
@@ -1097,7 +1097,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Earth Creation Crystal",
         {   
@@ -1108,7 +1108,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Life Creation Crystal",
         {   
@@ -1119,7 +1119,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Dark Creation Crystal",
         {   
@@ -1130,7 +1130,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
     {"Light Creation Crystal",
         {   
@@ -1141,7 +1141,7 @@ std::map<std::string, std::tuple<
             {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
             {0x40, 0x15}
         }
-    }, //
+    }, // PLACEHOLDER
     
 };
 
