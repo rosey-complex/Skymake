@@ -880,14 +880,14 @@ std::map<std::string, std::tuple<
     
     {"Chain Reaction",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            0x3F5C09CA,
+            {0x5335DCCAAFAC6C2B, 0xF6573DBCCF3302B1},
+            {0x4CDD349F17D6E681, 0x86F415C0740DC5FB},
+            {0xA2DCFED85D2AE8EB, 0xDB7EF6FB03EABBBF},
+            {0xBEA8961B09BA8F75, 0xF80570108F5F6704},
             {0x31, 0x16}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Kaos",
         {   
@@ -902,14 +902,14 @@ std::map<std::string, std::tuple<
 
     {"Wild Storm",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xFF632AAE,
+            {0x4A88EA5C4173E0E1, 0xE937836213EBEC34},
+            {0x8801BD1446ECFCD6, 0x1D18606723B92A7A},
+            {0x8BA757EB6839AE13, 0x4D540D1ACB6AFE84},
+            {0x0E2DAD1C40212B8D, 0xA285B05548BD2608},
+            {0x22, 0x16}
         }
-    }, // PLACEHOLDER
+    },
     
     {"King Pen",
         {   
@@ -924,80 +924,80 @@ std::map<std::string, std::tuple<
 
     {"Tri-Tip",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x5F4CE198,
+            {0xD48519CB92DE5BBD, 0x49A158E3C1DCEA37},
+            {0xAADD13FBB6A5D028, 0x7C4227AFE4E5E1CF},
+            {0x4DE27A44423624E8, 0xB2971B430A0A267F},
+            {0x5DC22474D5BFF4CE, 0x223CC962C50BE305},
+            {0x23, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Chopscotch",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            0xBFB04ECB,
+            {0x99389528813DA2D0, 0xC4B73B85B65E2792},
+            {0xD7EF5C77F249A25C, 0x720DAF2237053A82},
+            {0xF0EFC02FF41C025D, 0xDBA6A47B8B0D7888},
+            {0xA899CD9CE6BDB2D8, 0xDE0A0B289C0D6205},
             {0x31, 0x16}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Boom Bloom",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x1FEF47B5,
+            {0x9B375B17F3FD25CB, 0x2EC89F81A0AD001A},
+            {0x35E53ED6AB24FCD4, 0xD08F4B0C9CCF7274},
+            {0x3AE2DBFCC2356720, 0x0D1F0F8EFFDAA95A},
+            {0xA5A8F799686E3D7A, 0x76333E73005B1A0A},
+            {0x23, 0x16}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Barbella",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xDFCAF998,
+            {0x17B001B79234418E, 0x92C3C017F22FF23D},
+            {0xD4F05A9F5B199ADB, 0x81E32517F1E8A7C1},
+            {0xC53182866980FCEF, 0x82E0D25A5E27A54B},
+            {0x40E27FD5FD3E9609, 0x34E671870A4C7002},
+            {0x23, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Air Strike",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x7FF56A89,
+            {0x8CF23F0DA47F3225, 0x74386F4442176E0A},
+            {0xD64B98A6255C57CC, 0xB61BCCDF23B36829},
+            {0xB1C591F840AFBCF5, 0xAD0B972DD428BB09},
+            {0x43E09C7FE1A1807A, 0x31EBA75F28D4CE0F},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Ember",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            0x7FBF9FCB,
+            {0x90E61ADE908C4FB2, 0x8DA7009071E8707A},
+            {0x532631F91CEC3127, 0x0312CF21D458E145},
+            {0xAFCF8732ED2FF451, 0x0CE2923AFF90C50C},
+            {0x9EF1910DCD593924, 0x913EEAE50C250101},
             {0x31, 0x16}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Ambush",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xFF5E7DA1,
+            {0xDFE9B3EA391341DB, 0x4A5B24FF3DD24A85},
+            {0xB9D402F739CCD85A, 0x26E83A02846F0C45},
+            {0xC357F9CCEA0B9F3F, 0x475C69FF9DC8476C},
+            {0x468A0332A430EEBF, 0x4D5891417EF35D01},
+            {0x37, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Tidepool",
         {   
@@ -1012,25 +1012,25 @@ std::map<std::string, std::tuple<
 
     {"Crash Bandicoot",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0xDF8DC3A7,
+            {0x62238A3A4B7CE311, 0x83A51580CDFCAF04},
+            {0x1C380826260BDEFB, 0xCE621316D890412D},
+            {0x186488200B99345E, 0x201B10E19E22BF00},
+            {0x96D4503D5D430CC3, 0x2E320ADA0AA04E0C},
+            {0x40, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Dr. Neo Cortex",
         {   
-            0xDF1923CC,
-            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
-            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
-            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
-            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
-            {0x31, 0x16}
+            0x3F041591,
+            {0x329CD5CA846514EB, 0x0A6F09F713CB5211},
+            {0x0542AB329F851423, 0x8C54971E26D2AEDE},
+            {0x347BF39BEA6BD3C1, 0xFC0BF9EE38905B07},
+            {0x4FEF09952A259BAA, 0x88157E2D1DBE880A},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     // Creation Crystals
     {"Magic Creation Crystal",
