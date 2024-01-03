@@ -48,7 +48,7 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint3
     return crc;
 }
 
-bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const u_int16_t customVar = 0x0000) {
+bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000) {
     /*
     Sw[0]   - Unsafe/Safe Mode
     Sw[1]   - Auto/Manual Mode
@@ -102,7 +102,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
 
     // File Path without extension
     filePathNoExtension = filePath;
-    for (u_int8_t i = 0; i <= 3; i++) filePathNoExtension.pop_back();
+    for (uint8_t i = 0; i <= 3; i++) filePathNoExtension.pop_back();
 
     // Check if file already exists and warn the user about overwriting
     if (std::filesystem::exists(filePath)) {
@@ -141,7 +141,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
 
     // Set the NUID of the figure
     srand (time(NULL));
-    u_int32_t RandNUID = rand();
+    uint32_t RandNUID = rand();
     memcpy(&fileData[0], &RandNUID, sizeof(RandNUID));
 
     // The BCC (Block Check Character)
