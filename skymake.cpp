@@ -5,38 +5,11 @@
 #include <cstdint>
 #include <algorithm>
 #include <cstring>
-#include <mbedtls/entropy.h>
-#include <mbedtls/hmac_drbg.h>
 #include <filesystem>
 #include "Skylanders.h"
 #include "Printer.h"
 
 Printer printer;
-
-class entropySeededPRNG final
-{
-public:
-    entropySeededPRNG() {
-        mbedtls_entropy_init(&m_entropy);
-        mbedtls_hmac_drbg_init(&m_context);
-        const int ret = mbedtls_hmac_drbg_seed(
-            &m_context, mbedtls_md_info_from_type(MBEDTLS_MD_SHA256),
-            mbedtls_entropy_func, &m_entropy, nullptr, 0);
-    }
-
-    ~entropySeededPRNG() {
-        mbedtls_hmac_drbg_free(&m_context);
-        mbedtls_entropy_free(&m_entropy);
-    }
-
-    void Generate(void *buffer, std::size_t size) {
-        const int ret = mbedtls_hmac_drbg_random(&m_context, static_cast<uint8_t*>(buffer), size);
-    }
-
-private:
-    mbedtls_entropy_context m_entropy;
-    mbedtls_hmac_drbg_context m_context;
-};
 
 static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint32_t size) {
     static constexpr std::array<uint16_t, 256> CRC_CCITT_TABLE {
@@ -167,8 +140,9 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     }
 
     // Set the NUID of the figure
-    static thread_local entropySeededPRNG eSPRNG;
-    eSPRNG.Generate(&fileData[0], 4);
+    srand (time(NULL));
+    u_int32_t RandNUID = rand();
+    memcpy(&fileData[0], &RandNUID, sizeof(RandNUID));
 
     // The BCC (Block Check Character)
     fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];

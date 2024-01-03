@@ -9,9 +9,6 @@
 				"-fdiagnostics-color=always",
 				"-g",
 				"-std=c++17",
-				"-lmbedtls",
-				"-lmbedx509", 
-				"-lmbedcrypto",
 				"${file}",
 				"-o",
 				"${fileDirname}/bin/${fileBasenameNoExtension}"
