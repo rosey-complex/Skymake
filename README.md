@@ -62,7 +62,6 @@ skymake <Options>
 
 ### Prerequisites:
 - make
-- mbedtls
 - gcc
 
 ### Building and installing:
