@@ -2,7 +2,27 @@
 
 # **Skymake - A just-works command line Skylander figurine generator**
 
+## Installation:
 
+### Windows:
+- From the releases section, download "skymake-w64-mingw32-static-[version].zip"
+- Extract the executable into any folder
+- Create a new "Skymake" folder in **C:\Program Files\Skymake** 
+- Copy the executable to the **C:\Program Files\Skymake** folder
+- Add **C:\Program Files\Skymake** to PATH
+	+ Open "Edit the system environment variables" using the start menu's search.
+	+ Click the "Environment Variables..." button.
+	+ Select the "Path" row in the lower box.
+	+ Click the "Edit" button
+	+ Click the "New" button and then write **C:\Program Files\Skymake** 
+	+ Apply the changes
+
+** Alternatively, you can copy skymake.exe directly to **C:\Windows\System32**. _I do not recommend doing this._
+
+### Linux:
+- From the releases section, download "skymake-linux-glibc-[version].zip"
+- Extract the binary into any folder
+- Copy the extracted binary file to **/usr/bin**
 
 ## Usage:
 ```
