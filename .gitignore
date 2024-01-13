@@ -3,3 +3,5 @@
 *.sky
 *qmake*
 Makefile
+skymake.o
+skymake
