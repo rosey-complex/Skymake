@@ -46,9 +46,9 @@ int main(int argc, char *argv[]) {
 
     // Buttons
     QPushButton *BTN_Create = new QPushButton("Make!");
-    QPushButton *BTN_Advanced = new QPushButton("Advanced mode");
+    QPushButton *BTN_Mode = new QPushButton("Basic mode");
     L_Buttons -> addWidget(BTN_Create);
-    L_Buttons -> addWidget(BTN_Advanced);
+    L_Buttons -> addWidget(BTN_Mode);
 
     // Combo Box
     QComboBox *CB_SkySelect = new QComboBox;
@@ -86,13 +86,27 @@ int main(int argc, char *argv[]) {
 
     });
 
+    QObject::connect(BTN_Mode, &QPushButton::clicked, [&BTN_Mode, &isInAdvanced] {
+        switch(isInAdvanced) {
+            case true:
+                BTN_Mode -> setText("Basic mode");
+                isInAdvanced = false;
+                break;
+            case false:
+                BTN_Mode -> setText("Advanced mode");
+                isInAdvanced = true;
+                break;
+        }
+        
+    });
+
     QObject::connect(BTN_SelDest, &QPushButton::clicked, [&LE_Prefix, &window] {
         QString filePath = QFileDialog::getExistingDirectory(&window, "Select Folder", QDir::homePath());
         LE_Prefix -> setText(filePath);
     });
 
     QObject::connect(CHK_OW, &QCheckBox::stateChanged, [&CHK_OW, &OW] {
-        OW = CHK_OW->isChecked();
+        OW = CHK_OW -> isChecked();
     });
 
     // Show the window
