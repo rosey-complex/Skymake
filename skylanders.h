@@ -461,7 +461,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Sea Trophy",                                      {3502, 0x0000}},
     {"Kaos Trophy",                                     {3503, 0x0000}},
     // Special
-    {"VVind Up",                                        {3011, 0x2404}},
+    {"VVind Up (Gear Head Vicarious Visions Wind Up)",  {3011, 0x2404}},
     // Debug
     {"Debug Minion",                                    {999, 0x0000}},
     {"Template Template (Bottom)",                      {1999, 0x0000}},
@@ -543,9 +543,6 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Light Rocket Trap",                               {219, 0x3000}},
     {"Light Hawk Trap",                                 {219, 0x300F}},
     {"Light Yawn Trap",                                 {219, 0x301B}},
-
-    {"Gear Head Wind Up",                               {3011, 0x2404}},
-
 };
 
 #endif
