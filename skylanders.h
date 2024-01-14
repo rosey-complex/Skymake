@@ -553,7 +553,15 @@ std::map<std::string, std::tuple<
                                 std::pair<uint64_t, uint64_t>,      // 0x3E0
                                 std::pair<uint8_t, uint8_t>         // Magic Numbers (Addr 0x9, 0xF)
                                 >> BFIM = {
+    
+    /**
+        Credits to:
+            u/mariussa1 (Reddit)
+            Tritonex (Youtube) 
+        ...for making public easily accessible dumps of imaginators figures
+    **/
 
+    
     {"Pit Boss",
         {   
             0xDFA3FEA1,
