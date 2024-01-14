@@ -104,9 +104,9 @@ int main(int argc, char *argv[]) {
             if (std::filesystem::exists(QS_Dest.toStdString())) {
                 if (!isInAdvanced) {
                     if (CreateSkylander(QS_SelSky.toStdString(), QS_Dest.toStdString(), Sw, ID, varID))
-                        LB_Msg -> setText("Last created: " + QS_Dest + " - " + QS_SelSky);
+                        LB_Msg -> setText("Last created: " + QS_Dest + " - " + QS_SelSky+ ".");
                     else 
-                        LB_Msg -> setText("Couldn't Create: " + QS_Dest + " - " + QS_SelSky);
+                        LB_Msg -> setText("Couldn't create skylander figure.");
                 }
                 else {
                     bool IDSetSuccessfully = false, VarSetSuccessfully = false;
@@ -136,9 +136,9 @@ int main(int argc, char *argv[]) {
                     }
                     if (VarSetSuccessfully && IDSetSuccessfully) {
                         if (CreateSkylander(QS_SelSky.toStdString(), QS_Dest.toStdString(), Sw, ID, varID))
-                            LB_Msg -> setText("Last created: " + QS_Dest + " - " + QS_SelSky);
+                            LB_Msg -> setText("Last created: " + QS_Dest + " - Custom (" + QString::fromStdString(std::to_string(ID)) + ", " + QString::fromStdString(std::to_string(varID)) + ").");
                         else 
-                            LB_Msg -> setText("Couldn't Create: " + QS_Dest + " - " + QS_SelSky);
+                            LB_Msg -> setText("Couldn't create skylander figure.");
                     }
                 }
             }
