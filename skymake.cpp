@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 
     // Buttons
     QPushButton *BTN_Create = new QPushButton("Make!");
-    QPushButton *BTN_Mode = new QPushButton("Basic mode");
+    QPushButton *BTN_Mode = new QPushButton("Mode: Basic");
     L_Buttons -> addWidget(BTN_Create);
     L_Buttons -> addWidget(BTN_Mode);
 
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
     L_Adv_Container -> addWidget(LE_ID);
     L_Adv_Container -> addWidget(LB_VarID);
     L_Adv_Container -> addWidget(LE_VarID);
-    L_Content -> addLayout(L_Adv_Container, 2, 0, 1, 0);
+    L_Content -> addLayout(L_Adv_Container, 1, 0, 1, 0);
     for(int i = 0; i < L_Adv_Container -> count(); ++i) {
         QLayoutItem *tempQItem = L_Adv_Container -> itemAt(i);
         if (tempQItem) {
@@ -86,11 +86,11 @@ int main(int argc, char *argv[]) {
     // Destination
     QLabel *LB_Prefix = new QLabel;
     LB_Prefix -> setText("Destination:");
-    L_Content -> addWidget(LB_Prefix, 1, 0);
+    L_Content -> addWidget(LB_Prefix, 2, 0);
     QLineEdit *LE_Prefix = new QLineEdit;
-    L_Content -> addWidget(LE_Prefix, 1, 1);
+    L_Content -> addWidget(LE_Prefix, 2, 1);
     QPushButton *BTN_SelDest = new QPushButton("Select");
-    L_Content -> addWidget(BTN_SelDest, 1, 2);
+    L_Content -> addWidget(BTN_SelDest, 2, 2);
 
     // Button Actions
     QObject::connect(BTN_Create, &QPushButton::clicked, [&LE_Prefix, &LB_Msg, &CB_SkySelect, &CHK_OW, &OW, &isInAdvanced, &LE_ID, &LE_VarID]() {
@@ -150,7 +150,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(BTN_Mode, &QPushButton::clicked, [&BTN_Mode, &isInAdvanced, &CB_SkySelect, &L_Content, &L_Adv_Container, &window, &LB_ID] {
         switch(isInAdvanced) {
             case true:
-                BTN_Mode -> setText("Basic mode");
+                BTN_Mode -> setText("Mode: Basic");
                 isInAdvanced = false;
                 CB_SkySelect -> setDisabled(false);
                 for(int i = 0; i < L_Adv_Container -> count(); ++i) {
@@ -162,7 +162,7 @@ int main(int argc, char *argv[]) {
                 }
                 break;
             case false:
-                BTN_Mode -> setText("Advanced mode");
+                BTN_Mode -> setText("Mode: Advanced");
                 isInAdvanced = true;
                 CB_SkySelect -> setDisabled(true);
                 for(int i = 0; i < L_Adv_Container -> count(); ++i) {
