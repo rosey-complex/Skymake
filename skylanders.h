@@ -545,6 +545,65 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Light Yawn Trap",                                 {219, 0x301B}},
 };
 
+    /**
+        Credits to:
+            u/mariussa1 (Reddit)
+            Tritonex (Youtube) 
+        ...for making public easily accessible dumps of imaginators figures
+    **/
+
+std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = { 
+    {"Pit Boss",                                        {605, 0x5000}},
+    {"Grave Clobber",                                   {623, 0x5000}},
+    {"Dr. Krankcase",                                   {610, 0x5000}},
+    {"Hood Sickle",                                     {611, 0x5000}},
+    {"Tae Kwon Crow",                                   {612, 0x5000}},
+    {"Golden Queen",                                    {613, 0x5000}},
+    {"Wolfgang",                                        {614, 0x5000}},
+    {"Pain-Yatta",                                      {615, 0x5000}},
+    {"Mysticat",                                        {616, 0x5000}},
+    {"Starcast",                                        {617, 0x5000}},
+    {"Buckshot",                                        {618, 0x5000}},
+    {"Aurora",                                          {619, 0x5000}},
+    {"Flare Wolf",                                      {620, 0x5000}},
+    {"Chompy Mage",                                     {621, 0x5000}},
+    {"Bad Juju",                                        {622, 0x5000}},
+    {"Blaster-Tron",                                    {624, 0x5000}},
+    {"Ro-Bow",                                          {625, 0x5000}},
+    {"Chain Reaction",                                  {626, 0x5000}},
+    {"Kaos",                                            {627, 0x5000}},
+    {"Wild Storm",                                      {628, 0x5000}},
+    {"King Pen",                                        {601, 0x5000}},
+    {"Tri-Tip",                                         {602, 0x5000}},
+    {"Chopscotch",                                      {603, 0x5000}},
+    {"Boom Bloom",                                      {604, 0x5000}},
+    {"Barbella",                                        {606, 0x5000}},
+    {"Air Strike",                                      {607, 0x5000}},
+    {"Ember",                                           {608, 0x5000}},
+    {"Ambush",                                          {609, 0x5000}},
+    {"Tidepool",                                        {629, 0x5000}},
+    {"Crash Bandicoot",                                 {630, 0x5000}},
+    {"Dr. Neo Cortex",                                  {631, 0x5000}},
+    // Special variants needed
+
+    // Level Packs needed
+
+    /*
+    IDs from 680 to 689 are reserved for Creation Crystals.
+    This may be useful later on
+    */
+    {"Magic Creation Crystal",                          {680, 0x521B}},
+    {"Water Creation Crystal",                          {681, 0x5214}},
+    {"Air Creation Crystal",                            {682, 0x5207}},
+    {"Undead Creation Crystal",                         {683, 0x5217}},
+    {"Tech Creation Crystal",                           {684, 0x5215}},
+    {"Fire Creation Crystal",                           {685, 0x520F}},
+    {"Earth Creation Crystal",                          {686, 0x521D}},
+    {"Life Creation Crystal",                           {687, 0x5210}},
+    {"Dark Creation Crystal",                           {688, 0x5206}},
+    {"Light Creation Crystal",                          {689, 0x520B}},
+};
+
 std::map<std::string, std::tuple<   
                                 uint32_t,                           // NUID
                                 std::pair<uint64_t, uint64_t>,      // 0x20
@@ -553,15 +612,7 @@ std::map<std::string, std::tuple<
                                 std::pair<uint64_t, uint64_t>,      // 0x3E0
                                 std::pair<uint8_t, uint8_t>         // Magic Numbers (Addr 0x9, 0xF)
                                 >> BFIM = {
-    
-    /**
-        Credits to:
-            u/mariussa1 (Reddit)
-            Tritonex (Youtube) 
-        ...for making public easily accessible dumps of imaginators figures
-    **/
-
-    
+        
     {"Pit Boss",
         {   
             0xDFA3FEA1,
