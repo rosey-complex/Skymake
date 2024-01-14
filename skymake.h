@@ -54,6 +54,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     std::string filePath;
     uint16_t SkyID = 0;
     uint16_t SkyVarID = 0;
+    bool isFromSI = false;
 
     // Manual (ID Explicit) Mode 
     if (Sw[1]) {
@@ -74,6 +75,16 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
             SkyID = IDs.first;
             SkyVarID = IDs.second;
+        }
+        else {
+            it = imaginatorsMap.find(skylanderName);
+            if (it != imaginatorsMap.end()) {
+                isFromSI = true;
+                std::pair<uint16_t, uint16_t> IDs = imaginatorsMap[skylanderName];
+                SkyID = IDs.first;
+                SkyVarID = IDs.second;
+            }
+            else return false;
         }
     }
     // File Path without extension
