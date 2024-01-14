@@ -55,9 +55,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     uint16_t SkyID = 0;
     uint16_t SkyVarID = 0;
 
-    // Check if user has specified a file as the last argument
-    bool autoPath = !(targetFile.find(".sky") != std::string::npos);
-
     // Manual (ID Explicit) Mode 
     if (Sw[1]) {
         //// Allows a user to create a skylander if they know the variant ID and skylander ID
@@ -79,9 +76,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             SkyVarID = IDs.second;
         }
     }
-    // Override the file path if the user has specified a file name
-    if (!autoPath) filePath = targetFile;
-
     // File Path without extension
     filePathNoExtension = filePath;
     for (uint8_t i = 0; i <= 3; i++) filePathNoExtension.pop_back();
@@ -90,7 +84,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     if (std::filesystem::exists(filePath)) {
         // Avoid overwriting by adding a number before the file extension
         if (Sw[0]) {
-            for (uint8_t n = 0; n <= 255; n++) {
+            for (uint32_t n = 0; n <= UINT32_MAX; n++) {
                 if (!(std::filesystem::exists(filePathNoExtension + "." + std::to_string(n) + ".sky"))) {
                     filePath = filePathNoExtension + "." + std::to_string(n) + ".sky";
                     break;
