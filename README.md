@@ -1,31 +1,36 @@
 ![Screnshot](Screenshots/Screenshot1.png)
 
-# **Skymake - A simple Skylanders® figurine generator**
-
-
+# **Skymake - A simple Skylanders® figure generator**
 
 ## Installation:
 
 ### Windows:
-#### !! TODO
+#### !! TODO: Windows installer
 
 ### Linux:
-- From the releases section, download "skymake-linux-glibc-[version].zip"
-- Extract the binary into any folder
-- Copy the extracted binary file to **/usr/bin** or **/usr/local/bin** or **~/.local/bin** (if you have it in your $PATH)
+#### !! TODO: RPM and DEB packaging
+- Check if you have the right dependencies installed,
+- From the releases section, download "skymake-linux-glibc-[version].zip",
+- Extract the binary into any folder,
+- Copy the extracted binary file to **/usr/bin** or **/usr/local/bin** or **~/.local/bin** (if you have it in your $PATH).
 
-## ✅ What works:
-- Creating Skylanders up to Superchargers
-- Creating Magic Items
-- Creating Vehicles
-- Creating Traps
-- Creating Debug Skylanders
-- Creating Instant/Virtual Skylander variants
-- Creating ***some*** scrapped Skylanders
+## ✅ What it can:
+- Create Skylanders up to Superchargers,
+- Create Magic Items,
+- Create Vehicles,
+- Create Traps,
+- Create Debug Skylanders,
+- Create Instant/Virtual Skylander variants,
+- Create ***some*** scrapped Skylanders.
 
 ## ⛔ What it can't:
-- Create figures for Imaginators
+- Create figures for Imaginators.
 
 ## Compiling:
-
+### On Linux:
+-   Clone the repository
+-   Install development files for Qt5Core and Qt5Widgets.
+-   In the root directory of the reposotory, run `qmake skymake.pro`.
+-   After qmake is done creating the makefile, run `make`.
+-   If the compilation finishes, you should now have a compiled `skymake` binary.
 ### !! TODO
