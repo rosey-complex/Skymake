@@ -586,8 +586,8 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Dr. Neo Cortex",                                  {631, 0x5000}},
     // Special variants needed
 
-    {"Enchanted Elven Forest",                          {310, 0x5000}},
-    {"Gryphon Park Observatory",                        {311, 0x5000}},
+    {"Enchanted Elven Forest",                          {311, 0x5000}},
+    {"Gryphon Park Observatory",                        {310, 0x5000}},
 
     /*
     IDs from 680 to 689 are reserved for Creation Crystals.
@@ -958,25 +958,25 @@ std::map<std::string, std::tuple<
     // Level Packs
     {"Enchanted Elven Forest",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0xBF3A0AB5,
+            {0xCC7A65D8C3725A20, 0xE9832237BE6D5BD3},
+            {0x8A74561E92E7FC02, 0x99F001C829305E06},
+            {0xDC798113A88A0312, 0x140F71C043C89B80},
+            {0x98320041FDC073D3, 0x8154D48E64EBB206},
+            {0x23, 0x16}
         }
-    }, // PLACEHOLDER
+    },
 
     {"Gryphon Park Observatory",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x5F66D59E,
+            {0x849D7524DB7AA0F7, 0x5240E5FEF86AB5F9},
+            {0x16F0D6F8A6CB74EC, 0x7053DD6A4E7AF65E},
+            {0xCEA266537BA8F2CD, 0x93D63BFB60244974},
+            {0xCBCBAFCA14D5FAB6, 0x7E77308BDDF24A0B},
+            {0x37, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     // Creation Crystals
     {"Magic Creation Crystal",

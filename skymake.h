@@ -77,6 +77,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             std::pair<uint16_t, uint16_t> IDs = imaginatorsMap[skylanderName];
             SkyID = IDs.first;
             SkyVarID = IDs.second;
+            std::cout << "* Found Imaginators figure: " << skylanderName << std::endl;
         }
         else {
             auto it = skylanderMap.find(skylanderName);
@@ -84,7 +85,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
                 std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
                 SkyID = IDs.first;
                 SkyVarID = IDs.second;
-                std::cout << "* Found: " << skylanderName;
+                std::cout << "* Found: " << skylanderName << std::endl;
             }
             else {
                 return false;
