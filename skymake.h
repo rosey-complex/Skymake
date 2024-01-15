@@ -100,7 +100,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     if (std::filesystem::exists(filePath)) {
         // Avoid overwriting by adding a number before the file extension
         if (Sw[0]) {
-            for (uint32_t n = 0; n <= UINT32_MAX; n++) {
+            for (uint64_t n = 0; n <= UINT64_MAX; n++) {
                 if (!(std::filesystem::exists(filePathNoExtension + "." + std::to_string(n) + ".sky"))) {
                     filePath = filePathNoExtension + "." + std::to_string(n) + ".sky";
                     break;
