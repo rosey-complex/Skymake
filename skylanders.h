@@ -992,103 +992,102 @@ std::map<std::string, std::tuple<
 
     {"Water Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0xDFE00D93,
+            {0x1092624DE2F59154, 0xC9982B81BF670780},
+            {0x36D0566D245AAA9D, 0x6390D38A2ED8D9B8},
+            {0x61C5EA9360C4B44F, 0xF5AC7B1C8BF31FAC},
+            {0xE4B6EA6CD35DFBA1, 0x091DB882E9B6720F},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Air Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0xDF5B6895,
+            {0x63C1D508B98002BC, 0x64762DBFDCC702D6},
+            {0xD26E3240568B86F8, 0x675ADF3F9B1F5B44},
+            {0x89B69AAB1D7EB35F, 0x40F19533BA942F1D},
+            {0x893B1F00F3DE13D0, 0x67553199E80B1B04},
+            {0x23, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Undead Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x3F8B65A2,
+            {0xC34B50ED89086855, 0xDC5FEB904282F732},
+            {0x2EC0403E3F06E579, 0xD3B40690F786A249},
+            {0xA14212A0B407CD8D, 0x5BA2A6118318DAEE},
+            {0x734A96F85D92F2D5, 0x84FE16B6DC13B001},
+            {0x37, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Tech Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0xFF1BEB95,
+            {0xE77E1B050CF80D0F, 0xF53394CE40761795},
+            {0xBC848CDE04A72904, 0x8CF573462DB2DB45},
+            {0x7A83CE3C8DB9E963, 0x8B32AA61C38C59A6},
+            {0xA67F812004CCDAF4, 0x11E95AD38F1C6A0E},
+            {0x23, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Fire Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x7F0F838F,
+            {0x29B38192692DD4A2, 0xEDC7021DB82ABD62},
+            {0x0DE92755663973BE, 0x747250FB8ECEE9AA},
+            {0x7F195CF16FAEE1D7, 0x742589F2877DCF81},
+            {0x9BBA0752F2965610, 0x35322F004B9C4004},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Earth Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x1F2C13A6,
+            {0xEAE9C0BBA841E90F, 0xA3EA2F119114C51B},
+            {0x928E5CC1509E504C, 0xD5638936B5961418},
+            {0xBCE406D52F281665, 0x68F6F21D4334425A},
+            {0xD842D82B23DBA753, 0xADB8BBFD7712AC0C},
+            {0x37, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Life Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x7F4FD892,
+            {0x54029B4244E811D7, 0xB92F7ED186FBBDAF},
+            {0xEB39D2CD1CA09F83, 0x2F6E1F2157DF3C53},
+            {0x12F3050B849A988B, 0x8DB7835A93C7D7A4},
+            {0x6D1FBFF6EF5CBFD6, 0x50C87A8DD5056006},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Dark Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0xBF332C93,
+            {0x4A4B4F8321746462, 0x9258A71ACE54E3ED},
+            {0x90ECC11529E59A46, 0xE56876264948D0FE},
+            {0x2C3416D8D3DC5627, 0x123FAE0865E5375F},
+            {0x9FE88F67CDAE2D6D, 0x0EBA4065692B6906},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
+    },
     
     {"Light Creation Crystal",
         {   
-            0x7FD2DBAB,
-            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
-            {0x58D2FDB63A320F19, 0xD56C42F835545178},
-            {0x88762994201007FC, 0xA63425A962554C24},
-            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
-            {0x40, 0x15}
+            0x1F29588E,
+            {0x2703A79B45685F91, 0x14CE17FEFB2A6FF4},
+            {0xF5EAC3AC209531CF, 0xF46237E62461404D},
+            {0x1143BE6E1945CE01, 0xB14A16509FA417FE},
+            {0x183A033819578A76, 0x036FED4B3CC84700},
+            {0x22, 0x15}
         }
-    }, // PLACEHOLDER
-    
+    },
 };
 
 #endif
