@@ -8,3 +8,4 @@ skymake
 cmake_install.cmake
 CMakeCache.txt
 CMakeFiles
+skymake_autogen
