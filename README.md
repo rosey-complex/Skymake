@@ -1,4 +1,4 @@
-![Logo](Logo/logo2.svg)
+![Logo](Logo/skymake.svg)
 
 # **Skymake - A simple Skylanders® figure generator**
 
@@ -15,7 +15,14 @@
 - Check if you have the right dependencies installed,
 - From the releases section, download "skymake-linux-glibc-[version].zip",
 - Extract the binary into any folder,
-- Copy the extracted binary file to **/usr/bin** or **/usr/local/bin** or **~/.local/bin** (if you have it in your $PATH).
+- Copy the extracted binary file to **/usr/bin** or **/usr/local/bin** or **~/.local/bin** (for a local installation; if you have it in your $PATH).
+
+*--OPTIONAL--*
+
+- Copy **skymake.desktop** to **/usr/share/applications**.
+    + if you are going with a local installation, you can copy it to **~/.local/share/applications**.
+- Copy **skymake.svg** to **/usr/share/icons/hicolor/scalable/apps/**.
+    + if you are going with a local installation, you can copy it to **~/.local/share/icons/hicolor/scalable/apps**.
 
 ## ✅ What it can:
 - Create Skylanders all the way up to Imaginators,
