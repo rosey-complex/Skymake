@@ -7,10 +7,11 @@
 ## Installation:
 
 ### Windows:
-#### !! TODO: Windows installer
+- Use WSL2 and follow the linux installation steps. 
+
+###### (Windows is far too janky when it comes to developing software compared to Linux distributions)
 
 ### Linux:
-#### !! TODO: RPM and DEB packaging
 - Check if you have the right dependencies installed,
 - From the releases section, download "skymake-linux-glibc-[version].zip",
 - Extract the binary into any folder,
@@ -28,6 +29,7 @@
 
 ## ⛔ What it can't:
 - Create figures for Imaginators with unique NUIDs.
+- Create files for Imaginators with custom IDs and VarIDs.
 
 ## Compiling:
 ### On Linux:
@@ -36,4 +38,3 @@
 -   In the root directory of the reposotory, run `cmake .` .
 -   After cmake finishes, run `make`.
 -   If the compilation finishes, you should now have a compiled `skymake` binary.
-### !! TODO
