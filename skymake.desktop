@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Skymake
+Comment=A skylanders figure file generator.
+Exec=skymake
+Icon=skymake
+Terminal=false
+Type=Application
+Categories=Utilities;
