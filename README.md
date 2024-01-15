@@ -33,7 +33,7 @@
 ### On Linux:
 -   Clone the repository
 -   Install development files for Qt5Core and Qt5Widgets.
--   In the root directory of the reposotory, run `qmake skymake.pro`.
--   After qmake is done creating the makefile, run `make`.
+-   In the root directory of the reposotory, run `cmake .` .
+-   After cmake finishes, run `make`.
 -   If the compilation finishes, you should now have a compiled `skymake` binary.
 ### !! TODO
