@@ -545,4 +545,549 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Light Yawn Trap",                                 {219, 0x301B}},
 };
 
+    /**
+        Credits to:
+            u/mariussa1 (Reddit)
+            Tritonex (Youtube) 
+        ...for making public easily accessible dumps of imaginators figures
+    **/
+
+std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = { 
+    {"Pit Boss",                                        {605, 0x5000}},
+    {"Grave Clobber",                                   {623, 0x5000}},
+    {"Dr. Krankcase",                                   {610, 0x5000}},
+    {"Hood Sickle",                                     {611, 0x5000}},
+    {"Tae Kwon Crow",                                   {612, 0x5000}},
+    {"Golden Queen",                                    {613, 0x5000}},
+    {"Wolfgang",                                        {614, 0x5000}},
+    {"Pain-Yatta",                                      {615, 0x5000}},
+    {"Mysticat",                                        {616, 0x5000}},
+    {"Starcast",                                        {617, 0x5000}},
+    {"Buckshot",                                        {618, 0x5000}},
+    {"Aurora",                                          {619, 0x5000}},
+    {"Flare Wolf",                                      {620, 0x5000}},
+    {"Chompy Mage",                                     {621, 0x5000}},
+    {"Bad Juju",                                        {622, 0x5000}},
+    {"Blaster-Tron",                                    {624, 0x5000}},
+    {"Ro-Bow",                                          {625, 0x5000}},
+    {"Chain Reaction",                                  {626, 0x5000}},
+    {"Kaos",                                            {627, 0x5000}},
+    {"Wild Storm",                                      {628, 0x5000}},
+    {"King Pen",                                        {601, 0x5000}},
+    {"Tri-Tip",                                         {602, 0x5000}},
+    {"Chopscotch",                                      {603, 0x5000}},
+    {"Boom Bloom",                                      {604, 0x5000}},
+    {"Barbella",                                        {606, 0x5000}},
+    {"Air Strike",                                      {607, 0x5000}},
+    {"Ember",                                           {608, 0x5000}},
+    {"Ambush",                                          {609, 0x5000}},
+    {"Tidepool",                                        {629, 0x5000}},
+    {"Crash Bandicoot",                                 {630, 0x5000}},
+    {"Dr. Neo Cortex",                                  {631, 0x5000}},
+    // Special variants needed
+
+    {"Enchanted Elven Forest",                          {311, 0x5000}},
+    {"Gryphon Park Observatory",                        {310, 0x5000}},
+
+    /*
+    IDs from 680 to 689 are reserved for Creation Crystals.
+    This may be useful later on
+    */
+    {"Magic Creation Crystal",                          {680, 0x521B}},
+    {"Water Creation Crystal",                          {681, 0x5214}},
+    {"Air Creation Crystal",                            {682, 0x5207}},
+    {"Undead Creation Crystal",                         {683, 0x5217}},
+    {"Tech Creation Crystal",                           {684, 0x5215}},
+    {"Fire Creation Crystal",                           {685, 0x520F}},
+    {"Earth Creation Crystal",                          {686, 0x521D}},
+    {"Life Creation Crystal",                           {687, 0x5210}},
+    {"Dark Creation Crystal",                           {688, 0x5206}},
+    {"Light Creation Crystal",                          {689, 0x520B}},
+};
+
+std::map<std::string, std::tuple<   
+                                uint32_t,                           // NUID
+                                std::pair<uint64_t, uint64_t>,      // 0x20
+                                std::pair<uint64_t, uint64_t>,      // 0x40
+                                std::pair<uint64_t, uint64_t>,      // 0x220
+                                std::pair<uint64_t, uint64_t>,      // 0x3E0
+                                std::pair<uint8_t, uint8_t>         // Magic Numbers (Addr 0x9, 0xF)
+                                >> BFIM = {
+        
+    {"Pit Boss",
+        {   
+            0xDFA3FEA1,
+            {0x26F725519497F74B, 0x12900EF0EF027775},
+            {0x0617A2FFA4A3DC99, 0x83B1F45E6274CBF3},
+            {0xD9176B2277879286, 0xD26E301AF061273D},
+            {0x0E31BF6DB810DA2D, 0xB506346D100A3506},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Grave Clobber",
+        {   
+            0x3F4277BA,
+            {0x01C9017A392341B4, 0xD28279542F25452E},
+            {0xF817C14ECA4941ED, 0x5AC57BD7BB3AA8AA},
+            {0xFF1740581D11CAFE, 0xE346E42C76EE719A},
+            {0x64669F3F97C2DC35, 0xA108379CAE6F1508},
+            {0x30, 0x16}
+        }
+    },
+
+    {"Dr. Krankase",
+        {   
+            0xBF7727A1,
+            {0xA2512B484827CEE5, 0xC4FF10E75CE01C6A},
+            {0x2295949A365FB94C, 0x72EEFDB8CC01595C},
+            {0x487A663A272D1D0A, 0x818BDB4C52138B76},
+            {0x3E65C1FB30465C8A, 0x4951772DA8BED307},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Hood Sickle",
+        {   
+            0x3F4A92A2,
+            {0x17493B10CE438AAA, 0x6C553ADC5C7DE4F3},
+            {0x2D64F27196BAC61D, 0x0D869F0F9641181B},
+            {0x00F238B59932BA04, 0x03EF7B5DAE64FF8A},
+            {0x3F5FD7556A4355EB, 0xB6B323348A7B4100},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Tae Kwon Crow",
+        {   
+            0xBFE601A0,
+            {0x7104756E0CA861BD, 0x1AE60C372A1639F2},
+            {0xC82E38C96387CC8B, 0x7351D5E6621BE4FD},
+            {0x25B572217C65B27D, 0x515FC364D12C8E2A},
+            {0x1A88673A03197606, 0xEA37DCA1694B8C0A},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Golden Queen",
+        {   
+            0xDFFBF399,
+            {0x9EB698AE36F62462, 0xA5340A03A251921F},
+            {0xC7DADC73A63BA65C, 0x90AF92C0CAD955E0},
+            {0x469D9E06503824D8, 0x76195C218C037A17},
+            {0xFB5144F3C9D80878, 0x73DD619D02D90504},
+            {0x25, 0x15}
+        }
+    },
+    
+    {"Wolfgang",
+        {   
+            0x7FC83BAC,
+            {0xAB29AE42949B86C6, 0x80C43E9B95858943},
+            {0xBD52A794C2133612, 0xD46AC9FBEA2B0ED9},
+            {0x2E978B3EEC647F61, 0xD88A031F9BC20A00},
+            {0x622301D9EFFE51BE, 0x04B412BF7CB3DE08},
+            {0x40, 0x15}
+        }
+    },
+    
+    {"Pain-Yatta",
+        {   
+            0xBF60529F,
+            {0x39DAA6FEC2DEADC9, 0x24862A3B74D8DBE4},
+            {0x7F62A0E5078A24DA, 0x882A9D16BE2D13A8},
+            {0x582BEACE2B8AE323, 0x0FC35F799314A2D8},
+            {0x66736E602966CE8C, 0x77FABA0C9C6B9E01},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Mysticat",
+        {   
+            0x9F2EF898,
+            {0x50C83B1E9EC1942C, 0x4635C78D1FA51AD6},
+            {0x705100D744511B98, 0xB96699BC4D16CCD0},
+            {0x5EEC0CF1F44191E9, 0x67723262C91AA40C},
+            {0x9C80581E395FEE07, 0x70854C0E1FC9EA0C},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Starcast",
+        {   
+            0x1F353899,
+            {0xF23FF0B25774A6E6, 0xD9D08C7851069526},
+            {0x40E81F177C6F4CDC, 0xDDA4C71DEDD8DC0F},
+            {0x51B164F816D0D2AF, 0xD146060CC86C7578},
+            {0x38B2760BD45B10FF, 0xAC8D343D8B54250A},
+            {0x23, 0x15}
+        }
+    },
+
+    {"Buckshot",
+        {   
+            0xFF79C194,
+            {0xFBE4E520E8CA9599, 0x31B95A2F58D11414},
+            {0x4C878782792EA46E, 0x0A61581E2E830CE2},
+            {0xB2EE86033EE57E71, 0x8460B062051D811F},
+            {0x5C5B64D60E197A0C, 0xF5650DAA959DA500},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Aurora",
+        {   
+            0x3FD28CA2,
+            {0x0F642AB3CC9FAB1D, 0x9A88FC4E49EC04D8},
+            {0x43F8963A33BD238B, 0x9A1355F79164D846},
+            {0xC5808858EBBAD4AB, 0x618E85F05CBBAB40},
+            {0xE669EA1D182A742E, 0xE1B9CBA248EEB601},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Flare Wolf",
+        {   
+            0xFFFF05A2,
+            {0x7B594DDC4F6013BD, 0xE994850570964222},
+            {0x20123B7F054E3FCD, 0x44877FAFEDCC0E21},
+            {0xF780780BAFD000FA, 0xA6C9151F31FFDC36},
+            {0x1E4D59CA52C3AC4A, 0xA4D8E935A01B0E06},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Chompy Mage",
+        {   
+            0x5F469A9F,
+            {0x7B43FFDD3CE5DFE5, 0x8315D138CC3895F4},
+            {0x24A09D1979233C6B, 0xC8367F1BE24405C5},
+            {0x942C996AF9FB35FB, 0x08580F34D9DBED46},
+            {0x55E8CE17699265AF, 0x083E564585ACA508},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Bad Juju",
+        {   
+            0xDF1923CC,
+            {0x4566CF639B2783F5, 0x90544A7140A3FB81},
+            {0x68F4D96E197C2638, 0x3FDCFAC11CB91D78},
+            {0x472F2DC061B7B328, 0xEE027C7E495BC0DA},
+            {0x5BAFB045CEA0A387, 0x91FC6938280CDF0F},
+            {0x31, 0x16}
+        }
+    },
+    
+    {"Blaster-Tron",
+        {   
+            0x3FD74DCC,
+            {0x358667FCB4BC60E9, 0x5E17F0579CCE8739},
+            {0x6A07D0C9DD3C9824, 0x8F79E6E331FFC50F},
+            {0x2093C5835BDE91A4, 0x7D2E52CCCC2CFD5C},
+            {0xD6A50654B0446B9E, 0x6606DA81A00FDE01},
+            {0x31, 0x16}
+        }
+    },
+    
+    {"Ro-Bow",
+        {   
+            0x5F21DBAD,
+            {0xBD2D1CA5AE805663, 0x6D0831EED87AEE00},
+            {0xC244DC02D82CF376, 0xA52D77824AB40942},
+            {0xD3FB160CFF8568B2, 0x2CA8A52EDADD19BE},
+            {0xB657253FACDD27E0, 0xF9B74FD42023BF03},
+            {0x22, 0x16}
+        }
+    },
+    
+    {"Chain Reaction",
+        {   
+            0x3F5C09CA,
+            {0x5335DCCAAFAC6C2B, 0xF6573DBCCF3302B1},
+            {0x4CDD349F17D6E681, 0x86F415C0740DC5FB},
+            {0xA2DCFED85D2AE8EB, 0xDB7EF6FB03EABBBF},
+            {0xBEA8961B09BA8F75, 0xF80570108F5F6704},
+            {0x31, 0x16}
+        }
+    },
+    
+    {"Kaos",
+        {   
+            0xDFEB9C9F,
+            {0x183304206D70A43D, 0x3A3E629B631AD5C2},
+            {0xEC2B9521C57F344F, 0x8F78BCBA048B6436},
+            {0x87B66CA5C318BDAC, 0x4EAC40358B88D0D6},
+            {0xB762B84961B8E5EC, 0x0A3AB0791722CF0E},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Wild Storm",
+        {   
+            0xFF632AAE,
+            {0x4A88EA5C4173E0E1, 0xE937836213EBEC34},
+            {0x8801BD1446ECFCD6, 0x1D18606723B92A7A},
+            {0x8BA757EB6839AE13, 0x4D540D1ACB6AFE84},
+            {0x0E2DAD1C40212B8D, 0xA285B05548BD2608},
+            {0x22, 0x16}
+        }
+    },
+    
+    {"King Pen",
+        {   
+            0x5FAA6297,
+            {0x1AE4182B1952B951, 0xA04866D2A4BFC598},
+            {0x0F139F9D9747457B, 0x35CA4C9171DA608E},
+            {0x11CD2059C3149938, 0x4BE0E9B1892E8F20},
+            {0xD3BEDD172C7E1FBD, 0xFAB5287DC9AB840F},
+            {0x23, 0x15}
+        }
+    },
+
+    {"Tri-Tip",
+        {   
+            0x5F4CE198,
+            {0xD48519CB92DE5BBD, 0x49A158E3C1DCEA37},
+            {0xAADD13FBB6A5D028, 0x7C4227AFE4E5E1CF},
+            {0x4DE27A44423624E8, 0xB2971B430A0A267F},
+            {0x5DC22474D5BFF4CE, 0x223CC962C50BE305},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Chopscotch",
+        {   
+            0xBFB04ECB,
+            {0x99389528813DA2D0, 0xC4B73B85B65E2792},
+            {0xD7EF5C77F249A25C, 0x720DAF2237053A82},
+            {0xF0EFC02FF41C025D, 0xDBA6A47B8B0D7888},
+            {0xA899CD9CE6BDB2D8, 0xDE0A0B289C0D6205},
+            {0x31, 0x16}
+        }
+    },
+    
+    {"Boom Bloom",
+        {   
+            0x1FEF47B5,
+            {0x9B375B17F3FD25CB, 0x2EC89F81A0AD001A},
+            {0x35E53ED6AB24FCD4, 0xD08F4B0C9CCF7274},
+            {0x3AE2DBFCC2356720, 0x0D1F0F8EFFDAA95A},
+            {0xA5A8F799686E3D7A, 0x76333E73005B1A0A},
+            {0x23, 0x16}
+        }
+    },
+    
+    {"Barbella",
+        {   
+            0xDFCAF998,
+            {0x17B001B79234418E, 0x92C3C017F22FF23D},
+            {0xD4F05A9F5B199ADB, 0x81E32517F1E8A7C1},
+            {0xC53182866980FCEF, 0x82E0D25A5E27A54B},
+            {0x40E27FD5FD3E9609, 0x34E671870A4C7002},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Air Strike",
+        {   
+            0x7FF56A89,
+            {0x8CF23F0DA47F3225, 0x74386F4442176E0A},
+            {0xD64B98A6255C57CC, 0xB61BCCDF23B36829},
+            {0xB1C591F840AFBCF5, 0xAD0B972DD428BB09},
+            {0x43E09C7FE1A1807A, 0x31EBA75F28D4CE0F},
+            {0x22, 0x15}
+        }
+    },
+    
+    {"Ember",
+        {   
+            0x7FBF9FCB,
+            {0x90E61ADE908C4FB2, 0x8DA7009071E8707A},
+            {0x532631F91CEC3127, 0x0312CF21D458E145},
+            {0xAFCF8732ED2FF451, 0x0CE2923AFF90C50C},
+            {0x9EF1910DCD593924, 0x913EEAE50C250101},
+            {0x31, 0x16}
+        }
+    },
+    
+    {"Ambush",
+        {   
+            0xFF5E7DA1,
+            {0xDFE9B3EA391341DB, 0x4A5B24FF3DD24A85},
+            {0xB9D402F739CCD85A, 0x26E83A02846F0C45},
+            {0xC357F9CCEA0B9F3F, 0x475C69FF9DC8476C},
+            {0x468A0332A430EEBF, 0x4D5891417EF35D01},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Tidepool",
+        {   
+            0xDFE111CC,
+            {0x9E7C6678E58F1E5B, 0x73C58F5B7F6CAACA},
+            {0x7D0FF986C4BDA36F, 0x67AEF7056839E9C6},
+            {0x3C286F3B9179E012, 0x08985148515F8520},
+            {0x79B562ED595259A9, 0xA6B6AB77D6BEA805},
+            {0x31, 0x16}
+        }
+    },
+
+    {"Crash Bandicoot",
+        {   
+            0xDF8DC3A7,
+            {0x62238A3A4B7CE311, 0x83A51580CDFCAF04},
+            {0x1C380826260BDEFB, 0xCE621316D890412D},
+            {0x186488200B99345E, 0x201B10E19E22BF00},
+            {0x96D4503D5D430CC3, 0x2E320ADA0AA04E0C},
+            {0x40, 0x15}
+        }
+    },
+    
+    {"Dr. Neo Cortex",
+        {   
+            0x3F041591,
+            {0x329CD5CA846514EB, 0x0A6F09F713CB5211},
+            {0x0542AB329F851423, 0x8C54971E26D2AEDE},
+            {0x347BF39BEA6BD3C1, 0xFC0BF9EE38905B07},
+            {0x4FEF09952A259BAA, 0x88157E2D1DBE880A},
+            {0x22, 0x15}
+        }
+    },
+
+    // Level Packs
+    {"Enchanted Elven Forest",
+        {   
+            0xBF3A0AB5,
+            {0xCC7A65D8C3725A20, 0xE9832237BE6D5BD3},
+            {0x8A74561E92E7FC02, 0x99F001C829305E06},
+            {0xDC798113A88A0312, 0x140F71C043C89B80},
+            {0x98320041FDC073D3, 0x8154D48E64EBB206},
+            {0x23, 0x16}
+        }
+    },
+
+    {"Gryphon Park Observatory",
+        {   
+            0x5F66D59E,
+            {0x849D7524DB7AA0F7, 0x5240E5FEF86AB5F9},
+            {0x16F0D6F8A6CB74EC, 0x7053DD6A4E7AF65E},
+            {0xCEA266537BA8F2CD, 0x93D63BFB60244974},
+            {0xCBCBAFCA14D5FAB6, 0x7E77308BDDF24A0B},
+            {0x37, 0x15}
+        }
+    },
+    
+    // Creation Crystals
+    {"Magic Creation Crystal",
+        {   
+            0x7FD2DBAB,
+            {0xBDAF005F53EB9CBD, 0x2FF77A5C89B67BD1},
+            {0x58D2FDB63A320F19, 0xD56C42F835545178},
+            {0x88762994201007FC, 0xA63425A962554C24},
+            {0xFAE4882B703AA8E6, 0x1A615C0B69899509},
+            {0x40, 0x15}
+        }
+    },
+
+    {"Water Creation Crystal",
+        {   
+            0xDFE00D93,
+            {0x1092624DE2F59154, 0xC9982B81BF670780},
+            {0x36D0566D245AAA9D, 0x6390D38A2ED8D9B8},
+            {0x61C5EA9360C4B44F, 0xF5AC7B1C8BF31FAC},
+            {0xE4B6EA6CD35DFBA1, 0x091DB882E9B6720F},
+            {0x22, 0x15}
+        }
+    },
+    
+    {"Air Creation Crystal",
+        {   
+            0xDF5B6895,
+            {0x63C1D508B98002BC, 0x64762DBFDCC702D6},
+            {0xD26E3240568B86F8, 0x675ADF3F9B1F5B44},
+            {0x89B69AAB1D7EB35F, 0x40F19533BA942F1D},
+            {0x893B1F00F3DE13D0, 0x67553199E80B1B04},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Undead Creation Crystal",
+        {   
+            0x3F8B65A2,
+            {0xC34B50ED89086855, 0xDC5FEB904282F732},
+            {0x2EC0403E3F06E579, 0xD3B40690F786A249},
+            {0xA14212A0B407CD8D, 0x5BA2A6118318DAEE},
+            {0x734A96F85D92F2D5, 0x84FE16B6DC13B001},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Tech Creation Crystal",
+        {   
+            0xFF1BEB95,
+            {0xE77E1B050CF80D0F, 0xF53394CE40761795},
+            {0xBC848CDE04A72904, 0x8CF573462DB2DB45},
+            {0x7A83CE3C8DB9E963, 0x8B32AA61C38C59A6},
+            {0xA67F812004CCDAF4, 0x11E95AD38F1C6A0E},
+            {0x23, 0x15}
+        }
+    },
+    
+    {"Fire Creation Crystal",
+        {   
+            0x7F0F838F,
+            {0x29B38192692DD4A2, 0xEDC7021DB82ABD62},
+            {0x0DE92755663973BE, 0x747250FB8ECEE9AA},
+            {0x7F195CF16FAEE1D7, 0x742589F2877DCF81},
+            {0x9BBA0752F2965610, 0x35322F004B9C4004},
+            {0x22, 0x15}
+        }
+    },
+    
+    {"Earth Creation Crystal",
+        {   
+            0x1F2C13A6,
+            {0xEAE9C0BBA841E90F, 0xA3EA2F119114C51B},
+            {0x928E5CC1509E504C, 0xD5638936B5961418},
+            {0xBCE406D52F281665, 0x68F6F21D4334425A},
+            {0xD842D82B23DBA753, 0xADB8BBFD7712AC0C},
+            {0x37, 0x15}
+        }
+    },
+    
+    {"Life Creation Crystal",
+        {   
+            0x7F4FD892,
+            {0x54029B4244E811D7, 0xB92F7ED186FBBDAF},
+            {0xEB39D2CD1CA09F83, 0x2F6E1F2157DF3C53},
+            {0x12F3050B849A988B, 0x8DB7835A93C7D7A4},
+            {0x6D1FBFF6EF5CBFD6, 0x50C87A8DD5056006},
+            {0x22, 0x15}
+        }
+    },
+    
+    {"Dark Creation Crystal",
+        {   
+            0xBF332C93,
+            {0x4A4B4F8321746462, 0x9258A71ACE54E3ED},
+            {0x90ECC11529E59A46, 0xE56876264948D0FE},
+            {0x2C3416D8D3DC5627, 0x123FAE0865E5375F},
+            {0x9FE88F67CDAE2D6D, 0x0EBA4065692B6906},
+            {0x22, 0x15}
+        }
+    },
+    
+    {"Light Creation Crystal",
+        {   
+            0x1F29588E,
+            {0x2703A79B45685F91, 0x14CE17FEFB2A6FF4},
+            {0xF5EAC3AC209531CF, 0xF46237E62461404D},
+            {0x1143BE6E1945CE01, 0xB14A16509FA417FE},
+            {0x183A033819578A76, 0x036FED4B3CC84700},
+            {0x22, 0x15}
+        }
+    },
+};
+
 #endif

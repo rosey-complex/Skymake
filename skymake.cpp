@@ -56,6 +56,8 @@ int main(int argc, char *argv[]) {
     L_Content -> addWidget(CB_SkySelect, 0, 0, 1, 0);
     for (const auto &[Name, IDs] : skylanderMap)
         CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
+    for (const auto &[Name, IDs] : imaginatorsMap)
+        CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
 
     // ID/VarID prompt
     QHBoxLayout *L_Adv_Container = new QHBoxLayout;
@@ -75,6 +77,7 @@ int main(int argc, char *argv[]) {
             if (tempQWidget) tempQWidget -> setDisabled(true);
         }
     }
+
     // set initial values
     QString QS_SelSky = CB_SkySelect -> currentText();
     std::pair<uint16_t, uint16_t> IDs = skylanderMap[QS_SelSky.toStdString()];

@@ -15,7 +15,8 @@
 - Copy the extracted binary file to **/usr/bin** or **/usr/local/bin** or **~/.local/bin** (if you have it in your $PATH).
 
 ## ✅ What it can:
-- Create Skylanders up to Superchargers,
+- Create Skylanders all the way up to Imaginators,
+- Create Creation Crystals,
 - Create Magic Items,
 - Create Vehicles,
 - Create Traps,
@@ -24,7 +25,7 @@
 - Create ***some*** scrapped Skylanders.
 
 ## ⛔ What it can't:
-- Create figures for Imaginators.
+- Create figures for Imaginators with unique NUIDs.
 
 ## Compiling:
 ### On Linux:

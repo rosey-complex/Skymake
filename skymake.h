@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstring>
 #include <filesystem>
+#include "skylanders.h"
 
 static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint32_t size) {
     static constexpr std::array<uint16_t, 256> CRC_CCITT_TABLE {
@@ -54,6 +55,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     std::string filePath;
     uint16_t SkyID = 0;
     uint16_t SkyVarID = 0;
+    bool isFromSI = false;
 
     // Manual (ID Explicit) Mode 
     if (Sw[1]) {
@@ -69,11 +71,25 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     else {
         filePath = targetFile + "/" + skylanderName + ".sky";
         // Lookup the Skylander data based on the given skylanderName
-        auto it = skylanderMap.find(skylanderName);
-        if (it != skylanderMap.end()) {
-            std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
+        auto it = imaginatorsMap.find(skylanderName);
+        if (it != imaginatorsMap.end()) {
+            isFromSI = true;
+            std::pair<uint16_t, uint16_t> IDs = imaginatorsMap[skylanderName];
             SkyID = IDs.first;
             SkyVarID = IDs.second;
+            std::cout << "* Found Imaginators figure: " << skylanderName << std::endl;
+        }
+        else {
+            auto it = skylanderMap.find(skylanderName);
+            if (it != skylanderMap.end()) {
+                std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
+                SkyID = IDs.first;
+                SkyVarID = IDs.second;
+                std::cout << "* Found: " << skylanderName << std::endl;
+            }
+            else {
+                return false;
+            }
         }
     }
     // File Path without extension
@@ -114,28 +130,99 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[(index * 0x40) + 0x36], &otherBlocks, sizeof(otherBlocks));
     }
 
-    // Set the NUID of the figure
-    srand (time(NULL));
-    uint32_t RandNUID = rand();
-    memcpy(&fileData[0], &RandNUID, sizeof(RandNUID));
+    if (isFromSI) {
+        // Set the skylander info
+        memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
+        memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
 
-    // The BCC (Block Check Character)
-    fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
+        std::tuple< 
+                    uint32_t,                        // NUID
+                    std::pair<uint64_t, uint64_t>,  // 0x20
+                    std::pair<uint64_t, uint64_t>,  // 0x40
+                    std::pair<uint64_t, uint64_t>,  // 0x220
+                    std::pair<uint64_t, uint64_t>,  // 0x3E0
+                    std::pair<uint8_t, uint8_t>  // Magic Numbers
+                    > BFIMBytes = BFIM[skylanderName];
+        // Declare the bytes as varables and unpack th tuple
+        uint32_t NUID;
+        std::pair<uint64_t, uint64_t> Bx2X, Bx4X, Bx22X, Bx3EX;
+        std::pair<uint8_t, uint8_t> magicNums;
+        std::tie(NUID, Bx2X, Bx4X, Bx22X, Bx3EX, magicNums) = BFIMBytes;
 
-    // ATQA
-    fileData[5] = 0x81;
-    fileData[6] = 0x01;
+        // Convert values to big endian format
+        NUID =     htobe32(NUID);
+        Bx2X.first =    htobe64(Bx2X.first);
+        Bx4X.first =    htobe64(Bx4X.first);
+        Bx22X.first =   htobe64(Bx22X.first);
+        Bx3EX.first =   htobe64(Bx3EX.first);
+        Bx2X.second =   htobe64(Bx2X.second);
+        Bx4X.second =   htobe64(Bx4X.second);
+        Bx22X.second =  htobe64(Bx22X.second);
+        Bx3EX.second =  htobe64(Bx3EX.second);
+        //// Write the bytes
+        // NUID
+        memcpy(&fileData[0x0], &NUID, sizeof(NUID));
+        
+        // The BCC (Block Check Character)
+        fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
 
-    // SAK
-    fileData[7] = 0x0F;
+        // ATQA
+        fileData[5] = 0x81;
+        fileData[6] = 0x01;
 
-    // Set the skylander info
-    memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
-    memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
+        // SAK
+        fileData[7] = 0x0F;
 
-    // Set checksum
-    uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
-    memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+        // Specific bytes
+        fileData[0x8] = 0xC4;
+        fileData[0x3F] = 0x51;
+
+        // Magic Bytes
+        fileData[0x9] = magicNums.first;
+        fileData[0xF] = magicNums.second;
+
+        // Set checksum
+        uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
+        memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+
+        // 0x20
+        memcpy(&fileData[0x20], &Bx2X.first, sizeof(Bx2X.first));
+        memcpy(&fileData[0x28], &Bx2X.second, sizeof(Bx2X.second));
+        
+        // 0x40
+        memcpy(&fileData[0x40], &Bx4X.first, sizeof(Bx4X.first));
+        memcpy(&fileData[0x48], &Bx4X.second, sizeof(Bx4X.second));
+        // 0x220
+        memcpy(&fileData[0x220], &Bx22X.first, sizeof(Bx22X.first));
+        memcpy(&fileData[0x228], &Bx22X.second, sizeof(Bx22X.second));
+        // 0x3E0
+        memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
+        memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
+    }
+    else {
+        // Set the NUID of the figure
+        srand (time(NULL));
+        uint32_t RandNUID = rand();
+        memcpy(&fileData[0], &RandNUID, sizeof(RandNUID));
+
+        // The BCC (Block Check Character)
+        fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
+
+        // ATQA
+        fileData[5] = 0x81;
+        fileData[6] = 0x01;
+
+        // SAK
+        fileData[7] = 0x0F;
+
+        // Set the skylander info
+        memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
+        memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
+
+        // Set checksum
+        uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
+        memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
+    }
 
     // Write the data to the .sky file
     skyFile.write(reinterpret_cast<const char *>(buf.data()), buf.size());
