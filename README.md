@@ -1,6 +1,8 @@
-![Screnshot](Screenshots/Screenshot1.png)
+![Logo](Logo/logo2.svg)
 
 # **Skymake - A simple Skylanders® figure generator**
+
+![Screenshot](Screenshots/Screenshot1.png)
 
 ## Installation:
 
