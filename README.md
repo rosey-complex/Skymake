@@ -32,11 +32,12 @@
 - Create Traps,
 - Create Debug Skylanders,
 - Create Instant/Virtual Skylander variants,
-- Create ***some*** scrapped Skylanders.
+- Create ***some**** scrapped Skylanders.
+###### (*It cannot yet create scrapped imaginators figures... the reason can be figured out from the two things skymake can't do. (TL;DR: no Heartbreaker Buckshot :( ))
 
 ## ⛔ What it can't:
 - Create figures for Imaginators with unique NUIDs.
-- Create files for Imaginators with custom IDs and VarIDs.
+- Create figures for Imaginators with custom IDs and VarIDs.
 
 ## Compiling:
 ### On Linux:
