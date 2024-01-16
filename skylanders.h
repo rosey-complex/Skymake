@@ -584,8 +584,23 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Tidepool",                                        {629, 0x5000}},
     {"Crash Bandicoot",                                 {630, 0x5000}},
     {"Dr. Neo Cortex",                                  {631, 0x5000}},
-    // Special variants needed
+    
+    // Special variants
+    {"Dark King Pen",                                   {601, 0x5402}},
+    {"Dark Wolfgang",                                   {614, 0x5402}},
+    {"Legendary Pit Boss",                              {605, 0x5403}},
+    {"Candy-Coated Chopscotch",                         {603, 0x5415}},
+    {"Solar Flare Aurora",                              {619, 0x5402}},
+    {"Jingle-Bell Chompy Mage",                         {621, 0x540E}},
+    {"Mystical Tae Kwon Crow",                          {612, 0x5402}},
+    {"Hard-Boiled Flare Wolf",                          {620, 0x540D}},
+    {"Legendary Tri-Tip",                               {602, 0xE40B}},
+    {"Dark Golden Queen",                               {613, 0x5402}},
+    {"Steel-Plated Hood Sickle",                        {611, 0x5402}},
+    {"Mystcial Bad Juju",                               {622, 0x5402}},
+    {"Egg-Bomber Air Strike",                           {607, 0x540D}},
 
+    // Level packs
     {"Enchanted Elven Forest",                          {311, 0x5000}},
     {"Gryphon Park Observatory",                        {310, 0x5000}},
 
@@ -605,6 +620,11 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {
     {"Light Creation Crystal",                          {689, 0x520B}},
 };
 
+
+/** 
+ * This whole thing can be removed once Imaginators figures get fully figured out...
+ * Until then, this will be the compromise.
+ * **/
 std::map<std::string, std::tuple<   
                                 uint32_t,                           // NUID
                                 std::pair<uint64_t, uint64_t>,      // 0x20
@@ -952,6 +972,150 @@ std::map<std::string, std::tuple<
             {0x347BF39BEA6BD3C1, 0xFC0BF9EE38905B07},
             {0x4FEF09952A259BAA, 0x88157E2D1DBE880A},
             {0x22, 0x15}
+        }
+    },
+
+    // Special variants
+    {"Dark King Pen",
+        {   
+            0xFFF3AAA9,
+            {0x75AA4FA34A013D14, 0xABEA89FDDB473C6F},
+            {0xADEC31C0E6CFBF4D, 0x23B1763460FACFCC},
+            {0x5254A788BD03F130, 0x2A2CE68A99ED942D},
+            {0x83C51E38B7AED105, 0xA5D7018278DC5A0A},
+            {0x40, 0x15}
+        }
+    }, 
+
+    {"Dark Wolfgang",
+        {   
+            0xFF672C9C,
+            {0x747DAF6F51ADE825, 0xDDD850F23C5A2388},
+            {0xBD66DF49CC7C7E17, 0xF6D5EBCD779975F5},
+            {0x42DE771CE4FF8143, 0x1DB026C73812C804},
+            {0x2085EDA630FF6DA4, 0x80DE2AED6A2FDC01},
+            {0x25, 0x15}
+        }
+    },
+
+    {"Legendary Pit Boss",
+        {   
+            0xFF602EB1,
+            {0xDF0D5E97F91C8E4C, 0x96C6D7709A6EF5C2},
+            {0xF1224BE6CB972DF1, 0xDB3B6F4DB854625B},
+            {0xEC6C5E9772FCF45E, 0xB08F00BE945C5A04},
+            {0xE5E655A51218771C, 0x40FAA0FFF7118909},
+            {0x22, 0x16}
+        }
+    },
+
+    {"Candy-Coated Chopscotch",
+        {   
+            0xBF51CE9E,
+            {0x2951B8A77A41DDFD, 0x34C238EF6A7AB640},
+            {0x710F111FC8FF4254, 0xEB429897D336D6B0},
+            {0xD120F607DB3AC88D, 0xDBFC8CCAA6EED529},
+            {0x71BA393EDD7AC95A, 0xB4203BCEFAB7D70B},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Solar Flare Aurora",
+        {   
+            0xDF43AC94,
+            {0xE7329C322E5B14A0, 0x954CF11CD5BCD598},
+            {0xF828B999509E83B0, 0x5382D573F5429CA8},
+            {0x4192D43764F29852, 0x360463A3D63F39EF},
+            {0xC1B50E432D6A2288, 0x4818B1FBB3496200},
+            {0x23, 0x15}
+        }
+    },
+
+    {"Jingle-Bell Chompy Mage",
+        {   
+            0x7F4629B1,
+            {0x1D69E58411753BA1, 0xB17C65838114B3EB},
+            {0x7F6EBC6CB514BA31, 0x6A36EAC59C70F073},
+            {0x2E9230BBBA0F5D93, 0xF7784E8283155C30},
+            {0xD529E14E1A92973E, 0xF2AA6D04F87BEE07},
+            {0x22, 0x16}
+        }
+    },
+
+    {"Mystical Tae Kwon Crow",
+        {   
+            0x7FD0B4A2,
+            {0x3C632337E544A5E3, 0x92B8A7967DD2DC0F},
+            {0x9B53F61F293A97B5, 0x24D62BA8DAD14252},
+            {0xCFF19028E798CB84, 0xF121608214AFCF66},
+            {0x5A254369C524E19B, 0xE6BB6B91634EE20B},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Hard-Boiled Flare Wolf",
+        {   
+            0x9F5EB7BA,
+            {0xB55A340C95ED362D, 0xD555FC346C9FF296},
+            {0x359872F238BC71A0, 0xBF482FF081FD4234},
+            {0xD0927BDB78C41F27, 0x8A7DCB2C7444D0F1},
+            {0xB1B5D56924CB36AA, 0x751299B1028A5207},
+            {0x30, 0x16}
+        }
+    },
+
+    {"Legendary Tri-Tip",
+        {   
+            0xFFAE9988,
+            {0x1286C69C1F595E26, 0xFE755FED7FB1E372},
+            {0x244C369463CEC504, 0x6587BE5A0BE4F334},
+            {0x494AB02242F82952, 0xA41BDC884DDAEE3B},
+            {0x8B6620B65F4CC498, 0x60243EB8D696B806},
+            {0x22, 0x15}
+        }
+    },
+
+    {"Dark Golden Queen",
+        {   
+            0xFF76A1A8,
+            {0x86332C2D1459337F, 0xBC255E79A41B28C5},
+            {0xECCB379A5A8CB0F0, 0x0BBFBA9A507E7580},
+            {0x2BF9432C240B4E00, 0x8CF4CADF856A61E3},
+            {0x830350B358C1E3DE, 0x1FED7FB8DE5FE105},
+            {0x40, 0x15}
+        }
+    },
+
+    {"Steel-Plated Hood Sickle",
+        {   
+            0x7F8CC39E,
+            {0x864AE95CB4F7FC5B, 0x7BDD6966FD317F86},
+            {0x51A8F5DFC36F3CA2, 0x0C5E3AF2EB17E865},
+            {0xCC5578ABB3B4016F, 0x96AB9E1C6C113D58},
+            {0x15DF4127834A9954, 0x2D8DB0C0BAF2DB06},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Mystcial Bad Juju",
+        {   
+            0x3F6BBD9F,
+            {0x56870AEEEDFFBEF4, 0x6ACB2E882069AE92},
+            {0xECA3ADA1787087E1, 0xB7A86CC591A4698D},
+            {0xE569C5A0033A06F7, 0x1C25179CE897296E},
+            {0xE48F6A3BBDAB57DA, 0x65BBC0A3E2EE710C},
+            {0x37, 0x15}
+        }
+    },
+
+    {"Egg-Bomber Air Strike",
+        {   
+            0x3FFE539F,
+            {0x9E4F2306E7605EA3, 0x83EFBE608F652DFC},
+            {0x61B5ADCDFE5A939F, 0x2D06425D06DD5706},
+            {0x04EB304D96B3F054, 0xB213CC5A1CCA8795},
+            {0xE7410A71DE737F0B, 0x4E872ED5EFD55A01},
+            {0x37, 0x15}
         }
     },
 
