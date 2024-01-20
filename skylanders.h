@@ -481,10 +481,13 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Instant Sea Shadow",                              {3237, 0x450F}},
     {"Virtual Snap Shot",                               {462, 0x450F}},
     {"Virtual Food Fight",                              {476, 0x450F}},
+    {"Fushion (Scrapped; Superchargers)",               {4500, 0x0000}},
+    {"Synergy (Scrapped; Superchargers)",               {4501, 0x0000}},
+    {"Unity (Scrapped; Superchargers)",                 {4502, 0x0000}},
     // Scrapped
-    {"Series 4 Cynder (Trap Team)",                     {32, 0x3805}},
-    {"Series 2 Flashwing (Trap Team)",                  {103, 0x3805}},
-    {"BlueFalcon_Base (BROKEN; Superchargers)",         {4503, 0x0000}},
+    {"Series 4 Cynder (Scrapped; Trap Team)",           {32, 0x3805}},
+    {"Series 2 Flashwing (Scrapped; Trap Team)",        {103, 0x3805}},
+    {"BlueFalcon_Base (Scrapped; Superchargers)",       {4503, 0x0000}},
 
     /** Alternative Names **/
 
