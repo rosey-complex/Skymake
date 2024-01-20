@@ -45,19 +45,38 @@ int main(int argc, char *argv[]) {
     QCheckBox *CHK_OW = new QCheckBox("Avoid overwrite");
     L_Window -> addWidget(CHK_OW, 2, 1);
 
+    // Combo Box for selecting the type of skylander
+    QComboBox *CB_TypeSelect = new QComboBox;
+    L_Buttons -> addWidget(CB_TypeSelect);
+    CB_TypeSelect -> addItem("Core");
+    CB_TypeSelect -> addItem("Giant");
+    CB_TypeSelect -> addItem("Swapper");
+    CB_TypeSelect -> addItem("Trap Master");
+    CB_TypeSelect -> addItem("Mini/Sidekick");
+    CB_TypeSelect -> addItem("Supercharger");
+    CB_TypeSelect -> addItem("Sensei");
+    CB_TypeSelect -> addItem("Trap");
+    CB_TypeSelect -> addItem("Vehicles");
+    CB_TypeSelect -> addItem("Creation Crystal");
+    CB_TypeSelect -> addItem("Scrapped");
+    CB_TypeSelect -> addItem("Debug");
+    CB_TypeSelect -> addItem("Magic Item");
+
+    // Combo Box for selecting skylanders
+    QComboBox *CB_SkySelect = new QComboBox;
+    L_Content -> addWidget(CB_SkySelect, 0, 0, 1, 0);
+
+    // Add items to Combo Box
+    //for (const auto &[Name, IDs] : MLS_Core)
+    //    CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
+    //for (const auto &[Name, IDs] : imaginatorsMap)
+    //    CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
+
     // Buttons
     QPushButton *BTN_Create = new QPushButton("Make!");
     QPushButton *BTN_Mode = new QPushButton("Mode: Basic");
     L_Buttons -> addWidget(BTN_Create);
     L_Buttons -> addWidget(BTN_Mode);
-
-    // Combo Box
-    QComboBox *CB_SkySelect = new QComboBox;
-    L_Content -> addWidget(CB_SkySelect, 0, 0, 1, 0);
-    for (const auto &[Name, IDs] : skylanderMap)
-        CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
-    for (const auto &[Name, IDs] : imaginatorsMap)
-        CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
 
     // ID/VarID prompt
     QHBoxLayout *L_Adv_Container = new QHBoxLayout;
@@ -80,7 +99,7 @@ int main(int argc, char *argv[]) {
 
     // set initial values
     QString QS_SelSky = CB_SkySelect -> currentText();
-    std::pair<uint16_t, uint16_t> IDs = skylanderMap[QS_SelSky.toStdString()];
+    std::pair<uint16_t, uint16_t> IDs = MLS_Core[QS_SelSky.toStdString()];
     LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
     std::stringstream VarIDHex;
     VarIDHex << std::hex << IDs.second;
@@ -150,12 +169,13 @@ int main(int argc, char *argv[]) {
         else LB_Msg -> setText("No destination specified!");
     });
 
-    QObject::connect(BTN_Mode, &QPushButton::clicked, [&BTN_Mode, &isInAdvanced, &CB_SkySelect, &L_Content, &L_Adv_Container, &window, &LB_ID] {
+    QObject::connect(BTN_Mode, &QPushButton::clicked, [&BTN_Mode, &isInAdvanced, &CB_SkySelect, &L_Content, &L_Adv_Container, &window, &LB_ID, &CB_TypeSelect] {
         switch(isInAdvanced) {
             case true:
                 BTN_Mode -> setText("Mode: Basic");
                 isInAdvanced = false;
                 CB_SkySelect -> setDisabled(false);
+                CB_TypeSelect -> setDisabled(false);
                 for(int i = 0; i < L_Adv_Container -> count(); ++i) {
                     QLayoutItem *tempQItem = L_Adv_Container -> itemAt(i);
                     if (tempQItem) {
@@ -168,6 +188,7 @@ int main(int argc, char *argv[]) {
                 BTN_Mode -> setText("Mode: Advanced");
                 isInAdvanced = true;
                 CB_SkySelect -> setDisabled(true);
+                CB_TypeSelect -> setDisabled(true);
                 for(int i = 0; i < L_Adv_Container -> count(); ++i) {
                     QLayoutItem *tempQItem = L_Adv_Container -> itemAt(i);
                     if (tempQItem) {
@@ -190,7 +211,7 @@ int main(int argc, char *argv[]) {
 
     QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID] {
         QString QS_SelSky = CB_SkySelect -> currentText();
-        std::pair<uint16_t, uint16_t> IDs = skylanderMap[QS_SelSky.toStdString()];
+        std::pair<uint16_t, uint16_t> IDs = MLS_Core[QS_SelSky.toStdString()];
         LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
         std::stringstream VarIDHex;
         VarIDHex << std::hex << IDs.second;

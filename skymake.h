@@ -80,9 +80,9 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             std::cout << "* Found Imaginators figure: " << skylanderName << std::endl;
         }
         else {
-            auto it = skylanderMap.find(skylanderName);
-            if (it != skylanderMap.end()) {
-                std::pair<uint16_t, uint16_t> IDs = skylanderMap[skylanderName];
+            auto it = MLS_Core.find(skylanderName);
+            if (it != MLS_Core.end()) {
+                std::pair<uint16_t, uint16_t> IDs = MLS_Core[skylanderName];
                 SkyID = IDs.first;
                 SkyVarID = IDs.second;
                 std::cout << "* Found: " << skylanderName << std::endl;
