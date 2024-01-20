@@ -48,19 +48,8 @@ int main(int argc, char *argv[]) {
     // Combo Box for selecting the type of skylander
     QComboBox *CB_TypeSelect = new QComboBox;
     L_Buttons -> addWidget(CB_TypeSelect);
-    CB_TypeSelect -> addItem("Core");
-    CB_TypeSelect -> addItem("Giant");
-    CB_TypeSelect -> addItem("Swapper");
-    CB_TypeSelect -> addItem("Trap Master");
-    CB_TypeSelect -> addItem("Mini/Sidekick");
-    CB_TypeSelect -> addItem("Supercharger");
-    CB_TypeSelect -> addItem("Sensei");
-    CB_TypeSelect -> addItem("Trap");
-    CB_TypeSelect -> addItem("Vehicles");
-    CB_TypeSelect -> addItem("Creation Crystal");
-    CB_TypeSelect -> addItem("Scrapped");
-    CB_TypeSelect -> addItem("Debug");
-    CB_TypeSelect -> addItem("Magic Item");
+    for (const auto &[Category, Number]: MLS_Categories)
+        CB_TypeSelect -> addItem(QString::fromStdString(Category));
 
     // Combo Box for selecting skylanders
     QComboBox *CB_SkySelect = new QComboBox;

@@ -4,10 +4,27 @@
 #include <cstdint>
 #include <string>
 
+// This is where categories are storred with their corresponding number
+std::map<std::string, uint16_t> MLS_Categories = {
+    {"Core", 0},
+    {"Giant", 1},
+    {"Swapper", 2},
+    {"Trap Master", 3},
+    {"Mini/Sidekick", 4},
+    {"Supercharger", 5},
+    {"Sensei", 6},
+    {"Trap", 7},
+    {"Vehicle", 8},
+    {"Creation Crystal", 9},
+    {"Scrapped", 10},
+    {"Debug", 11},
+    {"Magic Item", 12},
+    {"Level Packs", 13},
+};
+
 // This is where figurines are stored
 // Format (please keep alignment consistent for readibilty):
 //  {"Name",                                            {ID, Variant(Hex)}},
-
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Core = {
     {"Whirlwind",                                       {0, 0x0000}},
     {"Series 2 Whirlwind",                              {0, 0x1801}},
@@ -608,8 +625,6 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Items = {
     {"Nightmare Express",                               {306, 0x0000}},
     {"Sunscraper Spire",                                {307, 0x0000}},
     {"Midnight Museum",                                 {308, 0x0000}},
-    {"Enchanted Elven Forest",                          {311, 0x5000}},
-    {"Gryphon Park Observatory",                        {310, 0x5000}},
     {"Battle Hammer",                                   {3200, 0x0000}},
     {"Sky Diamond",                                     {3201, 0x0000}},
     {"Platinum Sheep",                                  {3202, 0x0000}},
@@ -646,6 +661,10 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Debug = {
     {"Template Sea Vehicle",                            {7999, 0x0000}},
 };
 
+std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_LevelPacks = {
+    {"Enchanted Elven Forest",                          {311, 0x5000}},
+    {"Gryphon Park Observatory",                        {310, 0x5000}},
+};
 /** 
  * This whole thing can be removed once Imaginators figures get fully figured out...
  * Until then, this will be the compromise.

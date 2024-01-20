@@ -45,10 +45,66 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint3
     return crc;
 }
 
-bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000) {
+std::pair<uint16_t, uint16_t> getSkylanderIDs(std::string name, uint16_t category) {
+    switch (category) {
+    case 0:
+        return MLS_Core[name];
+        break;
+    case 1:
+        return MLS_Giants[name];
+        break;
+    case 2:
+        return MLS_Swappers[name];
+        break;
+    case 3:
+        return MLS_TrapMasters[name];
+        break;
+    case 4:
+        return MLS_Minis[name];
+        break;
+    case 5:
+        return MLS_Superchargers[name];
+        break;
+    case 6:
+        return MLS_Sensei[name];
+        break;
+    case 7:
+        return MLS_Traps[name];
+        break;
+    case 8:
+        return MLS_Vehicles[name];
+        break;
+    case 9:
+        return MLS_CreationCrystals[name];
+        break;
+    case 10:
+        return MLS_Scraps[name];
+        break;
+    case 11:
+        return MLS_Debug[name];
+        break;
+    case 12:
+        return MLS_Items[name];
+        break;
+    case 13:
+        return MLS_LevelPacks[name];
+    
+    default:
+        return {0, 0};
+        break;
+    }
+}
+
+// <insert hideous function>
+std::tuple<uint32_t, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint8_t, uint8_t>>
+    getImaginatorsData (std::string name) {
+    return BFIM[name];
+}
+
+bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000, unsigned category = 0) {
     /*
     Sw[0]   - Unsafe/Safe Mode
-    Sw[1]   - Auto/Manual Mode
+    Sw[1]   - Basic/Advanced Mode
     */
 
     std::string filePathNoExtension;
@@ -57,7 +113,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     uint16_t SkyVarID = 0;
     bool isFromSI = false;
 
-    // Manual (ID Explicit) Mode 
+    // ""Advanced"" Mode 
     if (Sw[1]) {
         //// Allows a user to create a skylander if they know the variant ID and skylander ID
         // Use a file name based on the provided IDs
@@ -67,30 +123,12 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         SkyID = customID;
         SkyVarID = customVar;
     }
-    // Auto (ID Imlicit) Mode
+    // Basic Mode
     else {
         filePath = targetFile + "/" + skylanderName + ".sky";
-        // Lookup the Skylander data based on the given skylanderName
-        auto it = imaginatorsMap.find(skylanderName);
-        if (it != imaginatorsMap.end()) {
-            isFromSI = true;
-            std::pair<uint16_t, uint16_t> IDs = imaginatorsMap[skylanderName];
-            SkyID = IDs.first;
-            SkyVarID = IDs.second;
-            std::cout << "* Found Imaginators figure: " << skylanderName << std::endl;
-        }
-        else {
-            auto it = MLS_Core.find(skylanderName);
-            if (it != MLS_Core.end()) {
-                std::pair<uint16_t, uint16_t> IDs = MLS_Core[skylanderName];
-                SkyID = IDs.first;
-                SkyVarID = IDs.second;
-                std::cout << "* Found: " << skylanderName << std::endl;
-            }
-            else {
-                return false;
-            }
-        }
+        std::pair IDs = getSkylanderIDs(skylanderName, category);
+        SkyID = IDs.first;
+        SkyVarID = IDs.second;
     }
     // File Path without extension
     filePathNoExtension = filePath;
@@ -126,11 +164,10 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     uint32_t firstBlock = 0x690F0F0F;
     uint32_t otherBlocks = 0x69080F7F;
     memcpy(&fileData[0x36], &firstBlock, sizeof(firstBlock));
-    for (uint32_t index = 1; index < 0x10; index++) {
+    for (uint32_t index = 1; index < 0x10; index++) 
         memcpy(&fileData[(index * 0x40) + 0x36], &otherBlocks, sizeof(otherBlocks));
-    }
 
-    if (isFromSI) {
+    if (category == 6 || category == 9 || category == 13) {
         // Set the skylander info
         memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
@@ -142,7 +179,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
                     std::pair<uint64_t, uint64_t>,  // 0x220
                     std::pair<uint64_t, uint64_t>,  // 0x3E0
                     std::pair<uint8_t, uint8_t>  // Magic Numbers
-                    > BFIMBytes = BFIM[skylanderName];
+                    > BFIMBytes = getImaginatorsData(skylanderName);
         // Declare the bytes as varables and unpack th tuple
         uint32_t NUID;
         std::pair<uint64_t, uint64_t> Bx2X, Bx4X, Bx22X, Bx3EX;
