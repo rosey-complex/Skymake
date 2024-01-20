@@ -467,6 +467,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> skylanderMap = {
     {"Template Template (Bottom)",                      {1999, 0x0000}},
     {"Template Template (Top)",                         {2999, 0x0000}},
     {"Template Legacy",                                 {3999, 0x0000}},
+    {"Template Vehicle (???)",                          {4999, 0x0000}},
     {"Template Land Vehicle",                           {5999, 0x0000}},
     {"Template Sky Vehicle",                            {6999, 0x0000}},
     {"Template Sea Vehicle",                            {7999, 0x0000}},
