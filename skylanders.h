@@ -345,8 +345,6 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Superchargers = {
     {"Eggcited Thrillipede",                            {3428, 0x450D}},
 };
 
-
-
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Sensei = {
     /**
         Credits to:
@@ -574,12 +572,12 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_CreationCrystals = {
 };
 
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Scraps = {
+    {"Series 4 Cynder (Scrapped; Trap Team)",           {32, 0x3805}},
+    {"Series 2 Flashwing (Scrapped; Trap Team)",        {103, 0x3805}},
     {"VVind Up (Gear Head Vicarious Visions Wind Up)",  {3011, 0x2404}},
     {"Fushion (Scrapped; Superchargers)",               {4500, 0x0000}},
     {"Synergy (Scrapped; Superchargers)",               {4501, 0x0000}},
     {"Unity (Scrapped; Superchargers)",                 {4502, 0x0000}},
-    {"Series 4 Cynder (Scrapped; Trap Team)",           {32, 0x3805}},
-    {"Series 2 Flashwing (Scrapped; Trap Team)",        {103, 0x3805}},
     {"BlueFalcon_Base (Scrapped; Superchargers)",       {4503, 0x0000}},
 };
 
@@ -628,24 +626,24 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Items = {
 };
 
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Debug = {
+    {"Virtual Snap Shot",                               {462, 0x450F}},
+    {"Virtual Food Fight",                              {476, 0x450F}},
     {"Debug Minion",                                    {999, 0x0000}},
     {"Template Template (Bottom)",                      {1999, 0x0000}},
     {"Template Template (Top)",                         {2999, 0x0000}},
-    {"Template Legacy",                                 {3999, 0x0000}},
-    {"Template Vehicle",                                {4999, 0x0000}},
-    {"Template Land Vehicle",                           {5999, 0x0000}},
-    {"Template Sky Vehicle",                            {6999, 0x0000}},
-    {"Template Sea Vehicle",                            {7999, 0x0000}},
-    {"Instant Spitfire",                                {3412, 0x450F}},
-    {"Instant Super Shot Stealth Elf",                  {3415, 0x450F}},
-    {"Instant Dive-Clops",                              {3425, 0x450F}},
     {"Instant Hot Streak",                              {3224, 0x450F}},
     {"Instant Dive Bomber",                             {3231, 0x450F}},
     {"Instant Stealth Stinger",                         {3228, 0x450F}},
     {"Instant Sky Slicer",                              {3232, 0x450F}},
     {"Instant Sea Shadow",                              {3237, 0x450F}},
-    {"Virtual Snap Shot",                               {462, 0x450F}},
-    {"Virtual Food Fight",                              {476, 0x450F}},
+    {"Instant Spitfire",                                {3412, 0x450F}},
+    {"Instant Super Shot Stealth Elf",                  {3415, 0x450F}},
+    {"Instant Dive-Clops",                              {3425, 0x450F}},
+    {"Template Legacy",                                 {3999, 0x0000}},
+    {"Template Vehicle",                                {4999, 0x0000}},
+    {"Template Land Vehicle",                           {5999, 0x0000}},
+    {"Template Sky Vehicle",                            {6999, 0x0000}},
+    {"Template Sea Vehicle",                            {7999, 0x0000}},
 };
 
 /** 
