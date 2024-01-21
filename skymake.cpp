@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
     L_Content -> addWidget(BTN_SelDest, 2, 2);
 
     // Button Actions
-    QObject::connect(BTN_Create, &QPushButton::clicked, [&LE_Prefix, &LB_Msg, &CB_SkySelect, &CHK_OW, &OW, &isInAdvanced, &LE_ID, &LE_VarID]() {
+    QObject::connect(BTN_Create, &QPushButton::clicked, [&LE_Prefix, &LB_Msg, &CB_SkySelect, &CHK_OW, &OW, &isInAdvanced, &LE_ID, &LE_VarID, &QS_SelCat]() {
         QString QS_Dest = LE_Prefix -> text();
         QString QS_SelSky = CB_SkySelect -> currentText();
         LB_Msg -> setText("Last created: " + QS_Dest + " - " + QS_SelSky);
@@ -182,7 +182,7 @@ int main(int argc, char *argv[]) {
         if (!QS_Dest.isEmpty()) {
             if (std::filesystem::exists(QS_Dest.toStdString())) {
                 if (!isInAdvanced) {
-                    if (CreateSkylander(QS_SelSky.toStdString(), QS_Dest.toStdString(), Sw, ID, varID))
+                    if (CreateSkylander(QS_SelSky.toStdString(), QS_Dest.toStdString(), Sw, ID, varID, MLS_Categories[QS_SelCat.toStdString()]))
                         LB_Msg -> setText("Last created: " + QS_Dest + " - " + QS_SelSky+ ".");
                     else 
                         LB_Msg -> setText("Couldn't create skylander figure.");

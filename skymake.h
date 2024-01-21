@@ -170,7 +170,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     for (uint32_t index = 1; index < 0x10; index++) 
         memcpy(&fileData[(index * 0x40) + 0x36], &otherBlocks, sizeof(otherBlocks));
 
-    if (category == 6 || category == 9 || category == 13) {
+    if (category == 7 || category == 10 || category == 14) {
         // Set the skylander info
         memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
