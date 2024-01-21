@@ -21,16 +21,86 @@
 #include "skylanders.h"
 #include "skymake.h"
 
+QStringList getCategoryEntries(uint16_t category) {
+    QStringList entries = {};
+    switch (category) {
+        case 1:
+            for (const auto &[Name, IDs] : MLS_Core)
+                entries << QString::fromStdString(Name);
+            break;
+        case 2:
+            for (const auto &[Name, IDs] : MLS_Giants)
+                entries << QString::fromStdString(Name);
+            break;
+        case 3:
+            for (const auto &[Name, IDs] : MLS_Swappers)
+                entries << QString::fromStdString(Name);
+            break;
+        case 4:
+            for (const auto &[Name, IDs] : MLS_TrapMasters)
+                entries << QString::fromStdString(Name);
+            break;
+        case 5:
+            for (const auto &[Name, IDs] : MLS_Minis)
+                entries << QString::fromStdString(Name);
+            break;
+        case 6:
+            for (const auto &[Name, IDs] : MLS_Superchargers)
+                entries << QString::fromStdString(Name);
+            break;
+        case 7:
+            for (const auto &[Name, IDs] : MLS_Sensei)
+                entries << QString::fromStdString(Name);
+            break;
+        case 8:
+            for (const auto &[Name, IDs] : MLS_Traps)
+                entries << QString::fromStdString(Name);
+            break;
+        case 9:
+            for (const auto &[Name, IDs] : MLS_Vehicles)
+                entries << QString::fromStdString(Name);
+            break;
+        case 10:
+            for (const auto &[Name, IDs] : MLS_CreationCrystals)
+                entries << QString::fromStdString(Name);
+            break;
+        case 11:
+            for (const auto &[Name, IDs] : MLS_Scraps)
+                entries << QString::fromStdString(Name);
+            break;
+        case 12:
+            for (const auto &[Name, IDs] : MLS_Debug)
+                entries << QString::fromStdString(Name);
+            break;
+        case 13:
+            for (const auto &[Name, IDs] : MLS_Items)
+                entries << QString::fromStdString(Name);
+            break;
+        case 14:
+            for (const auto &[Name, IDs] : MLS_LevelPacks)
+                entries << QString::fromStdString(Name);
+            break;
+        case 15:
+            for (const auto &[Name, IDs] : MLS_Adventures)
+                entries << QString::fromStdString(Name);
+            break;
+    }
+    //for (const QString& element: entries) std::cout << element.toStdString() << " \n";
+    //std::cout << "------";
+    return entries;
+}
+
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
     bool isInAdvanced = false;
     bool OW = false;
+    QString QS_SelCat; // Currently selected category
 
     // Create the main window
     QWidget window;
     window.setWindowTitle("Skymake");
     QGridLayout *L_Window = new QGridLayout(&window);
-    window.setFixedSize(600, 150);
+    window.setFixedSize(700, 150);
 
     QVBoxLayout *L_Buttons = new QVBoxLayout();
     L_Window -> addLayout(L_Buttons, 0, 1);
@@ -50,16 +120,14 @@ int main(int argc, char *argv[]) {
     L_Buttons -> addWidget(CB_TypeSelect);
     for (const auto &[Category, Number]: MLS_Categories)
         CB_TypeSelect -> addItem(QString::fromStdString(Category));
+    CB_TypeSelect -> setFixedWidth(180);
+    QS_SelCat = CB_TypeSelect -> currentText();
 
     // Combo Box for selecting skylanders
     QComboBox *CB_SkySelect = new QComboBox;
     L_Content -> addWidget(CB_SkySelect, 0, 0, 1, 0);
-
-    // Add items to Combo Box
-    //for (const auto &[Name, IDs] : MLS_Core)
-    //    CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
-    //for (const auto &[Name, IDs] : imaginatorsMap)
-    //    CB_SkySelect -> addItem(QString::fromStdString(Name), IDs.first);
+    // Populate combobox with entries from the currently selected category
+    CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
 
     // Buttons
     QPushButton *BTN_Create = new QPushButton("Make!");
@@ -88,7 +156,7 @@ int main(int argc, char *argv[]) {
 
     // set initial values
     QString QS_SelSky = CB_SkySelect -> currentText();
-    std::pair<uint16_t, uint16_t> IDs = MLS_Core[QS_SelSky.toStdString()];
+    std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
     LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
     std::stringstream VarIDHex;
     VarIDHex << std::hex << IDs.second;
@@ -198,14 +266,44 @@ int main(int argc, char *argv[]) {
         OW = CHK_OW -> isChecked();
     });
 
-    QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID] {
+    QObject::connect(CB_TypeSelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &QS_SelCat, &CB_TypeSelect, &LE_ID, &LE_VarID] {
+        // Disconnect and clear CB_SkySelect to avoid conflicts
+        CB_SkySelect->disconnect();
+        CB_SkySelect -> clear();
+
+        QS_SelCat = CB_TypeSelect -> currentText();
+        CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
+
+        // Refresh the grayed-out ID and Variant boxes
         QString QS_SelSky = CB_SkySelect -> currentText();
-        std::pair<uint16_t, uint16_t> IDs = MLS_Core[QS_SelSky.toStdString()];
+        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+        LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+        std::stringstream VarIDHex;
+        VarIDHex << std::hex << IDs.second;
+        LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+
+        // Reconnect CB_SkySelect
+        QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID, &QS_SelCat] {
+            // Refresh the grayed-out ID and Variant boxes
+            QString QS_SelSky = CB_SkySelect -> currentText();
+            std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+            LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+            std::stringstream VarIDHex;
+            VarIDHex << std::hex << IDs.second;
+            LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+        });
+    });
+
+    QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID, &QS_SelCat] {
+        // Refresh the grayed-out ID and Variant boxes
+        QString QS_SelSky = CB_SkySelect -> currentText();
+        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
         LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
         std::stringstream VarIDHex;
         VarIDHex << std::hex << IDs.second;
         LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
     });
+
 
     // Show the window
     window.show();

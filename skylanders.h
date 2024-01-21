@@ -6,20 +6,21 @@
 
 // This is where categories are storred with their corresponding number
 std::map<std::string, uint16_t> MLS_Categories = {
-    {"Core", 0},
-    {"Giant", 1},
-    {"Swapper", 2},
-    {"Trap Master", 3},
-    {"Mini/Sidekick", 4},
-    {"Supercharger", 5},
-    {"Sensei", 6},
-    {"Trap", 7},
-    {"Vehicle", 8},
-    {"Creation Crystal", 9},
-    {"Scrapped", 10},
-    {"Debug", 11},
-    {"Magic Item", 12},
-    {"Level Packs", 13},
+    {"Core", 1},
+    {"Giant", 2},
+    {"Swapper", 3},
+    {"Trap Master", 4},
+    {"Mini/Sidekick", 5},
+    {"Supercharger", 6},
+    {"Sensei", 7},
+    {"Trap", 8},
+    {"Vehicle", 9},
+    {"Creation Crystal", 10},
+    {"Scrapped", 11},
+    {"Debug", 12},
+    {"Magic Item", 13},
+    {"Imaginators Level Pack", 14},
+    {"Level Pack", 15}
 };
 
 // This is where figurines are stored
@@ -616,22 +617,12 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Items = {
     {"Piggy Bank",                                      {231, 0x0000}},
     {"Rocket Ram",                                      {232, 0x0000}},
     {"Tiki Speaky",                                     {233, 0x0000}},
-    {"Dragon’s Peak",                                   {300, 0x0000}},
-    {"Empire of Ice",                                   {301, 0x0000}},
-    {"Pirate Seas",                                     {302, 0x0000}},
-    {"Darklight Crypt",                                 {303, 0x0000}},
     {"Volcanic Vault",                                  {304, 0x0000}},
-    {"Mirror of Mystery",                               {305, 0x0000}},
-    {"Nightmare Express",                               {306, 0x0000}},
-    {"Sunscraper Spire",                                {307, 0x0000}},
-    {"Midnight Museum",                                 {308, 0x0000}},
     {"Battle Hammer",                                   {3200, 0x0000}},
     {"Sky Diamond",                                     {3201, 0x0000}},
     {"Platinum Sheep",                                  {3202, 0x0000}},
     {"Groove Machine",                                  {3203, 0x0000}},
     {"UFO Hat",                                         {3204, 0x0000}},
-    {"Sheep Wreck Island",                              {3300, 0x0000}},
-    {"Tower of Time",                                   {3301, 0x0000}},
     {"Fiery Forge",                                     {3302, 0x0000}},
     {"Arkeyan Crossbow",                                {3303, 0x0000}},
     {"Sky Trophy",                                      {3500, 0x0000}},
@@ -665,6 +656,20 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_LevelPacks = {
     {"Enchanted Elven Forest",                          {311, 0x5000}},
     {"Gryphon Park Observatory",                        {310, 0x5000}},
 };
+
+std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Adventures = {
+    {"Dragon’s Peak",                                   {300, 0x0000}},
+    {"Empire of Ice",                                   {301, 0x0000}},
+    {"Pirate Seas",                                     {302, 0x0000}},
+    {"Darklight Crypt",                                 {303, 0x0000}},
+    {"Sheep Wreck Island",                              {3300, 0x0000}},
+    {"Tower of Time",                                   {3301, 0x0000}},
+    {"Mirror of Mystery",                               {305, 0x0000}},
+    {"Nightmare Express",                               {306, 0x0000}},
+    {"Sunscraper Spire",                                {307, 0x0000}},
+    {"Midnight Museum",                                 {308, 0x0000}},
+};
+
 /** 
  * This whole thing can be removed once Imaginators figures get fully figured out...
  * Until then, this will be the compromise.

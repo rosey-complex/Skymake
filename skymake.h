@@ -47,47 +47,50 @@ static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint3
 
 std::pair<uint16_t, uint16_t> getSkylanderIDs(std::string name, uint16_t category) {
     switch (category) {
-    case 0:
+    case 1:
         return MLS_Core[name];
         break;
-    case 1:
+    case 2:
         return MLS_Giants[name];
         break;
-    case 2:
+    case 3:
         return MLS_Swappers[name];
         break;
-    case 3:
+    case 4:
         return MLS_TrapMasters[name];
         break;
-    case 4:
+    case 5:
         return MLS_Minis[name];
         break;
-    case 5:
+    case 6:
         return MLS_Superchargers[name];
         break;
-    case 6:
+    case 7:
         return MLS_Sensei[name];
         break;
-    case 7:
+    case 8:
         return MLS_Traps[name];
         break;
-    case 8:
+    case 9:
         return MLS_Vehicles[name];
         break;
-    case 9:
+    case 10:
         return MLS_CreationCrystals[name];
         break;
-    case 10:
+    case 11:
         return MLS_Scraps[name];
         break;
-    case 11:
+    case 12:
         return MLS_Debug[name];
         break;
-    case 12:
+    case 13:
         return MLS_Items[name];
         break;
-    case 13:
+    case 14:
         return MLS_LevelPacks[name];
+        break;
+    case 15: 
+        return MLS_Adventures[name];
     
     default:
         return {0, 0};
