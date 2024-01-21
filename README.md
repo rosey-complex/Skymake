@@ -1,9 +1,12 @@
-![Logo](Logo/skymake.svg)
+<div style="text-align:center">
+  <img src="Logo/skymake.svg" alt="Logo">
+</div>
 
 # **Skymake - A simple Skylanders® figure generator**
 
-![Screenshot](Screenshots/Screenshot1.png)
-
+<div style="text-align:center">
+  <img src="Screenshots/Screenshot1.png" alt="Screenshot showing how the app looks like">
+</div>
 ## Installation:
 
 ### Windows:
