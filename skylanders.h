@@ -590,13 +590,13 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_CreationCrystals = {
 };
 
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Scraps = {
-    {"Series 4 Cynder (Scrapped; Trap Team)",           {32, 0x3805}},
-    {"Series 2 Flashwing (Scrapped; Trap Team)",        {103, 0x3805}},
+    {"Series 4 Cynder (Trap Team)",                     {32, 0x3805}},
+    {"Series 2 Flashwing (Trap Team)",                  {103, 0x3805}},
     {"VVind Up (Gear Head Vicarious Visions Wind Up)",  {3011, 0x2404}},
-    {"Fushion (Scrapped; Superchargers)",               {4500, 0x0000}},
-    {"Synergy (Scrapped; Superchargers)",               {4501, 0x0000}},
-    {"Unity (Scrapped; Superchargers)",                 {4502, 0x0000}},
-    {"BlueFalcon_Base (Scrapped; Superchargers)",       {4503, 0x0000}},
+    {"Fushion (Superchargers)",                         {4500, 0x0000}},
+    {"Synergy (Superchargers)",                         {4501, 0x0000}},
+    {"Unity (Superchargers)",                           {4502, 0x0000}},
+    {"BlueFalcon_Base (Superchargers)",                 {4503, 0x0000}},
 };
 
 std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Items = {
