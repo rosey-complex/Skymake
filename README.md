@@ -7,6 +7,7 @@
 <div style="text-align:center">
   <img src="Screenshots/Screenshot1.png" alt="Screenshot showing how the app looks like">
 </div>
+
 ## Installation:
 
 ### Windows:
