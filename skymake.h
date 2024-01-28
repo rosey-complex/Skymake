@@ -8,6 +8,24 @@
 #include <filesystem>
 #include "skylanders.h"
 
+// evil big endian conversion
+uint32_t tobe32(uint32_t value) {
+    return  ((value & 0xFF) << 24) |
+            ((value & 0xFF00) << 8) | 
+            ((value & 0xFF0000) >> 8) | 
+            ((value & 0xFF000000) >> 24);
+}
+uint64_t tobe64(uint64_t value) {
+    return ((value & 0xFFULL) << 56) |
+           ((value & 0xFF00ULL) << 40) |
+           ((value & 0xFF0000ULL) << 24) |
+           ((value & 0xFF000000ULL) << 8) |
+           ((value & 0xFF00000000ULL) >> 8) |
+           ((value & 0xFF0000000000ULL) >> 24) |
+           ((value & 0xFF000000000000ULL) >> 40) |
+           ((value & 0xFF00000000000000ULL) >> 56);
+}
+
 static uint16_t skylanderCRC16(uint16_t init_value, const uint8_t *buffer, uint32_t size) {
     static constexpr std::array<uint16_t, 256> CRC_CCITT_TABLE {
         0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50A5, 0x60C6, 0x70E7, 0x8108, 0x9129, 0xA14A,
@@ -190,15 +208,15 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         std::tie(NUID, Bx2X, Bx4X, Bx22X, Bx3EX, magicNums) = BFIMBytes;
 
         // Convert values to big endian format
-        NUID =     htobe32(NUID);
-        Bx2X.first =    htobe64(Bx2X.first);
-        Bx4X.first =    htobe64(Bx4X.first);
-        Bx22X.first =   htobe64(Bx22X.first);
-        Bx3EX.first =   htobe64(Bx3EX.first);
-        Bx2X.second =   htobe64(Bx2X.second);
-        Bx4X.second =   htobe64(Bx4X.second);
-        Bx22X.second =  htobe64(Bx22X.second);
-        Bx3EX.second =  htobe64(Bx3EX.second);
+        NUID =          tobe32(NUID);
+        Bx2X.first =    tobe64(Bx2X.first);
+        Bx4X.first =    tobe64(Bx4X.first);
+        Bx22X.first =   tobe64(Bx22X.first);
+        Bx3EX.first =   tobe64(Bx3EX.first);
+        Bx2X.second =   tobe64(Bx2X.second);
+        Bx4X.second =   tobe64(Bx4X.second);
+        Bx22X.second =  tobe64(Bx22X.second);
+        Bx3EX.second =  tobe64(Bx3EX.second);
         //// Write the bytes
         // NUID
         memcpy(&fileData[0x0], &NUID, sizeof(NUID));
