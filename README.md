@@ -11,9 +11,7 @@
 ## Installation:
 
 ### Windows:
-- Use WSL2 and follow the linux installation steps. 
-
-###### (Windows is far too janky when it comes to developing software compared to Linux distributions)
+- Instructions coming soon.
 
 ### Linux:
 - Check if you have the right dependencies installed,
@@ -37,6 +35,7 @@
 - Create Debug Skylanders,
 - Create Instant/Virtual Skylander variants,
 - Create ***some**** scrapped Skylanders.
+
 ###### (*It cannot yet create scrapped imaginators figures... the reason can be figured out from the two things skymake can't do. (TL;DR: no Heartbreaker Buckshot :( ))
 
 ## ⛔ What it can't:
@@ -44,9 +43,13 @@
 - Create figures for Imaginators with custom IDs and VarIDs.
 
 ## Compiling:
+
 ### On Linux:
 -   Clone the repository
 -   Install development files for Qt5Core and Qt5Widgets.
 -   In the root directory of the reposotory, run `cmake .` .
 -   After cmake finishes, run `make`.
 -   If the compilation finishes, you should now have a compiled `skymake` binary.
+
+### On Windows:
+-   Instructions coming soon
