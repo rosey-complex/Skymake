@@ -11,7 +11,9 @@
 ## Installation:
 
 ### Windows:
-- Instructions coming soon.
+-   Follow the compilation steps at the bottom of the page.
+
+###### * If you want to start it like any ordinary desktop app... you're out of luck, unfortunately. (you will have to start skymake from MSYS2). If you know how to compile Qt applications on windows and to make them installable, feel free to contribute.
 
 ### Linux:
 - Check if you have the right dependencies installed,
@@ -45,11 +47,20 @@
 ## Compiling:
 
 ### On Linux:
--   Clone the repository
+-   Clone the repository using `git clone https://github.com/rosey-complex/Skymake`
 -   Install development files for Qt5Core and Qt5Widgets.
 -   In the root directory of the reposotory, run `cmake .` .
 -   After cmake finishes, run `make`.
 -   If the compilation finishes, you should now have a compiled `skymake` binary.
 
-### On Windows:
--   Instructions coming soon
+### On Windows (MSYS2):
+-   Install MSYS2.
+-   Start MSYS2 MINGW64 from the start menu.
+-   In the MSYS2 command line, install the required tools and libaries.
+    + Run `pacman -S mingw-w64-x86_64-binutils pactoys git`.
+    + Afterwards, run `pacboy -S toolchain:p cmake:p qt5-base:p extra-cmake-modules:p ninja:p`.
+    + If prompted to select an option, just press "enter".
+-   Clone the repository using `git clone https://github.com/rosey-complex/Skymake`
+-   Enter the repository's directory.
+-   Run `cmake .` and then, after cmake completes succesfully, run `cmake --build .`.
+-   If there are no compilation errors, you should have a compiled `skymake.exe` executable.
