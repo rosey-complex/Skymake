@@ -409,7 +409,7 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Sensei = {
     {"Jingle-Bell Chompy Mage",                         {621, 0x540E}},
     {"Mystical Tae Kwon Crow",                          {612, 0x5402}},
     {"Hard-Boiled Flare Wolf",                          {620, 0x540D}},
-    {"Legendary Tri-Tip",                               {602, 0xE40B}},
+    {"Legendary Tri-Tip",                               {602, 0x5403}},
     {"Dark Golden Queen",                               {613, 0x5402}},
     {"Steel-Plated Hood Sickle",                        {611, 0x5402}},
     {"Mystcial Bad Juju",                               {622, 0x5402}},
@@ -705,7 +705,7 @@ std::map<std::string, std::tuple<
         }
     },
 
-    {"Dr. Krankase",
+    {"Dr. Krankcase",
         {   
             0xBF7727A1,
             {0xA2512B484827CEE5, 0xC4FF10E75CE01C6A},
