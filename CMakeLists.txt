@@ -13,10 +13,10 @@ if(CMAKE_VERSION VERSION_LESS "3.7.0")
     set(CMAKE_INCLUDE_CURRENT_DIR ON)
 endif()
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 add_executable(skymake
     skymake.cpp
 )
 
-target_link_libraries(skymake Qt5::Widgets Qt5::Core Qt5::Gui)
+target_link_libraries(skymake Qt6::Widgets Qt6::Core Qt6::Gui)

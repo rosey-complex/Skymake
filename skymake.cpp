@@ -8,7 +8,6 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QFileDialog>
-#include <QDirModel>
 #include <QCheckBox>
 #include <QObject>
 
