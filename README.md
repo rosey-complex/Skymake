@@ -48,7 +48,7 @@
 
 ### On Linux:
 -   Clone the repository using `git clone https://github.com/rosey-complex/Skymake`
--   Install development files for Qt5Core and Qt5Widgets.
+-   Install development files for Qt6Core and Qt6Widgets.
 -   In the root directory of the reposotory, run `cmake .` .
 -   After cmake finishes, run `make`.
 -   If the compilation finishes, you should now have a compiled `skymake` binary.
@@ -58,7 +58,7 @@
 -   Start MSYS2 MINGW64 from the start menu.
 -   In the MSYS2 command line, install the required tools and libaries.
     + Run `pacman -S mingw-w64-x86_64-binutils pactoys git`.
-    + Afterwards, run `pacboy -S toolchain:p cmake:p qt5-base:p extra-cmake-modules:p ninja:p`.
+    + Afterwards, run `pacboy -S toolchain:p cmake:p qt6-base:p extra-cmake-modules:p ninja:p`.
     + If prompted to select an option, just press "enter".
 -   Clone the repository using `git clone https://github.com/rosey-complex/Skymake`
 -   Enter the repository's directory.
