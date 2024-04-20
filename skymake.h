@@ -149,18 +149,14 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     }
     
     filePath = filePathTrunk + ".sky";
-    // Check if file already exists and warn the user about overwriting
-    if (std::filesystem::exists(filePathTrunk + ".sky")) {
-        // Avoid overwriting by adding a number before the file extension
-        if (Sw[0]) {
+    // Check if file already exists and, if intended, write to a different file
+    if (std::filesystem::exists(filePathTrunk + ".sky"))
+        if (Sw[0])
             for (uint64_t n = 0; n <= UINT64_MAX; n++) {
                 if (!(std::filesystem::exists(filePathTrunk + "." + std::to_string(n) + ".sky"))) {
                     filePath = filePathTrunk + "." + std::to_string(n) + ".sky";
                     break;
                 }
-            }
-        }
-    }
 
     //// Skylander figurine data file creation
 
