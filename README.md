@@ -26,7 +26,7 @@
 - From the releases section, download "skymake-[version]-1.fc40.x86_64.rpm"
 - Install the RPM package via your package manager
     + Command line:
-        + `sudo dnf in ./skymake-[version]-1.fc40.x86_64.rpm`
+        + `sudo dnf in ./skymake-[version]-1.um40.x86_64.rpm`
     + GUI:
         + Double click on the file in a file manager. It ***should*** automatically open the default store interface (e.g. Discover, Gnome Software Center etc.)
 
