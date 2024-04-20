@@ -109,7 +109,7 @@ int main(int argc, char *argv[]) {
     Ui::MainWindow UI;
     UI.setupUi(&window);
     // set title
-    window.setWindowTitle("Skymake");
+    window.setWindowTitle("Skymake 1.1.0");
     window.setFixedSize(800, 235);
 
     // Welcome message
