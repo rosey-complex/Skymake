@@ -165,11 +165,8 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
                     break;
                 }
             }
-            std::cout << "* Avoiding overwrite by writing to " << filePath << std::endl;
         }
-        else std::cout << "* Overwriting..." << std::endl;
     }
-    else std::cout << "* Creating file " << filePath << std::endl;
 
     //// Skylander figurine data file creation
 
