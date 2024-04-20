@@ -152,7 +152,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     // Check if file already exists and, if intended, write to a different file
     if (std::filesystem::exists(filePathTrunk + ".sky"))
         if (Sw[0])
-            for (uint64_t n = 0; n <= UINT64_MAX; n++) {
+            for (uint64_t n = 0; n <= UINT64_MAX; n++)
                 if (!(std::filesystem::exists(filePathTrunk + "." + std::to_string(n) + ".sky"))) {
                     filePath = filePathTrunk + "." + std::to_string(n) + ".sky";
                     break;
