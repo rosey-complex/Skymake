@@ -5,7 +5,7 @@
 # **Skymake - A simple Skylanders® figure generator**
 
 <div style="text-align:center">
-  <img src="Screenshots/Screenshot1.png" alt="Screenshot showing how the app looks like">
+  <img src="Screenshots/Screenshot_1.1.png" alt="Screenshot showing how the app looks like">
 </div>
 
 ## Installation:
