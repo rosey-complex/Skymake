@@ -227,7 +227,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             IDs = getEntryDataFromIndex(category, rand());
             SkyID = IDs.first;
             SkyVarID = IDs.second;
-            filePathTrunk = targetFile + "/" + std::to_string(rand());
+            filePathTrunk = targetFile + "/Random-" + std::to_string(rand());
             break;
     }
 
