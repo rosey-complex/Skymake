@@ -128,17 +128,15 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     Sw[1]   - Basic/Advanced Mode
     */
 
-    std::string filePathNoExtension;
-    std::string filePath;
-    uint16_t SkyID = 0;
-    uint16_t SkyVarID = 0;
+    std::string filePathTrunk, filePath;
+    uint16_t SkyID = 0, SkyVarID = 0;
     bool isFromSI = false;
 
     // ""Advanced"" Mode 
     if (Sw[1]) {
         //// Allows a user to create a skylander if they know the variant ID and skylander ID
         // Use a file name based on the provided IDs
-        filePath = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar) + ".sky";
+        filePathTrunk = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar);
 
         // Set the IDs
         SkyID = customID;
@@ -146,22 +144,20 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
     }
     // Basic Mode
     else {
-        filePath = targetFile + "/" + skylanderName + ".sky";
+        filePathTrunk = targetFile + "/" + skylanderName;
         std::pair IDs = getSkylanderIDs(skylanderName, category);
         SkyID = IDs.first;
         SkyVarID = IDs.second;
     }
-    // File Path without extension
-    filePathNoExtension = filePath;
-    for (uint8_t i = 0; i <= 3; i++) filePathNoExtension.pop_back();
-
+    
+    filePath = filePathTrunk + ".sky";
     // Check if file already exists and warn the user about overwriting
-    if (std::filesystem::exists(filePath)) {
+    if (std::filesystem::exists(filePathTrunk + ".sky")) {
         // Avoid overwriting by adding a number before the file extension
         if (Sw[0]) {
             for (uint64_t n = 0; n <= UINT64_MAX; n++) {
-                if (!(std::filesystem::exists(filePathNoExtension + "." + std::to_string(n) + ".sky"))) {
-                    filePath = filePathNoExtension + "." + std::to_string(n) + ".sky";
+                if (!(std::filesystem::exists(filePathTrunk + "." + std::to_string(n) + ".sky"))) {
+                    filePath = filePathTrunk + "." + std::to_string(n) + ".sky";
                     break;
                 }
             }
