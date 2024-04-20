@@ -97,13 +97,91 @@ int main(int argc, char *argv[]) {
     QString QS_SelCat; // Currently selected category
 
     // Create the main window
+    
     QMainWindow window;
+    Ui::MainWindow UI;
+    UI.setupUi(&window);
+    // set title
     window.setWindowTitle("Skymake");
-    Ui::MainWindow ui;
-    ui.setupUi(&window);
+    window.setFixedSize(800, 219);
+
+    // populate categoties
+    for (const auto &[Category, Number]: MLS_Categories)
+        UI.CB_TypeSelect -> addItem(QString::fromStdString(Category));
+    QS_SelCat = UI.CB_TypeSelect -> currentText();
+    
+    // populate skylander entries
+    UI.CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
+    
+    // disable ID and VarID LineEdits
+    for(int i = 0; i < UI.GL_IDs -> count(); ++i) {
+        QLayoutItem *tempQItem = UI.GL_IDs -> itemAt(i);
+        if (tempQItem) {
+            QWidget* tempQWidget = tempQItem -> widget();
+            if (tempQWidget) tempQWidget -> setDisabled(true);
+        }
+    }
+
+    // set initial values
+    QString QS_SelSky = UI.CB_SkySelect -> currentText();
+    std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+    UI.LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+    std::stringstream VarIDHex;
+    VarIDHex << std::hex << IDs.second;
+    UI.LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+
+    // File Select Dialog
+    QObject::connect(UI.BTN_SelDest, &QPushButton::clicked, [&UI, &window] {
+        QString filePath = QFileDialog::getExistingDirectory(&window, "Select Folder", QDir::homePath());
+        UI.LE_Prefix -> setText(filePath);
+    });
+
+
+    // Checkbox interaction
+    QObject::connect(UI.CHK_OW, &QCheckBox::stateChanged, [&UI, &OW] {
+        OW = UI.CHK_OW -> isChecked();
+    });
+
+    // update the skylander selection combo box upon changing the category
+    QObject::connect(UI.CB_TypeSelect, &QComboBox::currentTextChanged, [&UI, &QS_SelCat] {
+        // Disconnect and clear CB_SkySelect to avoid conflicts
+        UI.CB_SkySelect->disconnect();
+        UI.CB_SkySelect -> clear();
+
+        QS_SelCat = UI.CB_TypeSelect -> currentText();
+        UI.CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
+
+        // Refresh the grayed-out ID and Variant boxes
+        QString QS_SelSky = UI.CB_SkySelect -> currentText();
+        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+        UI.LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+        std::stringstream VarIDHex;
+        VarIDHex << std::hex << IDs.second;
+        UI.LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+
+        // Reconnect CB_SkySelect
+        QObject::connect(UI.CB_SkySelect, &QComboBox::currentTextChanged, [&UI, &QS_SelCat] {
+            // Refresh the grayed-out ID and Variant boxes
+            QString QS_SelSky = UI.CB_SkySelect -> currentText();
+            std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+            UI.LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+            std::stringstream VarIDHex;
+            VarIDHex << std::hex << IDs.second;
+            UI.LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+        });
+    });
+
+    QObject::connect(UI.CB_SkySelect, &QComboBox::currentTextChanged, [&UI, &QS_SelCat] {
+        // Refresh the grayed-out ID and Variant boxes
+        QString QS_SelSky = UI.CB_SkySelect -> currentText();
+        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
+        UI.LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
+        std::stringstream VarIDHex;
+        VarIDHex << std::hex << IDs.second;
+        UI.LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+    });
 
     /*
-
     // Button Actions
     QObject::connect(BTN_Create, &QPushButton::clicked, [&LE_Prefix, &LB_Msg, &CB_SkySelect, &CHK_OW, &OW, &isInAdvanced, &LE_ID, &LE_VarID, &QS_SelCat]() {
         QString QS_Dest = LE_Prefix -> text();
@@ -188,53 +266,6 @@ int main(int argc, char *argv[]) {
                 }
                 break;
         }
-    });
-
-    QObject::connect(BTN_SelDest, &QPushButton::clicked, [&LE_Prefix, &window] {
-        QString filePath = QFileDialog::getExistingDirectory(&window, "Select Folder", QDir::homePath());
-        LE_Prefix -> setText(filePath);
-    });
-
-    QObject::connect(CHK_OW, &QCheckBox::stateChanged, [&CHK_OW, &OW] {
-        OW = CHK_OW -> isChecked();
-    });
-
-    QObject::connect(CB_TypeSelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &QS_SelCat, &CB_TypeSelect, &LE_ID, &LE_VarID] {
-        // Disconnect and clear CB_SkySelect to avoid conflicts
-        CB_SkySelect->disconnect();
-        CB_SkySelect -> clear();
-
-        QS_SelCat = CB_TypeSelect -> currentText();
-        CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
-
-        // Refresh the grayed-out ID and Variant boxes
-        QString QS_SelSky = CB_SkySelect -> currentText();
-        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
-        LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
-        std::stringstream VarIDHex;
-        VarIDHex << std::hex << IDs.second;
-        LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
-
-        // Reconnect CB_SkySelect
-        QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID, &QS_SelCat] {
-            // Refresh the grayed-out ID and Variant boxes
-            QString QS_SelSky = CB_SkySelect -> currentText();
-            std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
-            LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
-            std::stringstream VarIDHex;
-            VarIDHex << std::hex << IDs.second;
-            LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
-        });
-    });
-
-    QObject::connect(CB_SkySelect, &QComboBox::currentTextChanged, [&CB_SkySelect, &LE_ID, &LE_VarID, &QS_SelCat] {
-        // Refresh the grayed-out ID and Variant boxes
-        QString QS_SelSky = CB_SkySelect -> currentText();
-        std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
-        LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
-        std::stringstream VarIDHex;
-        VarIDHex << std::hex << IDs.second;
-        LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
     });
     */
 
