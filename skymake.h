@@ -242,8 +242,6 @@ bool CreateSkylander(std::string skylanderName, const std::string &targetFile, u
                     break;
                 }
 
-    //// Skylander figurine data file creation
-
     // Create empty file
     std::ofstream skyFile(filePath, std::ios::binary);
     skyFile.clear();

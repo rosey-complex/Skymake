@@ -91,8 +91,6 @@ QStringList getCategoryEntries(uint16_t category) {
                 entries << QString::fromStdString(Name);
             break;
     }
-    //for (const QString& element: entries) std::cout << element.toStdString() << " \n";
-    //std::cout << "------";
     return entries;
 }
 
