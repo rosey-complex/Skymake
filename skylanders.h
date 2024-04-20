@@ -1302,5 +1302,4 @@ std::map<std::string, std::tuple<
         }
     },
 };
-std::map<std::string, std::pair<uint16_t, uint16_t>> imaginatorsMap = {};
 #endif
