@@ -674,15 +674,17 @@ std::map<std::string, std::pair<uint16_t, uint16_t>> MLS_Adventures = {
  * This whole thing can be removed once Imaginators figures get fully figured out...
  * Until then, this will be the compromise.
  * **/
-std::map<std::string, std::tuple<   
-                                uint32_t,                           // NUID
-                                std::pair<uint64_t, uint64_t>,      // 0x20
-                                std::pair<uint64_t, uint64_t>,      // 0x40
-                                std::pair<uint64_t, uint64_t>,      // 0x220
-                                std::pair<uint64_t, uint64_t>,      // 0x3E0
-                                std::pair<uint8_t, uint8_t>         // Magic Numbers (Addr 0x9, 0xF)
-                                >> BFIM = {
-        
+
+struct compData {
+    uint32_t UID;
+    std::pair<uint64_t, uint64_t> bytes_0x20;
+    std::pair<uint64_t, uint64_t> bytes_0x40;
+    std::pair<uint64_t, uint64_t> bytes_0x220;
+    std::pair<uint64_t, uint64_t> bytes_0x3E0;
+    std::pair<uint8_t, uint8_t> magicNumbers;
+};
+
+std::map<std::string, compData> compDataMap = {
     {"Pit Boss",
         {   
             0xDFA3FEA1,

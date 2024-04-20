@@ -116,10 +116,8 @@ std::pair<uint16_t, uint16_t> getSkylanderIDs(std::string name, uint16_t categor
     }
 }
 
-// <insert hideous function>
-std::tuple<uint32_t, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint64_t, uint64_t>, std::pair<uint8_t, uint8_t>>
-    getImaginatorsData (std::string name) {
-    return BFIM[name];
+compData getCompData (std::string name) {
+    return compDataMap[name];
 }
 
 bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000, unsigned category = 0) {
@@ -185,34 +183,26 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         // Set the skylander info
         memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
+        
+        compData comp = getCompData(skylanderName);
 
-        std::tuple< 
-                    uint32_t,                        // NUID
-                    std::pair<uint64_t, uint64_t>,  // 0x20
-                    std::pair<uint64_t, uint64_t>,  // 0x40
-                    std::pair<uint64_t, uint64_t>,  // 0x220
-                    std::pair<uint64_t, uint64_t>,  // 0x3E0
-                    std::pair<uint8_t, uint8_t>  // Magic Numbers
-                    > BFIMBytes = getImaginatorsData(skylanderName);
-        // Declare the bytes as varables and unpack th tuple
-        uint32_t NUID;
-        std::pair<uint64_t, uint64_t> Bx2X, Bx4X, Bx22X, Bx3EX;
-        std::pair<uint8_t, uint8_t> magicNums;
-        std::tie(NUID, Bx2X, Bx4X, Bx22X, Bx3EX, magicNums) = BFIMBytes;
+        uint32_t UID;
+        std::pair<uint64_t, uint64_t> bytes_0x20, bytes_0x40, bytes_0x220, bytes_0x3E0;
 
         // Convert values to big endian format
-        NUID =          tobe32(NUID);
-        Bx2X.first =    tobe64(Bx2X.first);
-        Bx4X.first =    tobe64(Bx4X.first);
-        Bx22X.first =   tobe64(Bx22X.first);
-        Bx3EX.first =   tobe64(Bx3EX.first);
-        Bx2X.second =   tobe64(Bx2X.second);
-        Bx4X.second =   tobe64(Bx4X.second);
-        Bx22X.second =  tobe64(Bx22X.second);
-        Bx3EX.second =  tobe64(Bx3EX.second);
+        UID =                   tobe32(comp.UID);
+        bytes_0x20.first =      tobe64(comp.bytes_0x20.first);
+        bytes_0x40.first =      tobe64(comp.bytes_0x40.first);
+        bytes_0x220.first =     tobe64(comp.bytes_0x220.first);
+        bytes_0x3E0.first =     tobe64(comp.bytes_0x3E0.first);
+        bytes_0x20.second =     tobe64(comp.bytes_0x20.second);
+        bytes_0x40.second =     tobe64(comp.bytes_0x40.second);
+        bytes_0x220.second =    tobe64(comp.bytes_0x220.second);
+        bytes_0x3E0.second =    tobe64(comp.bytes_0x3E0.second);
+
         //// Write the bytes
-        // NUID
-        memcpy(&fileData[0x0], &NUID, sizeof(NUID));
+        // UID
+        memcpy(&fileData[0x0], &UID, sizeof(UID));
         
         // The BCC (Block Check Character)
         fileData[4] = fileData[0] ^ fileData[1] ^ fileData[2] ^ fileData[3];
@@ -229,29 +219,29 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         fileData[0x3F] = 0x51;
 
         // Magic Bytes
-        fileData[0x9] = magicNums.first;
-        fileData[0xF] = magicNums.second;
+        fileData[0x9] = comp.magicNumbers.first;
+        fileData[0xF] = comp.magicNumbers.second;
 
         // Set checksum
         uint16_t checksum = skylanderCRC16(0xFFFF, fileData, 0x1E);
         memcpy(&fileData[0x1E], &checksum, sizeof(checksum));
 
         // 0x20
-        memcpy(&fileData[0x20], &Bx2X.first, sizeof(Bx2X.first));
-        memcpy(&fileData[0x28], &Bx2X.second, sizeof(Bx2X.second));
+        memcpy(&fileData[0x20], &bytes_0x20.first, sizeof(bytes_0x20.first));
+        memcpy(&fileData[0x28], &bytes_0x20.second, sizeof(bytes_0x20.second));
         
         // 0x40
-        memcpy(&fileData[0x40], &Bx4X.first, sizeof(Bx4X.first));
-        memcpy(&fileData[0x48], &Bx4X.second, sizeof(Bx4X.second));
+        memcpy(&fileData[0x40], &bytes_0x40.first, sizeof(bytes_0x40.first));
+        memcpy(&fileData[0x48], &bytes_0x40.second, sizeof(bytes_0x40.second));
         // 0x220
-        memcpy(&fileData[0x220], &Bx22X.first, sizeof(Bx22X.first));
-        memcpy(&fileData[0x228], &Bx22X.second, sizeof(Bx22X.second));
+        memcpy(&fileData[0x220], &bytes_0x220.first, sizeof(bytes_0x220.first));
+        memcpy(&fileData[0x228], &bytes_0x220.second, sizeof(bytes_0x220.second));
         // 0x3E0
-        memcpy(&fileData[0x3E0], &Bx3EX.first, sizeof(Bx3EX.first));
-        memcpy(&fileData[0x3E8], &Bx3EX.second, sizeof(Bx3EX.second));
+        memcpy(&fileData[0x3E0], &bytes_0x3E0.first, sizeof(bytes_0x3E0.first));
+        memcpy(&fileData[0x3E8], &bytes_0x3E0.second, sizeof(bytes_0x3E0.second));
     }
     else {
-        // Set the NUID of the figure
+        // Set the UID of the figure
         srand (time(NULL));
         uint32_t RandNUID = rand();
         memcpy(&fileData[0], &RandNUID, sizeof(RandNUID));
