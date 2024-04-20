@@ -232,7 +232,7 @@ int main(int argc, char *argv[]) {
                         if (tempQWidget) tempQWidget -> setDisabled(true);
                     }
                 }
-                UI.BTN_Create -> setText("Daring today\nAren't you?");
+                UI.BTN_Create -> setText("I'm Feeling Lucky");
                 break;
         }
     });
