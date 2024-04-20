@@ -8,85 +8,85 @@
 #include <filesystem>
 #include "skylanders.h"
 
-std::pair<uint16_t, uint16_t> getEntryDataFromIndex (int category, int index) {
+std::string getEntryDataFromIndex (int category, int index) {
     auto it = MLS_Core.begin();
     switch (category) {
         case 1: {
             it = MLS_Core.begin();
             std::advance(it, index % MLS_Core.size());
-            return it -> second;
+            return it -> first;
             break;
         }
         case 2: {
             it = MLS_Giants.begin();
             std::advance(it, index % MLS_Giants.size());
-            return it -> second;
+            return it -> first;
             break;
         }
         case 3:
             it = MLS_Swappers.begin();
             std::advance(it, index % MLS_Swappers.size());
-            return it -> second;
+            return it -> first;
             break;
         case 4:
             it = MLS_TrapMasters.begin();
             std::advance(it, index % MLS_TrapMasters.size());
-            return it -> second;
+            return it -> first;
             break;
         case 5:
             it = MLS_Minis.begin();
             std::advance(it, index % MLS_Minis.size());
-            return it -> second;
+            return it -> first;
             break;
         case 6:
             it = MLS_Superchargers.begin();
             std::advance(it, index % MLS_Superchargers.size());
-            return it -> second;
+            return it -> first;
             break;
         case 7:
             it = MLS_Sensei.begin();
             std::advance(it, index % MLS_Sensei.size());
-            return it -> second;
+            return it -> first;
             break;
         case 8:
             it = MLS_Traps.begin();
             std::advance(it, index % MLS_Traps.size());
-            return it -> second;
+            return it -> first;
             break;
         case 9:
             it = MLS_Vehicles.begin();
             std::advance(it, index % MLS_Vehicles.size());
-            return it -> second;
+            return it -> first;
             break;
         case 10:
             it = MLS_CreationCrystals.begin();
             std::advance(it, index % MLS_CreationCrystals.size());
-            return it -> second;
+            return it -> first;
             break;
         case 11:
             it = MLS_Scraps.begin();
             std::advance(it, index % MLS_Scraps.size());
-            return it -> second;
+            return it -> first;
             break;
         case 12:
             it = MLS_Debug.begin();
             std::advance(it, index % MLS_Debug.size());
-            return it -> second;
+            return it -> first;
             break;
         case 13:
             it = MLS_Items.begin();
             std::advance(it, index % MLS_Items.size());
-            return it -> second;
+            return it -> first;
             break;
         case 14:
             it = MLS_LevelPacks.begin();
             std::advance(it, index % MLS_LevelPacks.size());
-            return it -> second;
+            return it -> first;
             break;
         case 15: 
             it = MLS_Adventures.begin();
             std::advance(it, index % MLS_Adventures.size());
-            return it -> second;
+            return it -> first;
             break;
         default: return {0, 0}; break;
     }
@@ -200,7 +200,7 @@ std::pair<uint16_t, uint16_t> getSkylanderIDs(std::string name, uint16_t categor
     }
 }
 
-bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, uint8_t Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000, unsigned category = 0) {
+bool CreateSkylander(std::string skylanderName, const std::string &targetFile, uint8_t Sw[2], const uint16_t customID = 0, const uint16_t customVar = 0x0000, unsigned category = 0) {
     /*
     Sw[0]   - Unsafe/Safe Mode
     Sw[1]   - Basic/Advanced/Random Mode
@@ -224,10 +224,11 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             break;
         case 2: // Random
             srand (time(NULL));
-            IDs = getEntryDataFromIndex(category, rand());
+            skylanderName = getEntryDataFromIndex(category, rand());
+            IDs = getSkylanderIDs(skylanderName, category);
             SkyID = IDs.first;
             SkyVarID = IDs.second;
-            filePathTrunk = targetFile + "/Random-" + std::to_string(rand());
+            filePathTrunk = targetFile + "/Random";
             break;
     }
     
