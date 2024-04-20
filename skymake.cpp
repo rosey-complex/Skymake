@@ -103,8 +103,11 @@ int main(int argc, char *argv[]) {
     UI.setupUi(&window);
     // set title
     window.setWindowTitle("Skymake");
-    window.setFixedSize(800, 219);
+    window.setFixedSize(800, 235);
 
+    // Welcome message
+    UI.statusBar->showMessage("Welcome to Skymake!");
+    
     // populate categoties
     for (const auto &[Category, Number]: MLS_Categories)
         UI.CB_TypeSelect -> addItem(QString::fromStdString(Category));

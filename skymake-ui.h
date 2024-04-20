@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'skymakeYEGtKf.ui'
+** Form generated from reading UI file 'skymakeFgYCke.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef SKYMAKEYEGTKF_H
-#define SKYMAKEYEGTKF_H
+#ifndef SKYMAKEFGYCKE_H
+#define SKYMAKEFGYCKE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -19,6 +19,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -48,12 +49,13 @@ public:
     QHBoxLayout *HL_Modes;
     QLabel *LB_Mode;
     QComboBox *CB_Mode;
+    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 219);
+        MainWindow->resize(800, 235);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayoutWidget = new QWidget(centralwidget);
@@ -147,6 +149,9 @@ public:
         HL_Modes->addWidget(CB_Mode);
 
         MainWindow->setCentralWidget(centralwidget);
+        statusBar = new QStatusBar(MainWindow);
+        statusBar->setObjectName("statusBar");
+        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
 
@@ -173,4 +178,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // SKYMAKEYEGTKF_H
+#endif // SKYMAKEFGYCKE_H
