@@ -289,6 +289,7 @@ int main(int argc, char *argv[]) {
                         break;
                     }
                     case 2:
+                        Sw[0] = 1;
                         if (CreateSkylander(QS_SelSky.toStdString(), QS_Dest.toStdString(), Sw, ID, varID, MLS_Categories[QS_SelCat.toStdString()]))
                             UI.statusBar -> showMessage("Last created: " + QS_Dest + " - " + "[REDACTED]"+ ".");
                         else 
