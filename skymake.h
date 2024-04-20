@@ -116,10 +116,6 @@ std::pair<uint16_t, uint16_t> getSkylanderIDs(std::string name, uint16_t categor
     }
 }
 
-compData getCompData (std::string name) {
-    return compDataMap[name];
-}
-
 bool CreateSkylander(const std::string &skylanderName, const std::string &targetFile, bool Sw[], const uint16_t customID = 0, const uint16_t customVar = 0x0000, unsigned category = 0) {
     /*
     Sw[0]   - Unsafe/Safe Mode
@@ -180,7 +176,7 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
         memcpy(&fileData[0x10], &SkyID, sizeof(SkyID));
         memcpy(&fileData[0x1C], &SkyVarID, sizeof(SkyVarID));
         
-        compData comp = getCompData(skylanderName);
+        compData comp = compDataMap[skylanderName];
 
         uint32_t UID;
         std::pair<uint64_t, uint64_t> bytes_0x20, bytes_0x40, bytes_0x220, bytes_0x3E0;
