@@ -1,5 +1,5 @@
 Name:       skymake
-Version:    1.0.4
+Version:    1.1.0
 Release:    1%{?dist}
 Summary:    A simple Skylander figure data dump generator made in C++
 
