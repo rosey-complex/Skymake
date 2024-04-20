@@ -208,6 +208,7 @@ int main(int argc, char *argv[]) {
                         if (tempQWidget) tempQWidget -> setDisabled(true);
                     }
                 }
+                UI.BTN_Create -> setText("Make!");
                 break;
             case 1:
                 UI.CB_SkySelect -> setDisabled(true);
@@ -219,6 +220,7 @@ int main(int argc, char *argv[]) {
                         if (tempQWidget) tempQWidget -> setDisabled(false);
                     }
                 }
+                UI.BTN_Create -> setText("Make!");
                 break;
             case 2:
                 UI.CB_SkySelect -> setDisabled(true);
@@ -230,6 +232,7 @@ int main(int argc, char *argv[]) {
                         if (tempQWidget) tempQWidget -> setDisabled(true);
                     }
                 }
+                UI.BTN_Create -> setText("Daring today\nAren't you?");
                 break;
         }
     });
