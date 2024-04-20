@@ -16,7 +16,7 @@ endif()
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 
 add_executable(skymake
-    skymake.cpp
+    skymake.ui skymake.cpp
 )
 
 target_link_libraries(skymake Qt6::Widgets Qt6::Core Qt6::Gui)

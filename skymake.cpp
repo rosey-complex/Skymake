@@ -19,6 +19,7 @@
 //external
 #include "skylanders.h"
 #include "skymake.h"
+#include "skymake-ui.h"
 
 QStringList getCategoryEntries(uint16_t category) {
     QStringList entries = {};
@@ -96,79 +97,12 @@ int main(int argc, char *argv[]) {
     QString QS_SelCat; // Currently selected category
 
     // Create the main window
-    QWidget window;
+    QMainWindow window;
     window.setWindowTitle("Skymake");
-    QGridLayout *L_Window = new QGridLayout(&window);
-    window.setFixedSize(700, 150);
+    Ui::MainWindow ui;
+    ui.setupUi(&window);
 
-    QVBoxLayout *L_Buttons = new QVBoxLayout();
-    L_Window -> addLayout(L_Buttons, 0, 1);
-
-    QGridLayout *L_Content = new QGridLayout;
-    L_Window -> addLayout(L_Content, 0, 0);
-
-    QLabel *LB_Msg = new QLabel("Welcome to Skymake!");
-    L_Window -> addWidget(LB_Msg, 2, 0);
-    
-    // "Overwrite" checkbox
-    QCheckBox *CHK_OW = new QCheckBox("Avoid overwrite");
-    L_Window -> addWidget(CHK_OW, 2, 1);
-
-    // Combo Box for selecting the type of skylander
-    QComboBox *CB_TypeSelect = new QComboBox;
-    L_Buttons -> addWidget(CB_TypeSelect);
-    for (const auto &[Category, Number]: MLS_Categories)
-        CB_TypeSelect -> addItem(QString::fromStdString(Category));
-    CB_TypeSelect -> setFixedWidth(180);
-    QS_SelCat = CB_TypeSelect -> currentText();
-
-    // Combo Box for selecting skylanders
-    QComboBox *CB_SkySelect = new QComboBox;
-    L_Content -> addWidget(CB_SkySelect, 0, 0, 1, 0);
-    // Populate combobox with entries from the currently selected category
-    CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
-
-    // Buttons
-    QPushButton *BTN_Create = new QPushButton("Make!");
-    QPushButton *BTN_Mode = new QPushButton("Mode: Basic");
-    L_Buttons -> addWidget(BTN_Create);
-    L_Buttons -> addWidget(BTN_Mode);
-
-    // ID/VarID prompt
-    QHBoxLayout *L_Adv_Container = new QHBoxLayout;
-    QLabel *LB_ID = new QLabel("ID:");
-    QLabel *LB_VarID = new QLabel("Variant (hex):");
-    QLineEdit *LE_ID = new QLineEdit;
-    QLineEdit *LE_VarID = new QLineEdit;
-    L_Adv_Container -> addWidget(LB_ID);
-    L_Adv_Container -> addWidget(LE_ID);
-    L_Adv_Container -> addWidget(LB_VarID);
-    L_Adv_Container -> addWidget(LE_VarID);
-    L_Content -> addLayout(L_Adv_Container, 1, 0, 1, 0);
-    for(int i = 0; i < L_Adv_Container -> count(); ++i) {
-        QLayoutItem *tempQItem = L_Adv_Container -> itemAt(i);
-        if (tempQItem) {
-            QWidget* tempQWidget = tempQItem -> widget();
-            if (tempQWidget) tempQWidget -> setDisabled(true);
-        }
-    }
-
-    // set initial values
-    QString QS_SelSky = CB_SkySelect -> currentText();
-    std::pair<uint16_t, uint16_t> IDs = getSkylanderIDs(QS_SelSky.toStdString(), MLS_Categories[QS_SelCat.toStdString()]);
-    LE_ID -> setText(QString::fromStdString(std::to_string(IDs.first)));
-    std::stringstream VarIDHex;
-    VarIDHex << std::hex << IDs.second;
-    LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
-
-    // Destination
-    QLabel *LB_Prefix = new QLabel;
-    LB_Prefix -> setText("Destination:");
-    L_Content -> addWidget(LB_Prefix, 2, 0);
-    QLineEdit *LE_Prefix = new QLineEdit;
-    L_Content -> addWidget(LE_Prefix, 2, 1);
-    QPushButton *BTN_SelDest = new QPushButton("Select");
-    L_Content -> addWidget(BTN_SelDest, 2, 2);
+    /*
 
     // Button Actions
     QObject::connect(BTN_Create, &QPushButton::clicked, [&LE_Prefix, &LB_Msg, &CB_SkySelect, &CHK_OW, &OW, &isInAdvanced, &LE_ID, &LE_VarID, &QS_SelCat]() {
@@ -302,10 +236,9 @@ int main(int argc, char *argv[]) {
         VarIDHex << std::hex << IDs.second;
         LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
     });
-
+    */
 
     // Show the window
     window.show();
-
     return app.exec();
 }
