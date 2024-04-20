@@ -22,15 +22,15 @@
 
 ###### * If you want to start it like any ordinary desktop app... you're out of luck, unfortunately. (you will have to start skymake from MSYS2). If you know how to compile Qt applications on windows and to make them installable, feel free to contribute.
 
-### Linux (Fedora/RHEL):
-- From the releases section, download "skymake-[version]-1.fc40.x86_64.rpm"
+### Linux - Fedora and Fedora-based distros (such as Ultramarine or Nobara):
+- From the releases section, download "skymake-[version]-1.um40.x86_64.rpm"
 - Install the RPM package via your package manager
     + Command line:
         + `sudo dnf in ./skymake-[version]-1.um40.x86_64.rpm`
     + GUI:
         + Double click on the file in a file manager. It ***should*** automatically open the default store interface (e.g. Discover, Gnome Software Center etc.)
 
-### Linux (Generic):
+### Linux - Generic:
 - Check if you have the right dependencies installed,
 - From the releases section, download "skymake-linux-glibc-[version].zip",
 - Extract the binary into any folder,
