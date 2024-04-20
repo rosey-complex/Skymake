@@ -230,25 +230,6 @@ bool CreateSkylander(const std::string &skylanderName, const std::string &target
             filePathTrunk = targetFile + "/Random-" + std::to_string(rand());
             break;
     }
-
-    /*
-    // ""Advanced"" Mode 
-    if (Sw[1]) {
-        //// Allows a user to create a skylander if they know the variant ID and skylander ID
-        // Use a file name based on the provided IDs
-        filePathTrunk = targetFile + "/" + std::to_string(customID) + "-" + std::to_string(customVar);
-
-        // Set the IDs
-        SkyID = customID;
-        SkyVarID = customVar;
-    }
-    // Basic Mode
-    else {
-        filePathTrunk = targetFile + "/" + skylanderName;
-        std::pair IDs = getSkylanderIDs(skylanderName, category);
-        SkyID = IDs.first;
-        SkyVarID = IDs.second;
-    }*/
     
     filePath = filePathTrunk + ".sky";
     // Check if file already exists and, if intended, write to a different file
