@@ -85,10 +85,10 @@
 #### Creating the package:
 - In `~/rpmbuild`, go to the `SOURCES` directory.
 - Clone the repository using `git clone https://github.com/rosey-complex/Skymake`.
-- Copy `Skymake.spec` to the `SPECS` directory: `cp Skymake/Skymake.spec ../SPECS`
+- Copy `Skymake.spec` to the `SPECS` directory: `cp Skymake/Skymake.spec ../SPECS`.
 - Compress the reporitory directory using `tar -czvf Skymake.tar.gz Skymake/`.
 - Go back to the upper directory (`~/rpmbuild`).
 - Go to the `SPECS` directory.
-- Run `rpmbuild -bb Skymake.spec` or `rpmbuild -bb Skymake-opensuse.spec`.
+- Run `rpmbuild -bb Skymake.spec`.
 - Choose a god and pray that it compiles without issues.
 - Once compiled, you will have a fresh RPM package in `~/rpmbuild/RPMS`.
