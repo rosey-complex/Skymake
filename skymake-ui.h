@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'skymakeFgYCke.ui'
+** Form generated from reading UI file 'skymakeRwAoxK.ui'
 **
 ** Created by: Qt User Interface Compiler version 6.6.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef SKYMAKEFGYCKE_H
-#define SKYMAKEFGYCKE_H
+#ifndef SKYMAKERWAOXK_H
+#define SKYMAKERWAOXK_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -55,12 +55,12 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(800, 235);
+        MainWindow->resize(800, 234);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayoutWidget = new QWidget(centralwidget);
         horizontalLayoutWidget->setObjectName("horizontalLayoutWidget");
-        horizontalLayoutWidget->setGeometry(QRect(10, 10, 781, 41));
+        horizontalLayoutWidget->setGeometry(QRect(10, 10, 781, 43));
         HL_Dest = new QHBoxLayout(horizontalLayoutWidget);
         HL_Dest->setObjectName("HL_Dest");
         HL_Dest->setContentsMargins(0, 0, 0, 0);
@@ -71,29 +71,32 @@ public:
 
         LE_Prefix = new QLineEdit(horizontalLayoutWidget);
         LE_Prefix->setObjectName("LE_Prefix");
+        LE_Prefix->setMinimumSize(QSize(0, 32));
 
         HL_Dest->addWidget(LE_Prefix);
 
         BTN_SelDest = new QPushButton(horizontalLayoutWidget);
         BTN_SelDest->setObjectName("BTN_SelDest");
-        BTN_SelDest->setMinimumSize(QSize(0, 33));
+        BTN_SelDest->setMinimumSize(QSize(0, 32));
 
         HL_Dest->addWidget(BTN_SelDest);
 
         horizontalLayoutWidget_2 = new QWidget(centralwidget);
         horizontalLayoutWidget_2->setObjectName("horizontalLayoutWidget_2");
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 60, 781, 41));
+        horizontalLayoutWidget_2->setGeometry(QRect(10, 60, 781, 43));
         HL_SkySel = new QHBoxLayout(horizontalLayoutWidget_2);
         HL_SkySel->setObjectName("HL_SkySel");
         HL_SkySel->setContentsMargins(0, 0, 0, 0);
         CB_TypeSelect = new QComboBox(horizontalLayoutWidget_2);
         CB_TypeSelect->setObjectName("CB_TypeSelect");
+        CB_TypeSelect->setMinimumSize(QSize(0, 32));
         CB_TypeSelect->setMaximumSize(QSize(200, 16777215));
 
         HL_SkySel->addWidget(CB_TypeSelect);
 
         CB_SkySelect = new QComboBox(horizontalLayoutWidget_2);
         CB_SkySelect->setObjectName("CB_SkySelect");
+        CB_SkySelect->setMinimumSize(QSize(0, 32));
 
         HL_SkySel->addWidget(CB_SkySelect);
 
@@ -105,7 +108,7 @@ public:
         BTN_Create->setGeometry(QRect(680, 170, 111, 41));
         gridLayoutWidget = new QWidget(centralwidget);
         gridLayoutWidget->setObjectName("gridLayoutWidget");
-        gridLayoutWidget->setGeometry(QRect(10, 110, 261, 84));
+        gridLayoutWidget->setGeometry(QRect(10, 110, 261, 90));
         GL_IDs = new QGridLayout(gridLayoutWidget);
         GL_IDs->setObjectName("GL_IDs");
         GL_IDs->setHorizontalSpacing(11);
@@ -122,11 +125,13 @@ public:
 
         LE_VarID = new QLineEdit(gridLayoutWidget);
         LE_VarID->setObjectName("LE_VarID");
+        LE_VarID->setMinimumSize(QSize(0, 32));
 
         GL_IDs->addWidget(LE_VarID, 1, 1, 1, 1);
 
         LE_ID = new QLineEdit(gridLayoutWidget);
         LE_ID->setObjectName("LE_ID");
+        LE_ID->setMinimumSize(QSize(0, 32));
 
         GL_IDs->addWidget(LE_ID, 0, 1, 1, 1);
 
@@ -134,6 +139,7 @@ public:
         horizontalLayoutWidget_3->setObjectName("horizontalLayoutWidget_3");
         horizontalLayoutWidget_3->setGeometry(QRect(450, 170, 221, 41));
         HL_Modes = new QHBoxLayout(horizontalLayoutWidget_3);
+        HL_Modes->setSpacing(6);
         HL_Modes->setObjectName("HL_Modes");
         HL_Modes->setContentsMargins(0, 0, 0, 0);
         LB_Mode = new QLabel(horizontalLayoutWidget_3);
@@ -145,6 +151,7 @@ public:
 
         CB_Mode = new QComboBox(horizontalLayoutWidget_3);
         CB_Mode->setObjectName("CB_Mode");
+        CB_Mode->setMinimumSize(QSize(0, 32));
 
         HL_Modes->addWidget(CB_Mode);
 
@@ -165,9 +172,9 @@ public:
         BTN_SelDest->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
         CHK_OW->setText(QCoreApplication::translate("MainWindow", "Avoid Overwrite", nullptr));
         BTN_Create->setText(QCoreApplication::translate("MainWindow", "Make!", nullptr));
-        LB_VarID->setText(QCoreApplication::translate("MainWindow", "Variant ID", nullptr));
-        LB_ID->setText(QCoreApplication::translate("MainWindow", "ID", nullptr));
-        LB_Mode->setText(QCoreApplication::translate("MainWindow", "Mode", nullptr));
+        LB_VarID->setText(QCoreApplication::translate("MainWindow", "Variant ID:", nullptr));
+        LB_ID->setText(QCoreApplication::translate("MainWindow", "ID:", nullptr));
+        LB_Mode->setText(QCoreApplication::translate("MainWindow", "Mode:", nullptr));
     } // retranslateUi
 
 };
@@ -178,4 +185,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
-#endif // SKYMAKEFGYCKE_H
+#endif // SKYMAKERWAOXK_H

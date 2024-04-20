@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>235</height>
+    <height>234</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,7 +20,7 @@
       <x>10</x>
       <y>10</y>
       <width>781</width>
-      <height>41</height>
+      <height>43</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="HL_Dest">
@@ -32,14 +32,21 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="LE_Prefix"/>
+      <widget class="QLineEdit" name="LE_Prefix">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="BTN_SelDest">
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>33</height>
+         <height>32</height>
         </size>
        </property>
        <property name="text">
@@ -55,12 +62,18 @@
       <x>10</x>
       <y>60</y>
       <width>781</width>
-      <height>41</height>
+      <height>43</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="HL_SkySel">
      <item>
       <widget class="QComboBox" name="CB_TypeSelect">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="maximumSize">
         <size>
          <width>200</width>
@@ -70,7 +83,14 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="CB_SkySelect"/>
+      <widget class="QComboBox" name="CB_SkySelect">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -106,7 +126,7 @@
       <x>10</x>
       <y>110</y>
       <width>261</width>
-      <height>84</height>
+      <height>90</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="GL_IDs">
@@ -116,22 +136,36 @@
      <item row="1" column="0">
       <widget class="QLabel" name="LB_VarID">
        <property name="text">
-        <string>Variant ID</string>
+        <string>Variant ID:</string>
        </property>
       </widget>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="LB_ID">
        <property name="text">
-        <string>ID</string>
+        <string>ID:</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="LE_VarID"/>
+      <widget class="QLineEdit" name="LE_VarID">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="LE_ID"/>
+      <widget class="QLineEdit" name="LE_ID">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
@@ -145,6 +179,9 @@
      </rect>
     </property>
     <layout class="QHBoxLayout" name="HL_Modes">
+     <property name="spacing">
+      <number>6</number>
+     </property>
      <item>
       <widget class="QLabel" name="LB_Mode">
        <property name="maximumSize">
@@ -160,12 +197,19 @@
         </size>
        </property>
        <property name="text">
-        <string>Mode</string>
+        <string>Mode:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="CB_Mode"/>
+      <widget class="QComboBox" name="CB_Mode">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </widget>
