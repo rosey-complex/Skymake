@@ -21,6 +21,12 @@
 #include "skymake.h"
 #include "skymake-ui.h"
 
+std::map<std::string, uint8_t> MLS_Modes = {
+    {"Basic", 0},
+    {"Advanced", 1},
+    {"Random", 2},
+};
+
 QStringList getCategoryEntries(uint16_t category) {
     QStringList entries = {};
     switch (category) {
@@ -92,9 +98,10 @@ QStringList getCategoryEntries(uint16_t category) {
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
-    bool isInAdvanced = false;
+    uint8_t mode = 0;
     bool OW = false;
     QString QS_SelCat; // Currently selected category
+
 
     // Create the main window
     
@@ -107,7 +114,7 @@ int main(int argc, char *argv[]) {
 
     // Welcome message
     UI.statusBar->showMessage("Welcome to Skymake!");
-    
+
     // populate categoties
     for (const auto &[Category, Number]: MLS_Categories)
         UI.CB_TypeSelect -> addItem(QString::fromStdString(Category));
@@ -116,6 +123,9 @@ int main(int argc, char *argv[]) {
     // populate skylander entries
     UI.CB_SkySelect -> addItems(getCategoryEntries(MLS_Categories[QS_SelCat.toStdString()]));
     
+    // populate modes
+    UI.CB_Mode -> addItems({"Basic", "Advanced", "Random"});
+
     // disable ID and VarID LineEdits
     for(int i = 0; i < UI.GL_IDs -> count(); ++i) {
         QLayoutItem *tempQItem = UI.GL_IDs -> itemAt(i);
@@ -182,6 +192,11 @@ int main(int argc, char *argv[]) {
         std::stringstream VarIDHex;
         VarIDHex << std::hex << IDs.second;
         UI.LE_VarID -> setText(QString::fromStdString("0x" + VarIDHex.str()));
+    });
+
+    QObject::connect(UI.CB_Mode, &QComboBox::currentTextChanged, [&UI, &mode] {
+        mode = MLS_Modes[UI.CB_Mode->currentText().toStdString()];
+        std::cerr << mode;
     });
 
     /*
