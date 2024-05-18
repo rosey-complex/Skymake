@@ -11,3 +11,5 @@ CMakeFiles
 skymake_autogen
 .qt/*
 .qt/
+*.dll
+*.exe
